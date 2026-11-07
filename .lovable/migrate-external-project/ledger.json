@@ -6,8 +6,8 @@
       "capability": "code",
       "source": "latest repository main",
       "outcome": "replace-with-latest",
-      "status": "in_progress",
-      "next_action": "Copy and hash-audit latest main snapshot"
+      "status": "source_import_verified",
+      "next_action": "No source files missing; live service verification remains separate"
     },
     {
       "capability": "schema",
@@ -34,15 +34,15 @@
       "capability": "authorization",
       "source": "latest repository main",
       "outcome": "preserve-source",
-      "status": "in_progress",
-      "next_action": "Copy all source permission code"
+      "status": "source_import_verified",
+      "next_action": "No source files missing; live service verification remains separate"
     },
     {
       "capability": "uploaded file bytes",
       "source": "latest repository main",
       "outcome": "transfer",
-      "status": "in_progress",
-      "next_action": "Download source-scoped pointers and upload here"
+      "status": "transferred",
+      "next_action": "All 102 pointers rehomed; 12 use bundled variants already supplied by the source repository"
     },
     {
       "capability": "external providers",
@@ -55,8 +55,8 @@
       "capability": "public endpoints/callbacks/webhooks/schedules",
       "source": "latest repository main",
       "outcome": "preserve-source",
-      "status": "in_progress",
-      "next_action": "Copy all corresponding modules"
+      "status": "source_import_verified",
+      "next_action": "No source files missing; live service verification remains separate"
     },
     {
       "capability": "secrets",
@@ -76,8 +76,8 @@
       "capability": "verification",
       "source": "latest repository main",
       "outcome": "test",
-      "status": "in_progress",
-      "next_action": "Build, selected tests, preview and complete hash audit"
+      "status": "partial",
+      "next_action": "Build OK; desktop/phone German and Arabic selection plus five new routes checked; 102 tests passed, four original source assertions failed"
     }
   ]
 }
