@@ -152,6 +152,8 @@ import { Route as ApiAuthCallbackGoogleRouteImport } from './routes/api/auth/cal
 import { Route as ApiAuthCallbackMastodonRouteImport } from './routes/api/auth/callback/mastodon'
 import { Route as ApiAuthLoginProviderRouteImport } from './routes/api/auth/login/$provider'
 import { Route as ApiAuthRoutLogoutRouteImport } from './routes/api/auth/rout.logout'
+import { Route as ApiFieldWalletBroadcastMessageRouteImport } from './routes/api/field/wallet/broadcast-message'
+import { Route as ApiFieldWalletEventClassLocalizationRouteImport } from './routes/api/field/wallet/event-class-localization'
 import { Route as ApiMediaScalewayDeleteRouteImport } from './routes/api/media/scaleway/delete'
 import { Route as ApiMediaScalewayListRouteImport } from './routes/api/media/scaleway/list'
 import { Route as ApiMediaScalewaySimilarRouteImport } from './routes/api/media/scaleway/similar'
@@ -898,6 +900,18 @@ const ApiAuthRoutLogoutRoute = ApiAuthRoutLogoutRouteImport.update({
   path: '/logout',
   getParentRoute: () => ApiAuthRoutRoute,
 } as any)
+const ApiFieldWalletBroadcastMessageRoute =
+  ApiFieldWalletBroadcastMessageRouteImport.update({
+    id: '/api/field/wallet/broadcast-message',
+    path: '/api/field/wallet/broadcast-message',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiFieldWalletEventClassLocalizationRoute =
+  ApiFieldWalletEventClassLocalizationRouteImport.update({
+    id: '/api/field/wallet/event-class-localization',
+    path: '/api/field/wallet/event-class-localization',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ApiMediaScalewayDeleteRoute = ApiMediaScalewayDeleteRouteImport.update({
   id: '/api/media/scaleway/delete',
   path: '/api/media/scaleway/delete',
@@ -1130,6 +1144,8 @@ export interface FileRoutesByFullPath {
   '/api/auth/callback/mastodon': typeof ApiAuthCallbackMastodonRoute
   '/api/auth/login/$provider': typeof ApiAuthLoginProviderRoute
   '/api/auth/rout/logout': typeof ApiAuthRoutLogoutRoute
+  '/api/field/wallet/broadcast-message': typeof ApiFieldWalletBroadcastMessageRoute
+  '/api/field/wallet/event-class-localization': typeof ApiFieldWalletEventClassLocalizationRoute
   '/api/media/scaleway/delete': typeof ApiMediaScalewayDeleteRoute
   '/api/media/scaleway/list': typeof ApiMediaScalewayListRoute
   '/api/media/scaleway/similar': typeof ApiMediaScalewaySimilarRoute
@@ -1288,6 +1304,8 @@ export interface FileRoutesByTo {
   '/api/auth/callback/mastodon': typeof ApiAuthCallbackMastodonRoute
   '/api/auth/login/$provider': typeof ApiAuthLoginProviderRoute
   '/api/auth/rout/logout': typeof ApiAuthRoutLogoutRoute
+  '/api/field/wallet/broadcast-message': typeof ApiFieldWalletBroadcastMessageRoute
+  '/api/field/wallet/event-class-localization': typeof ApiFieldWalletEventClassLocalizationRoute
   '/api/media/scaleway/delete': typeof ApiMediaScalewayDeleteRoute
   '/api/media/scaleway/list': typeof ApiMediaScalewayListRoute
   '/api/media/scaleway/similar': typeof ApiMediaScalewaySimilarRoute
@@ -1451,6 +1469,8 @@ export interface FileRoutesById {
   '/api/auth/callback/mastodon': typeof ApiAuthCallbackMastodonRoute
   '/api/auth/login/$provider': typeof ApiAuthLoginProviderRoute
   '/api/auth/rout/logout': typeof ApiAuthRoutLogoutRoute
+  '/api/field/wallet/broadcast-message': typeof ApiFieldWalletBroadcastMessageRoute
+  '/api/field/wallet/event-class-localization': typeof ApiFieldWalletEventClassLocalizationRoute
   '/api/media/scaleway/delete': typeof ApiMediaScalewayDeleteRoute
   '/api/media/scaleway/list': typeof ApiMediaScalewayListRoute
   '/api/media/scaleway/similar': typeof ApiMediaScalewaySimilarRoute
@@ -1614,6 +1634,8 @@ export interface FileRouteTypes {
     | '/api/auth/callback/mastodon'
     | '/api/auth/login/$provider'
     | '/api/auth/rout/logout'
+    | '/api/field/wallet/broadcast-message'
+    | '/api/field/wallet/event-class-localization'
     | '/api/media/scaleway/delete'
     | '/api/media/scaleway/list'
     | '/api/media/scaleway/similar'
@@ -1772,6 +1794,8 @@ export interface FileRouteTypes {
     | '/api/auth/callback/mastodon'
     | '/api/auth/login/$provider'
     | '/api/auth/rout/logout'
+    | '/api/field/wallet/broadcast-message'
+    | '/api/field/wallet/event-class-localization'
     | '/api/media/scaleway/delete'
     | '/api/media/scaleway/list'
     | '/api/media/scaleway/similar'
@@ -1934,6 +1958,8 @@ export interface FileRouteTypes {
     | '/api/auth/callback/mastodon'
     | '/api/auth/login/$provider'
     | '/api/auth/rout/logout'
+    | '/api/field/wallet/broadcast-message'
+    | '/api/field/wallet/event-class-localization'
     | '/api/media/scaleway/delete'
     | '/api/media/scaleway/list'
     | '/api/media/scaleway/similar'
@@ -2072,6 +2098,8 @@ export interface RootRouteChildren {
   ApiAuthCallbackGoogleRoute: typeof ApiAuthCallbackGoogleRoute
   ApiAuthCallbackMastodonRoute: typeof ApiAuthCallbackMastodonRoute
   ApiAuthLoginProviderRoute: typeof ApiAuthLoginProviderRoute
+  ApiFieldWalletBroadcastMessageRoute: typeof ApiFieldWalletBroadcastMessageRoute
+  ApiFieldWalletEventClassLocalizationRoute: typeof ApiFieldWalletEventClassLocalizationRoute
   ApiMediaScalewayDeleteRoute: typeof ApiMediaScalewayDeleteRoute
   ApiMediaScalewayListRoute: typeof ApiMediaScalewayListRoute
   ApiMediaScalewaySimilarRoute: typeof ApiMediaScalewaySimilarRoute
@@ -3092,6 +3120,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAuthRoutLogoutRouteImport
       parentRoute: typeof ApiAuthRoutRoute
     }
+    '/api/field/wallet/broadcast-message': {
+      id: '/api/field/wallet/broadcast-message'
+      path: '/api/field/wallet/broadcast-message'
+      fullPath: '/api/field/wallet/broadcast-message'
+      preLoaderRoute: typeof ApiFieldWalletBroadcastMessageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/field/wallet/event-class-localization': {
+      id: '/api/field/wallet/event-class-localization'
+      path: '/api/field/wallet/event-class-localization'
+      fullPath: '/api/field/wallet/event-class-localization'
+      preLoaderRoute: typeof ApiFieldWalletEventClassLocalizationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/media/scaleway/delete': {
       id: '/api/media/scaleway/delete'
       path: '/api/media/scaleway/delete'
@@ -3469,6 +3511,9 @@ const rootRouteChildren: RootRouteChildren = {
   ApiAuthCallbackGoogleRoute: ApiAuthCallbackGoogleRoute,
   ApiAuthCallbackMastodonRoute: ApiAuthCallbackMastodonRoute,
   ApiAuthLoginProviderRoute: ApiAuthLoginProviderRoute,
+  ApiFieldWalletBroadcastMessageRoute: ApiFieldWalletBroadcastMessageRoute,
+  ApiFieldWalletEventClassLocalizationRoute:
+    ApiFieldWalletEventClassLocalizationRoute,
   ApiMediaScalewayDeleteRoute: ApiMediaScalewayDeleteRoute,
   ApiMediaScalewayListRoute: ApiMediaScalewayListRoute,
   ApiMediaScalewaySimilarRoute: ApiMediaScalewaySimilarRoute,
