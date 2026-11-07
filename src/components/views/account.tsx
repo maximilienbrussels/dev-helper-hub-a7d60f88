@@ -29,7 +29,7 @@ import { PublicProfileCard } from "@/components/account/PublicProfileCard";
 import { getMyProfileSettings } from "@/lib/public-profile.functions";
 import { HoefjesPad } from "@/components/HoefjesPad";
 import { EmailField } from "@/components/account/EmailField";
-import { lovable } from "@/integrations/lovable/index";
+import { lovable } from "@/lib/imported-oauth";
 import { stashRedirect } from "@/lib/redirect";
 import {
   Loader2,

@@ -25,7 +25,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { lovable } from "@/integrations/lovable";
+import { lovable } from "@/lib/imported-oauth";
 import {
   Check,
   Loader2,
