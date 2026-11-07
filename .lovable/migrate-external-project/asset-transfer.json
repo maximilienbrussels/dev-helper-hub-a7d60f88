@@ -1,0 +1,460 @@
+[
+  {
+    "source": "src/assets/euria-logo.jpg.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/plan-ferme.png.asset.json",
+    "status": "bundled-file"
+  },
+  {
+    "source": "src/assets/plattegrond-ferme-maximilien.png.asset.json",
+    "status": "transferred",
+    "bytes": 846812
+  },
+  {
+    "source": "src/assets/product-compost.jpg.asset.json",
+    "status": "bundled-file"
+  },
+  {
+    "source": "src/assets/product-eieren.jpg.asset.json",
+    "status": "bundled-file"
+  },
+  {
+    "source": "src/assets/product-emmer.jpg.asset.json",
+    "status": "bundled-file"
+  },
+  {
+    "source": "src/assets/product-honing.jpg.asset.json",
+    "status": "bundled-file"
+  },
+  {
+    "source": "src/assets/product-hooi.jpg.asset.json",
+    "status": "bundled-file"
+  },
+  {
+    "source": "src/assets/product-kippenvoer.jpg.asset.json",
+    "status": "bundled-file"
+  },
+  {
+    "source": "src/assets/sfeer-kinderen-kaarten.jpg.asset.json",
+    "status": "bundled-file"
+  },
+  {
+    "source": "src/assets/sfeer-kinderen-zaden.jpg.asset.json",
+    "status": "bundled-file"
+  },
+  {
+    "source": "src/assets/uitnodiging-boerderijfeest.pdf.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/foto/foto-alpaca-wit.jpg.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/foto/foto-alpacas-rust.jpg.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/foto/foto-alpacas-twee.jpg.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/foto/foto-alpacas-weide.jpg.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/foto/foto-beeld-fontein.jpg.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/foto/foto-boomgaard-peren.jpg.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/foto/foto-boomgaard-perenboom.jpg.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/foto/foto-eenden-vijver.jpg.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/foto/foto-erf-pad.jpg.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/foto/foto-ezel-aaien.jpg.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/foto/foto-ezel.jpg.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/foto/foto-geit-madeliefjes.jpg.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/foto/foto-geit.jpg.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/foto/foto-geiten-groep.jpg.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/foto/foto-kinderen-gele-koe.jpg.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/foto/foto-kippen-ren.jpg.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/foto/foto-konijn-stal.jpg.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/foto/foto-moestuin-bakken.jpg.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/foto/foto-moestuin-courgette.jpg.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/foto/foto-moestuin-courgetteplant.jpg.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/foto/foto-moestuin-zonnebloem.jpg.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/foto/foto-pauw-pronkend.jpg.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/foto/foto-pauw.jpg.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/foto/foto-pony-boom.jpg.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/foto/foto-pony-herfst.jpg.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/foto/foto-pony.jpg.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/foto/foto-schapen.jpg.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/foto/foto-trojaans-paard-pony.jpg.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/foto/foto-trojaans-paard.jpg.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/foto/foto-weide-stal.jpg.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/foto/hero-schapen-park.webp.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/foto/hero-sheep-park.webp.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/illustrations/bijen-ruche.webp.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/illustrations/boomgaard-fruit.webp.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/illustrations/chalet-dagdeel.webp.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/illustrations/chalet-volledige-dag.webp.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/illustrations/compost.webp.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/illustrations/dag-op-de-boerderij.webp.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/illustrations/dieren-5-zintuigen.webp.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/illustrations/fotocollage.jpg.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/illustrations/moestuin-schatten.webp.asset.json",
+    "status": "download-failed"
+  },
+  {
+    "source": "src/assets/oud/activiteitenverslag-2025.pdf.asset.json",
+    "status": "transferred",
+    "bytes": 25590398
+  },
+  {
+    "source": "src/assets/oud/peter-alpaca.webp.asset.json",
+    "status": "transferred",
+    "bytes": 65612
+  },
+  {
+    "source": "src/assets/oud/peter-bijenkorf.webp.asset.json",
+    "status": "transferred",
+    "bytes": 85486
+  },
+  {
+    "source": "src/assets/oud/peter-ezel-pony.webp.asset.json",
+    "status": "transferred",
+    "bytes": 52984
+  },
+  {
+    "source": "src/assets/oud/peter-fruitboom.webp.asset.json",
+    "status": "transferred",
+    "bytes": 33764
+  },
+  {
+    "source": "src/assets/oud/peter-geit-schaap.webp.asset.json",
+    "status": "transferred",
+    "bytes": 76342
+  },
+  {
+    "source": "src/assets/oud/peter-kleine-dieren.webp.asset.json",
+    "status": "transferred",
+    "bytes": 115502
+  },
+  {
+    "source": "src/assets/oud/sfeer-geit-madeliefjes-torens.webp.asset.json",
+    "status": "transferred",
+    "bytes": 674490
+  },
+  {
+    "source": "src/assets/oud/sfeer-kind-konijn.webp.asset.json",
+    "status": "transferred",
+    "bytes": 158764
+  },
+  {
+    "source": "src/assets/oud/sfeer-kind-moestuin.webp.asset.json",
+    "status": "transferred",
+    "bytes": 175900
+  },
+  {
+    "source": "src/assets/oud/sfeer-park-panorama.webp.asset.json",
+    "status": "transferred",
+    "bytes": 780450
+  },
+  {
+    "source": "src/assets/oud/sfeer-schapen-kruiwagen.webp.asset.json",
+    "status": "transferred",
+    "bytes": 765356
+  },
+  {
+    "source": "src/assets/oud/stage-administratie.webp.asset.json",
+    "status": "transferred",
+    "bytes": 267290
+  },
+  {
+    "source": "src/assets/oud/stage-dierenverzorging.webp.asset.json",
+    "status": "transferred",
+    "bytes": 760278
+  },
+  {
+    "source": "src/assets/oud/stage-groenteteelt.webp.asset.json",
+    "status": "transferred",
+    "bytes": 857894
+  },
+  {
+    "source": "src/assets/oud/stage-imkerij-dak.webp.asset.json",
+    "status": "transferred",
+    "bytes": 377730
+  },
+  {
+    "source": "src/assets/oud/stage-onderhoud.webp.asset.json",
+    "status": "transferred",
+    "bytes": 486492
+  },
+  {
+    "source": "src/assets/oud/stage-projectbeheer.webp.asset.json",
+    "status": "transferred",
+    "bytes": 558250
+  },
+  {
+    "source": "src/assets/oud/transparantierapport-2025.pdf.asset.json",
+    "status": "transferred",
+    "bytes": 246806
+  },
+  {
+    "source": "src/assets/oud/uitnodiging-achterkant.webp.asset.json",
+    "status": "transferred",
+    "bytes": 57424
+  },
+  {
+    "source": "src/assets/oud/uitnodiging-ma-fete-champetre.pdf.asset.json",
+    "status": "transferred",
+    "bytes": 1417684
+  },
+  {
+    "source": "src/assets/oud/uitnodiging-voorkant.webp.asset.json",
+    "status": "transferred",
+    "bytes": 146014
+  },
+  {
+    "source": "src/assets/oud/verhuur-binnenkoer.jpg.asset.json",
+    "status": "transferred",
+    "bytes": 81986
+  },
+  {
+    "source": "src/assets/oud/verhuur-chalet-binnen.jpg.asset.json",
+    "status": "transferred",
+    "bytes": 51539
+  },
+  {
+    "source": "src/assets/oud/verhuur-chalet-buiten.jpg.asset.json",
+    "status": "transferred",
+    "bytes": 57509
+  },
+  {
+    "source": "src/assets/oud/verhuur-keuken.jpg.asset.json",
+    "status": "transferred",
+    "bytes": 32344
+  },
+  {
+    "source": "src/assets/oud/verhuur-onthaal.jpg.asset.json",
+    "status": "transferred",
+    "bytes": 31747
+  },
+  {
+    "source": "src/assets/oud/verhuur-vestiaire.jpg.asset.json",
+    "status": "transferred",
+    "bytes": 26087
+  },
+  {
+    "source": "src/assets/oud/verhuur-zaal-kindertafels.jpg.asset.json",
+    "status": "transferred",
+    "bytes": 30955
+  },
+  {
+    "source": "src/assets/oud/verhuur-zaal-vergadertafel.jpg.asset.json",
+    "status": "transferred",
+    "bytes": 46657
+  },
+  {
+    "source": "src/assets/oud/fiches/alpacas-en.svg.asset.json",
+    "status": "transferred",
+    "bytes": 2236225
+  },
+  {
+    "source": "src/assets/oud/fiches/alpacas-nl.svg.asset.json",
+    "status": "transferred",
+    "bytes": 2326847
+  },
+  {
+    "source": "src/assets/oud/fiches/ardense-schapen-en.svg.asset.json",
+    "status": "transferred",
+    "bytes": 2583548
+  },
+  {
+    "source": "src/assets/oud/fiches/ardense-schapen-nl.svg.asset.json",
+    "status": "transferred",
+    "bytes": 2684481
+  },
+  {
+    "source": "src/assets/oud/fiches/dwerggeiten-nl.svg.asset.json",
+    "status": "transferred",
+    "bytes": 2762578
+  },
+  {
+    "source": "src/assets/oud/fiches/eenden-en.svg.asset.json",
+    "status": "transferred",
+    "bytes": 4945527
+  },
+  {
+    "source": "src/assets/oud/fiches/eenden-nl.svg.asset.json",
+    "status": "transferred",
+    "bytes": 5053525
+  },
+  {
+    "source": "src/assets/oud/fiches/ezels-en.svg.asset.json",
+    "status": "transferred",
+    "bytes": 2413154
+  },
+  {
+    "source": "src/assets/oud/fiches/ezels-nl.svg.asset.json",
+    "status": "transferred",
+    "bytes": 2563863
+  },
+  {
+    "source": "src/assets/oud/fiches/gansen-en.svg.asset.json",
+    "status": "transferred",
+    "bytes": 3398356
+  },
+  {
+    "source": "src/assets/oud/fiches/gansen-nl.svg.asset.json",
+    "status": "transferred",
+    "bytes": 3519323
+  },
+  {
+    "source": "src/assets/oud/fiches/hoenders-en.svg.asset.json",
+    "status": "transferred",
+    "bytes": 6128096
+  },
+  {
+    "source": "src/assets/oud/fiches/hoenders-nl.svg.asset.json",
+    "status": "transferred",
+    "bytes": 8330604
+  },
+  {
+    "source": "src/assets/oud/fiches/konijnen-en.svg.asset.json",
+    "status": "transferred",
+    "bytes": 2667409
+  },
+  {
+    "source": "src/assets/oud/fiches/konijnen-nl.svg.asset.json",
+    "status": "transferred",
+    "bytes": 2804507
+  },
+  {
+    "source": "src/assets/oud/fiches/ouessant-schapen-en.svg.asset.json",
+    "status": "transferred",
+    "bytes": 2374666
+  },
+  {
+    "source": "src/assets/oud/fiches/ouessant-schapen-nl.svg.asset.json",
+    "status": "transferred",
+    "bytes": 2478501
+  },
+  {
+    "source": "src/assets/oud/fiches/shetlandponys-en.svg.asset.json",
+    "status": "transferred",
+    "bytes": 2079612
+  },
+  {
+    "source": "src/assets/oud/fiches/shetlandponys-nl.svg.asset.json",
+    "status": "transferred",
+    "bytes": 2176525
+  }
+]
