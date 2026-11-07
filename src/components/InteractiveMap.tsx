@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { AudioGuideButton } from "@/components/AudioGuideButton";
 import { X } from "lucide-react";
 import { useNavigate } from "@tanstack/react-router";
 
@@ -197,6 +198,7 @@ export function InteractiveMap({ className = "" }: { className?: string }) {
               <p className="mt-3 text-sm leading-relaxed text-foreground/90">
                 {zoneDescription(active, lang)}
               </p>
+              <AudioGuideButton key={active.slug} slug={active.slug} lang={lang} />
               {active.names?.length ? (
                 <p className="mt-2 text-sm">
                   <span className="text-muted-foreground">👋 </span>
