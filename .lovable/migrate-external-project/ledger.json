@@ -1,0 +1,83 @@
+{
+  "source": "https://github.com/maximilienbrussels/developer-helper-hub",
+  "scope": "Replace outdated repository source; not a live-service migration",
+  "capabilities": [
+    {
+      "capability": "code",
+      "source": "latest repository main",
+      "outcome": "replace-with-latest",
+      "status": "in_progress",
+      "next_action": "Copy and hash-audit latest main snapshot"
+    },
+    {
+      "capability": "schema",
+      "source": "latest repository main",
+      "outcome": "preserve-source",
+      "status": "pending",
+      "next_action": "Cloud migration is outside this source-version replacement"
+    },
+    {
+      "capability": "records",
+      "source": "latest repository main",
+      "outcome": "migrate",
+      "status": "pending",
+      "next_action": "Existing data export unavailable"
+    },
+    {
+      "capability": "auth identities",
+      "source": "latest repository main",
+      "outcome": "migrate",
+      "status": "pending",
+      "next_action": "Existing user export unavailable; retain current middleware during version replacement"
+    },
+    {
+      "capability": "authorization",
+      "source": "latest repository main",
+      "outcome": "preserve-source",
+      "status": "in_progress",
+      "next_action": "Copy all source permission code"
+    },
+    {
+      "capability": "uploaded file bytes",
+      "source": "latest repository main",
+      "outcome": "transfer",
+      "status": "in_progress",
+      "next_action": "Download source-scoped pointers and upload here"
+    },
+    {
+      "capability": "external providers",
+      "source": "latest repository main",
+      "outcome": "preserve",
+      "status": "pending",
+      "next_action": "Provider credentials unavailable for live verification"
+    },
+    {
+      "capability": "public endpoints/callbacks/webhooks/schedules",
+      "source": "latest repository main",
+      "outcome": "preserve-source",
+      "status": "in_progress",
+      "next_action": "Copy all corresponding modules"
+    },
+    {
+      "capability": "secrets",
+      "source": "latest repository main",
+      "outcome": "preserve-securely",
+      "status": "pending",
+      "next_action": "No credentials in source import"
+    },
+    {
+      "capability": "cutover",
+      "source": "latest repository main",
+      "outcome": "no-cutover",
+      "status": "pending",
+      "next_action": "Not publishing or altering external callers"
+    },
+    {
+      "capability": "verification",
+      "source": "latest repository main",
+      "outcome": "test",
+      "status": "in_progress",
+      "next_action": "Build, selected tests, preview and complete hash audit"
+    }
+  ]
+}
