@@ -1,7 +1,8 @@
 [
   {
     "source": "src/assets/euria-logo.jpg.asset.json",
-    "status": "bundled-size-mismatch"
+    "status": "transferred-bundled-variant",
+    "bytes": 14485
   },
   {
     "source": "src/assets/plan-ferme.png.asset.json",
@@ -55,7 +56,8 @@
   },
   {
     "source": "src/assets/uitnodiging-boerderijfeest.pdf.asset.json",
-    "status": "bundled-size-mismatch"
+    "status": "transferred-bundled-variant",
+    "bytes": 14517
   },
   {
     "source": "src/assets/foto/foto-alpaca-wit.jpg.asset.json",
@@ -84,15 +86,18 @@
   },
   {
     "source": "src/assets/foto/foto-boomgaard-peren.jpg.asset.json",
-    "status": "bundled-size-mismatch"
+    "status": "transferred-bundled-variant",
+    "bytes": 14505
   },
   {
     "source": "src/assets/foto/foto-boomgaard-perenboom.jpg.asset.json",
-    "status": "bundled-size-mismatch"
+    "status": "transferred-bundled-variant",
+    "bytes": 14513
   },
   {
     "source": "src/assets/foto/foto-eenden-vijver.jpg.asset.json",
-    "status": "bundled-size-mismatch"
+    "status": "transferred-bundled-variant",
+    "bytes": 14501
   },
   {
     "source": "src/assets/foto/foto-erf-pad.jpg.asset.json",
@@ -101,7 +106,8 @@
   },
   {
     "source": "src/assets/foto/foto-ezel-aaien.jpg.asset.json",
-    "status": "bundled-size-mismatch"
+    "status": "transferred-bundled-variant",
+    "bytes": 14495
   },
   {
     "source": "src/assets/foto/foto-ezel.jpg.asset.json",
@@ -125,15 +131,18 @@
   },
   {
     "source": "src/assets/foto/foto-kinderen-gele-koe.jpg.asset.json",
-    "status": "bundled-size-mismatch"
+    "status": "transferred-bundled-variant",
+    "bytes": 14509
   },
   {
     "source": "src/assets/foto/foto-kippen-ren.jpg.asset.json",
-    "status": "bundled-size-mismatch"
+    "status": "transferred-bundled-variant",
+    "bytes": 14495
   },
   {
     "source": "src/assets/foto/foto-konijn-stal.jpg.asset.json",
-    "status": "bundled-size-mismatch"
+    "status": "transferred-bundled-variant",
+    "bytes": 14497
   },
   {
     "source": "src/assets/foto/foto-moestuin-bakken.jpg.asset.json",
@@ -142,15 +151,18 @@
   },
   {
     "source": "src/assets/foto/foto-moestuin-courgette.jpg.asset.json",
-    "status": "bundled-size-mismatch"
+    "status": "transferred-bundled-variant",
+    "bytes": 14511
   },
   {
     "source": "src/assets/foto/foto-moestuin-courgetteplant.jpg.asset.json",
-    "status": "bundled-size-mismatch"
+    "status": "transferred-bundled-variant",
+    "bytes": 14521
   },
   {
     "source": "src/assets/foto/foto-moestuin-zonnebloem.jpg.asset.json",
-    "status": "bundled-size-mismatch"
+    "status": "transferred-bundled-variant",
+    "bytes": 14513
   },
   {
     "source": "src/assets/foto/foto-pauw-pronkend.jpg.asset.json",
