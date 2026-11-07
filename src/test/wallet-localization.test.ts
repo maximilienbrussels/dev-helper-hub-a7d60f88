@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 import { localizedString, welcomeMessage } from "@/lib/wallet-localization";
 import { walletCopy } from "@/locales/wallet";
 import { buildEventTicket, eventClassLocalization } from "@/lib/wallet-event.server";
