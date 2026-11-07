@@ -430,3 +430,15 @@ export function birthdayTotal(pkg: BirthdayPackage, children: number): number {
   const extra = Math.max(capped - INCLUDED_CHILDREN, 0);
   return pkg.price + extra * EXTRA_CHILD_PRICE;
 }
+
+/** Gasteningang voor een gekozen feestdatum: 01/04–31/10 hoofdingang, anders kleine ingang. */
+export function guestEntranceFor(date: Date): "main" | "small" {
+  const m = date.getMonth();
+  return m >= 3 && m <= 9 ? "main" : "small";
+}
+
+export const GUEST_ENTRANCE_COPY: Record<"nl" | "fr" | "en", Record<"main" | "small", string>> = {
+  nl: { main: "Je gasten komen die dag binnen via de hoofdingang, Batelagekaai 2. Jullie als familie via de kleine ingang, Willebroekkaai 21.", small: "Je gasten en jullie als familie komen die dag binnen via de kleine ingang, Willebroekkaai 21." },
+  fr: { main: "Ce jour-là, vos invités entrent par l'entrée principale, 2 Quai du Batelage. La famille par la petite entrée, 21 Quai de Willebroeck.", small: "Ce jour-là, invités et famille entrent par la petite entrée, 21 Quai de Willebroeck." },
+  en: { main: "That day your guests use the main entrance, Quai du Batelage 2. The family uses the small entrance, Quai de Willebroeck 21.", small: "That day guests and family use the small entrance, Quai de Willebroeck 21." },
+};

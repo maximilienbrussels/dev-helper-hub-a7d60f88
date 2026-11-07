@@ -17,5 +17,6 @@
 - [ ] Reconnect accounts, payments, email, and remote storage — blocked by unavailable source-service connections; existing custom account system preserved.- [x] Old-site audit: imported hand-drawn seasonal camp, birthday, rental-key, donation and animal illustrations (white backgrounds removed), 12 photos and 5 network logos; placed on camps, birthday, rental, support and about pages. Official old farm map was already in use.
 - [x] Fase 0: all 80 old-site pages re-crawled; all 21 documents (2025 reports, NL/EN animal sheets, map) confirmed already self-hosted.
 - [x] Fase 1: seasonal homepage section (auto season, old drawings, NL/FR/EN); 5 season tests pass.
+- [x] Fase 3 step: birthday booking shows the guest entrance for the chosen date; 4 tests pass. Old rental/birthday deposit + cancellation rules confirmed already present.
 - [ ] Fases 2-6 of the approved plan (audio guide, rental quote calculator, numbered sponsorship certificate, events/education) — not started this turn.
 - [ ] Verify paid checkout for monthly donations and printed invitations end-to-end — needs live payment test.

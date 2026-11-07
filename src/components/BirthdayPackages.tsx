@@ -39,6 +39,8 @@ import {
   INCLUDED_CHILDREN,
   MAX_CHILDREN,
   birthdayTotal,
+  guestEntranceFor,
+  GUEST_ENTRANCE_COPY,
   type BirthdayPackage,
 } from "@/lib/birthday-packages";
 import { usePricing } from "@/lib/use-pricing";
@@ -475,6 +477,11 @@ function BirthdayDialog({ pkg, onClose }: { pkg: BirthdayPackage | null; onClose
                       <p className="mt-2 text-xs text-muted-foreground">
                         {date ? c.weekdayHint(c.weekdays[pkg.weekday]) : c.chooseDate}
                       </p>
+                      {date && (
+                        <p className="mt-3 rounded-xl bg-[color:var(--surface-page)] p-3 text-xs leading-relaxed text-foreground/90">
+                          {(GUEST_ENTRANCE_COPY[lang as "nl" | "fr" | "en"] ?? GUEST_ENTRANCE_COPY.nl)[guestEntranceFor(date)]}
+                        </p>
+                      )}
                     </div>
                     <div>
                       <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-muted-foreground">
