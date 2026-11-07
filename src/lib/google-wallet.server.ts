@@ -69,14 +69,38 @@ export type WalletCredentials = {
 export function readWalletCredentials(): WalletCredentials | null {
   const issuerId = process.env["GOOGLE_WALLET_ISSUER_ID"] || WALLET_CONFIG.issuerId;
   const clientEmail = process.env["GOOGLE_WALLET_CLIENT_EMAIL"] || "";
-  const privateKey = (
-    process.env["GOOGLE_WALLET_KEY"] ||
-    process.env["GOOGLE_WALLET_PRIVATE_KEY"] ||
-    ""
-  ).replace(/\\n/g, "\n");
+  const privateKey = sanitizePrivateKey(
+    process.env["GOOGLE_WALLET_KEY"] || process.env["GOOGLE_WALLET_PRIVATE_KEY"],
+  );
 
   if (!clientEmail || !privateKey) return null;
   return { issuerId, clientEmail, privateKey };
+}
+
+export class WalletKeyError extends Error {
+  constructor(message = "Invalid cryptographic key structure") {
+    super(message);
+    this.name = "WalletKeyError";
+  }
+}
+
+/**
+ * Herstelt een private key die door de omgeving is platgeslagen: letterlijke "\\n",
+ * Windows-regeleindes, omringende aanhalingstekens of een geplakte service-account-JSON.
+ */
+export function sanitizePrivateKey(raw: string | undefined): string {
+  if (!raw) return "";
+  let key = raw.trim();
+  if (key.startsWith("{")) {
+    try {
+      const parsed = JSON.parse(key) as { private_key?: string };
+      if (parsed.private_key) key = parsed.private_key;
+    } catch {
+      /* geen JSON: als PEM behandelen */
+    }
+  }
+  key = key.replace(/^['"]|['"]$/g, "").replace(/\\r/g, "").replace(/\\n/g, "\n").replace(/\r\n?/g, "\n");
+  return key.trim();
 }
 
 function sanitizeId(ticketId: string) {
@@ -140,11 +164,19 @@ function base64Url(bytes: Uint8Array | string) {
 }
 
 function pemToArrayBuffer(pem: string) {
+  if (!/-----BEGIN PRIVATE KEY-----/.test(pem) || !/-----END PRIVATE KEY-----/.test(pem)) {
+    throw new WalletKeyError("Invalid cryptographic key structure: missing PKCS#8 PEM markers");
+  }
   const body = pem
     .replace(/-----BEGIN [^-]+-----/g, "")
     .replace(/-----END [^-]+-----/g, "")
     .replace(/\s+/g, "");
-  const binary = atob(body);
+  let binary: string;
+  try {
+    binary = atob(body);
+  } catch {
+    throw new WalletKeyError("Invalid cryptographic key structure: key body is not valid base64");
+  }
   const bytes = new Uint8Array(binary.length);
   for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
   return bytes.buffer;
@@ -152,13 +184,19 @@ function pemToArrayBuffer(pem: string) {
 
 /** Ondertekent een JWT-payload met RS256. */
 export async function signRs256(payload: Record<string, unknown>, privateKeyPem: string) {
-  const key = await crypto.subtle.importKey(
-    "pkcs8",
-    pemToArrayBuffer(privateKeyPem),
-    { name: "RSASSA-PKCS1-v1_5", hash: "SHA-256" },
-    false,
-    ["sign"],
-  );
+  let key: CryptoKey;
+  try {
+    key = await crypto.subtle.importKey(
+      "pkcs8",
+      pemToArrayBuffer(sanitizePrivateKey(privateKeyPem)),
+      { name: "RSASSA-PKCS1-v1_5", hash: "SHA-256" },
+      false,
+      ["sign"],
+    );
+  } catch (err) {
+    console.error("[Wallet Error] Invalid cryptographic key structure", err instanceof Error ? err.message : err);
+    throw err instanceof WalletKeyError ? err : new WalletKeyError();
+  }
 
   const header = base64Url(JSON.stringify({ alg: "RS256", typ: "JWT" }));
   const body = base64Url(
