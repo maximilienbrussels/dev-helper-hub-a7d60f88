@@ -1,4 +1,6 @@
 # Repository import
+- [ ] Add NL/FR/EN localized EventTicket payloads for the requested event class and welcome messages.
+- [ ] Add administrator-only localized broadcasts with bounded targeting and per-pass delivery results; live verification requires valid Google credentials.
 - [x] Link the requested Neon database connection.
 - [x] Correct member generation to Loyalty resources and requested class; premium illustrated artwork and original padded logo prepared; four tests pass, assets return 200, unsigned issuance returns 401.
 - [ ] Verify/update the live Google Wallet class — saved service-account signing rejected by Google OAuth (invalid_grant); replace with an active matching service-account credential before retrying. Real authenticated issuance remains unverified.
