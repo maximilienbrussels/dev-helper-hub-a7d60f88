@@ -94,7 +94,7 @@ export function SupportPage() {
             aria-hidden="true"
             className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[color:var(--color-terracotta)]/10 blur-2xl"
           />
-          <div className="relative max-w-3xl">
+          <div className="relative max-w-3xl md:max-w-[36rem] lg:max-w-[40rem]">
             <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[color:var(--color-terracotta)]">
               {t("support.title")}
             </p>
@@ -108,7 +108,7 @@ export function SupportPage() {
             alt=""
             aria-hidden
             decoding="async"
-            className="pointer-events-none relative mx-auto mt-10 w-64 max-w-full md:absolute md:bottom-10 md:right-10 md:mt-0 md:w-[22rem] lg:w-[26rem]"
+            className="pointer-events-none relative mx-auto mt-10 w-64 max-w-full md:absolute md:bottom-10 md:right-10 md:mt-0 md:w-64 lg:w-80"
           />
         </header>
 

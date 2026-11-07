@@ -74,7 +74,7 @@ export type NetworkLogo = { id: string; src: string; name: Record<Lang, string>;
 
 /** Netwerken en erkenningen die op de vroegere "À propos"-pagina stonden. */
 export const NETWORK_LOGOS: NetworkLogo[] = [
-  { id: "brussel", src: logoBrussel.url, href: "https://environnement.brussels", name: { nl: "Leefmilieu Brussel", fr: "Bruxelles Environnement", en: "Brussels Environment" } },
+  { id: "brussel", src: logoBrussel.url, href: "https://www.bruxelles.be", name: { nl: "Stad Brussel", fr: "Ville de Bruxelles", en: "City of Brussels" } },
   { id: "federatie", src: logoFederatie.url, href: "https://www.fermesdanimation.be", name: { nl: "Federatie van kinderboerderijen", fr: "Fédération des fermes d'animation", en: "Federation of educational farms" } },
   { id: "natagora", src: logoNatagora.url, href: "https://www.natagora.be/reseau-nature", name: { nl: "Natagora · Réseau Nature", fr: "Natagora · Réseau Nature", en: "Natagora · Réseau Nature" } },
   { id: "fedeau", src: logoFedeau.url, href: "https://www.agricultureurbaine.brussels", name: { nl: "Federatie stadslandbouw", fr: "Fédération de l'agriculture urbaine", en: "Urban agriculture federation" } },
