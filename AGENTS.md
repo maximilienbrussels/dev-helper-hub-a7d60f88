@@ -35,3 +35,4 @@ use the editor.
 - Keep TanStack route files and use `src/components/views` for shared imported page bodies to avoid conflicting routing systems.
 - Preserve the source's custom session-token middleware; Cloud provisioning alone does not migrate the legacy database or account system.
 - Keep the source TypeScript compatibility settings while retaining strict checking, so source import does not require unrelated rewrites.
+- Issue member Wallet passes as Loyalty resources, keeping ticket Generic resources separate; enable Smart Tap only with configured redemption issuers and never emulate a certified terminal in browser code.

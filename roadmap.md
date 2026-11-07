@@ -1,4 +1,9 @@
 # Repository import
+- [x] Link the requested Neon database connection.
+- [ ] Correct Google Wallet loyalty class/object generation and premium branded artwork.
+- [ ] Verify/update the live Google Wallet class — requires authorized Google Wallet access.
+- [ ] Enable and physically verify NFC Smart Tap — requires Google approval, collector configuration and a supported terminal.
+- [ ] Advanced uploaded Wallet briefs: multi-class synchronization, dynamic graphics and native/offline NFC — assess provider support before implementation.
 - [x] Replace outdated source with complete `maximilienbrussels/developer-helper-hub` main snapshot: 1,221 files and 102 rehomed asset pointers.
 - [x] Compare every eligible imported file against the new snapshot: zero source-content mismatches after documented path adaptations; desktop/phone languages and five new routes checked; 102 tests passed.
 - [x] Download and inspect authorized repository source.
