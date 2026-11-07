@@ -8,6 +8,7 @@ describe("Wallet broadcasts", () => {
     const handlers = Route.options.server?.handlers;
     if (!handlers || typeof handlers === "function" || typeof handlers.POST !== "function") throw new Error("POST handler missing");
     const response = await handlers.POST({ request: new Request("http://localhost/api/field/wallet/broadcast-message", { method: "POST" }) } as Parameters<typeof handlers.POST>[0]);
+    if (!(response instanceof Response)) throw new Error("Expected unauthorized response");
     expect(response.status).toBe(401);
   });
   it("bounds each broadcast and requires event object identifiers", () => {
