@@ -76,6 +76,7 @@ import { Route as BoekingIndexRouteImport } from './routes/boeking.index'
 import { Route as BoekingBevestigingRouteImport } from './routes/boeking.bevestiging'
 import { Route as CertificaatIdRouteImport } from './routes/certificaat.$id'
 import { Route as InformatieOnderwerpRouteImport } from './routes/informatie.$onderwerp'
+import { Route as InschrijvingAnnulerenRouteImport } from './routes/inschrijving.annuleren'
 import { Route as ProductSlugRouteImport } from './routes/product.$slug'
 import { Route as QrAnimalIdRouteImport } from './routes/qr.$animalId'
 import { Route as VeldIndexRouteImport } from './routes/veld.index'
@@ -111,16 +112,21 @@ import { Route as ApiAuthMagicLinkRouteImport } from './routes/api/auth/magic-li
 import { Route as ApiAuthMastodonRouteImport } from './routes/api/auth/mastodon'
 import { Route as ApiAuthProvidersRouteImport } from './routes/api/auth/providers'
 import { Route as ApiAuthRoutRouteImport } from './routes/api/auth/rout'
+import { Route as ApiBirthdayWaitlistRouteImport } from './routes/api/birthday/waitlist'
 import { Route as ApiChatEmailRouteImport } from './routes/api/chat/email'
 import { Route as ApiCheckoutCreateSessionRouteImport } from './routes/api/checkout/create-session'
 import { Route as ApiDevHealthRouteImport } from './routes/api/dev/health'
 import { Route as ApiDevRunMigrationsRouteImport } from './routes/api/dev/run-migrations'
+import { Route as ApiDonationCreateSessionRouteImport } from './routes/api/donation/create-session'
 import { Route as ApiEmailSendTransactionalRouteImport } from './routes/api/email/send-transactional'
 import { Route as ApiEmailTestTemplatesRouteImport } from './routes/api/email/test-templates'
+import { Route as ApiEventsCheckoutRouteImport } from './routes/api/events/checkout'
 import { Route as ApiGoogleStatusRouteImport } from './routes/api/google/status'
 import { Route as ApiGoogleSyncRouteImport } from './routes/api/google/sync'
 import { Route as ApiInfomaniakStatusRouteImport } from './routes/api/infomaniak/status'
 import { Route as ApiInfomaniakSyncRouteImport } from './routes/api/infomaniak/sync'
+import { Route as ApiInternshipApplyRouteImport } from './routes/api/internship/apply'
+import { Route as ApiInvitationOrderSessionRouteImport } from './routes/api/invitation/order-session'
 import { Route as ApiPaymentsCreateSessionRouteImport } from './routes/api/payments/create-session'
 import { Route as ApiPaymentsOrderSessionRouteImport } from './routes/api/payments/order-session'
 import { Route as ApiPublicHealthRouteImport } from './routes/api/public/health'
@@ -500,6 +506,11 @@ const InformatieOnderwerpRoute = InformatieOnderwerpRouteImport.update({
   path: '/informatie/$onderwerp',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InschrijvingAnnulerenRoute = InschrijvingAnnulerenRouteImport.update({
+  id: '/inschrijving/annuleren',
+  path: '/inschrijving/annuleren',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProductSlugRoute = ProductSlugRouteImport.update({
   id: '/product/$slug',
   path: '/product/$slug',
@@ -678,6 +689,11 @@ const ApiAuthRoutRoute = ApiAuthRoutRouteImport.update({
   path: '/api/auth/rout',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiBirthdayWaitlistRoute = ApiBirthdayWaitlistRouteImport.update({
+  id: '/api/birthday/waitlist',
+  path: '/api/birthday/waitlist',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiChatEmailRoute = ApiChatEmailRouteImport.update({
   id: '/email',
   path: '/email',
@@ -699,6 +715,12 @@ const ApiDevRunMigrationsRoute = ApiDevRunMigrationsRouteImport.update({
   path: '/api/dev/run-migrations',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiDonationCreateSessionRoute =
+  ApiDonationCreateSessionRouteImport.update({
+    id: '/api/donation/create-session',
+    path: '/api/donation/create-session',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ApiEmailSendTransactionalRoute =
   ApiEmailSendTransactionalRouteImport.update({
     id: '/api/email/send-transactional',
@@ -708,6 +730,11 @@ const ApiEmailSendTransactionalRoute =
 const ApiEmailTestTemplatesRoute = ApiEmailTestTemplatesRouteImport.update({
   id: '/api/email/test-templates',
   path: '/api/email/test-templates',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiEventsCheckoutRoute = ApiEventsCheckoutRouteImport.update({
+  id: '/api/events/checkout',
+  path: '/api/events/checkout',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiGoogleStatusRoute = ApiGoogleStatusRouteImport.update({
@@ -730,6 +757,17 @@ const ApiInfomaniakSyncRoute = ApiInfomaniakSyncRouteImport.update({
   path: '/api/infomaniak/sync',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiInternshipApplyRoute = ApiInternshipApplyRouteImport.update({
+  id: '/api/internship/apply',
+  path: '/api/internship/apply',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiInvitationOrderSessionRoute =
+  ApiInvitationOrderSessionRouteImport.update({
+    id: '/api/invitation/order-session',
+    path: '/api/invitation/order-session',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ApiPaymentsCreateSessionRoute =
   ApiPaymentsCreateSessionRouteImport.update({
     id: '/api/payments/create-session',
@@ -1012,6 +1050,7 @@ export interface FileRoutesByFullPath {
   '/boeking/bevestiging': typeof BoekingBevestigingRoute
   '/certificaat/$id': typeof CertificaatIdRoute
   '/informatie/$onderwerp': typeof InformatieOnderwerpRoute
+  '/inschrijving/annuleren': typeof InschrijvingAnnulerenRoute
   '/product/$slug': typeof ProductSlugRoute
   '/qr/$animalId': typeof QrAnimalIdRoute
   '/veld/aanvragen': typeof VeldAanvragenRoute
@@ -1051,16 +1090,21 @@ export interface FileRoutesByFullPath {
   '/api/auth/mastodon': typeof ApiAuthMastodonRoute
   '/api/auth/providers': typeof ApiAuthProvidersRoute
   '/api/auth/rout': typeof ApiAuthRoutRouteWithChildren
+  '/api/birthday/waitlist': typeof ApiBirthdayWaitlistRoute
   '/api/chat/email': typeof ApiChatEmailRoute
   '/api/checkout/create-session': typeof ApiCheckoutCreateSessionRoute
   '/api/dev/health': typeof ApiDevHealthRoute
   '/api/dev/run-migrations': typeof ApiDevRunMigrationsRoute
+  '/api/donation/create-session': typeof ApiDonationCreateSessionRoute
   '/api/email/send-transactional': typeof ApiEmailSendTransactionalRoute
   '/api/email/test-templates': typeof ApiEmailTestTemplatesRoute
+  '/api/events/checkout': typeof ApiEventsCheckoutRoute
   '/api/google/status': typeof ApiGoogleStatusRoute
   '/api/google/sync': typeof ApiGoogleSyncRoute
   '/api/infomaniak/status': typeof ApiInfomaniakStatusRoute
   '/api/infomaniak/sync': typeof ApiInfomaniakSyncRoute
+  '/api/internship/apply': typeof ApiInternshipApplyRoute
+  '/api/invitation/order-session': typeof ApiInvitationOrderSessionRoute
   '/api/payments/create-session': typeof ApiPaymentsCreateSessionRoute
   '/api/payments/order-session': typeof ApiPaymentsOrderSessionRoute
   '/api/public/health': typeof ApiPublicHealthRoute
@@ -1164,6 +1208,7 @@ export interface FileRoutesByTo {
   '/boeking/bevestiging': typeof BoekingBevestigingRoute
   '/certificaat/$id': typeof CertificaatIdRoute
   '/informatie/$onderwerp': typeof InformatieOnderwerpRoute
+  '/inschrijving/annuleren': typeof InschrijvingAnnulerenRoute
   '/product/$slug': typeof ProductSlugRoute
   '/qr/$animalId': typeof QrAnimalIdRoute
   '/veld/aanvragen': typeof VeldAanvragenRoute
@@ -1203,16 +1248,21 @@ export interface FileRoutesByTo {
   '/api/auth/mastodon': typeof ApiAuthMastodonRoute
   '/api/auth/providers': typeof ApiAuthProvidersRoute
   '/api/auth/rout': typeof ApiAuthRoutRouteWithChildren
+  '/api/birthday/waitlist': typeof ApiBirthdayWaitlistRoute
   '/api/chat/email': typeof ApiChatEmailRoute
   '/api/checkout/create-session': typeof ApiCheckoutCreateSessionRoute
   '/api/dev/health': typeof ApiDevHealthRoute
   '/api/dev/run-migrations': typeof ApiDevRunMigrationsRoute
+  '/api/donation/create-session': typeof ApiDonationCreateSessionRoute
   '/api/email/send-transactional': typeof ApiEmailSendTransactionalRoute
   '/api/email/test-templates': typeof ApiEmailTestTemplatesRoute
+  '/api/events/checkout': typeof ApiEventsCheckoutRoute
   '/api/google/status': typeof ApiGoogleStatusRoute
   '/api/google/sync': typeof ApiGoogleSyncRoute
   '/api/infomaniak/status': typeof ApiInfomaniakStatusRoute
   '/api/infomaniak/sync': typeof ApiInfomaniakSyncRoute
+  '/api/internship/apply': typeof ApiInternshipApplyRoute
+  '/api/invitation/order-session': typeof ApiInvitationOrderSessionRoute
   '/api/payments/create-session': typeof ApiPaymentsCreateSessionRoute
   '/api/payments/order-session': typeof ApiPaymentsOrderSessionRoute
   '/api/public/health': typeof ApiPublicHealthRoute
@@ -1321,6 +1371,7 @@ export interface FileRoutesById {
   '/boeking/bevestiging': typeof BoekingBevestigingRoute
   '/certificaat/$id': typeof CertificaatIdRoute
   '/informatie/$onderwerp': typeof InformatieOnderwerpRoute
+  '/inschrijving/annuleren': typeof InschrijvingAnnulerenRoute
   '/product/$slug': typeof ProductSlugRoute
   '/qr/$animalId': typeof QrAnimalIdRoute
   '/veld/aanvragen': typeof VeldAanvragenRoute
@@ -1360,16 +1411,21 @@ export interface FileRoutesById {
   '/api/auth/mastodon': typeof ApiAuthMastodonRoute
   '/api/auth/providers': typeof ApiAuthProvidersRoute
   '/api/auth/rout': typeof ApiAuthRoutRouteWithChildren
+  '/api/birthday/waitlist': typeof ApiBirthdayWaitlistRoute
   '/api/chat/email': typeof ApiChatEmailRoute
   '/api/checkout/create-session': typeof ApiCheckoutCreateSessionRoute
   '/api/dev/health': typeof ApiDevHealthRoute
   '/api/dev/run-migrations': typeof ApiDevRunMigrationsRoute
+  '/api/donation/create-session': typeof ApiDonationCreateSessionRoute
   '/api/email/send-transactional': typeof ApiEmailSendTransactionalRoute
   '/api/email/test-templates': typeof ApiEmailTestTemplatesRoute
+  '/api/events/checkout': typeof ApiEventsCheckoutRoute
   '/api/google/status': typeof ApiGoogleStatusRoute
   '/api/google/sync': typeof ApiGoogleSyncRoute
   '/api/infomaniak/status': typeof ApiInfomaniakStatusRoute
   '/api/infomaniak/sync': typeof ApiInfomaniakSyncRoute
+  '/api/internship/apply': typeof ApiInternshipApplyRoute
+  '/api/invitation/order-session': typeof ApiInvitationOrderSessionRoute
   '/api/payments/create-session': typeof ApiPaymentsCreateSessionRoute
   '/api/payments/order-session': typeof ApiPaymentsOrderSessionRoute
   '/api/public/health': typeof ApiPublicHealthRoute
@@ -1478,6 +1534,7 @@ export interface FileRouteTypes {
     | '/boeking/bevestiging'
     | '/certificaat/$id'
     | '/informatie/$onderwerp'
+    | '/inschrijving/annuleren'
     | '/product/$slug'
     | '/qr/$animalId'
     | '/veld/aanvragen'
@@ -1517,16 +1574,21 @@ export interface FileRouteTypes {
     | '/api/auth/mastodon'
     | '/api/auth/providers'
     | '/api/auth/rout'
+    | '/api/birthday/waitlist'
     | '/api/chat/email'
     | '/api/checkout/create-session'
     | '/api/dev/health'
     | '/api/dev/run-migrations'
+    | '/api/donation/create-session'
     | '/api/email/send-transactional'
     | '/api/email/test-templates'
+    | '/api/events/checkout'
     | '/api/google/status'
     | '/api/google/sync'
     | '/api/infomaniak/status'
     | '/api/infomaniak/sync'
+    | '/api/internship/apply'
+    | '/api/invitation/order-session'
     | '/api/payments/create-session'
     | '/api/payments/order-session'
     | '/api/public/health'
@@ -1630,6 +1692,7 @@ export interface FileRouteTypes {
     | '/boeking/bevestiging'
     | '/certificaat/$id'
     | '/informatie/$onderwerp'
+    | '/inschrijving/annuleren'
     | '/product/$slug'
     | '/qr/$animalId'
     | '/veld/aanvragen'
@@ -1669,16 +1732,21 @@ export interface FileRouteTypes {
     | '/api/auth/mastodon'
     | '/api/auth/providers'
     | '/api/auth/rout'
+    | '/api/birthday/waitlist'
     | '/api/chat/email'
     | '/api/checkout/create-session'
     | '/api/dev/health'
     | '/api/dev/run-migrations'
+    | '/api/donation/create-session'
     | '/api/email/send-transactional'
     | '/api/email/test-templates'
+    | '/api/events/checkout'
     | '/api/google/status'
     | '/api/google/sync'
     | '/api/infomaniak/status'
     | '/api/infomaniak/sync'
+    | '/api/internship/apply'
+    | '/api/invitation/order-session'
     | '/api/payments/create-session'
     | '/api/payments/order-session'
     | '/api/public/health'
@@ -1786,6 +1854,7 @@ export interface FileRouteTypes {
     | '/boeking/bevestiging'
     | '/certificaat/$id'
     | '/informatie/$onderwerp'
+    | '/inschrijving/annuleren'
     | '/product/$slug'
     | '/qr/$animalId'
     | '/veld/aanvragen'
@@ -1825,16 +1894,21 @@ export interface FileRouteTypes {
     | '/api/auth/mastodon'
     | '/api/auth/providers'
     | '/api/auth/rout'
+    | '/api/birthday/waitlist'
     | '/api/chat/email'
     | '/api/checkout/create-session'
     | '/api/dev/health'
     | '/api/dev/run-migrations'
+    | '/api/donation/create-session'
     | '/api/email/send-transactional'
     | '/api/email/test-templates'
+    | '/api/events/checkout'
     | '/api/google/status'
     | '/api/google/sync'
     | '/api/infomaniak/status'
     | '/api/infomaniak/sync'
+    | '/api/internship/apply'
+    | '/api/invitation/order-session'
     | '/api/payments/create-session'
     | '/api/payments/order-session'
     | '/api/public/health'
@@ -1935,6 +2009,7 @@ export interface RootRouteChildren {
   BoekingBevestigingRoute: typeof BoekingBevestigingRoute
   CertificaatIdRoute: typeof CertificaatIdRoute
   InformatieOnderwerpRoute: typeof InformatieOnderwerpRoute
+  InschrijvingAnnulerenRoute: typeof InschrijvingAnnulerenRoute
   ProductSlugRoute: typeof ProductSlugRoute
   QrAnimalIdRoute: typeof QrAnimalIdRoute
   VerifieerCodeRoute: typeof VerifieerCodeRoute
@@ -1961,15 +2036,20 @@ export interface RootRouteChildren {
   ApiAuthMastodonRoute: typeof ApiAuthMastodonRoute
   ApiAuthProvidersRoute: typeof ApiAuthProvidersRoute
   ApiAuthRoutRoute: typeof ApiAuthRoutRouteWithChildren
+  ApiBirthdayWaitlistRoute: typeof ApiBirthdayWaitlistRoute
   ApiCheckoutCreateSessionRoute: typeof ApiCheckoutCreateSessionRoute
   ApiDevHealthRoute: typeof ApiDevHealthRoute
   ApiDevRunMigrationsRoute: typeof ApiDevRunMigrationsRoute
+  ApiDonationCreateSessionRoute: typeof ApiDonationCreateSessionRoute
   ApiEmailSendTransactionalRoute: typeof ApiEmailSendTransactionalRoute
   ApiEmailTestTemplatesRoute: typeof ApiEmailTestTemplatesRoute
+  ApiEventsCheckoutRoute: typeof ApiEventsCheckoutRoute
   ApiGoogleStatusRoute: typeof ApiGoogleStatusRoute
   ApiGoogleSyncRoute: typeof ApiGoogleSyncRoute
   ApiInfomaniakStatusRoute: typeof ApiInfomaniakStatusRoute
   ApiInfomaniakSyncRoute: typeof ApiInfomaniakSyncRoute
+  ApiInternshipApplyRoute: typeof ApiInternshipApplyRoute
+  ApiInvitationOrderSessionRoute: typeof ApiInvitationOrderSessionRoute
   ApiPaymentsCreateSessionRoute: typeof ApiPaymentsCreateSessionRoute
   ApiPaymentsOrderSessionRoute: typeof ApiPaymentsOrderSessionRoute
   ApiPublicHealthRoute: typeof ApiPublicHealthRoute
@@ -2480,6 +2560,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InformatieOnderwerpRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/inschrijving/annuleren': {
+      id: '/inschrijving/annuleren'
+      path: '/inschrijving/annuleren'
+      fullPath: '/inschrijving/annuleren'
+      preLoaderRoute: typeof InschrijvingAnnulerenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/product/$slug': {
       id: '/product/$slug'
       path: '/product/$slug'
@@ -2725,6 +2812,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAuthRoutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/birthday/waitlist': {
+      id: '/api/birthday/waitlist'
+      path: '/api/birthday/waitlist'
+      fullPath: '/api/birthday/waitlist'
+      preLoaderRoute: typeof ApiBirthdayWaitlistRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/chat/email': {
       id: '/api/chat/email'
       path: '/email'
@@ -2753,6 +2847,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiDevRunMigrationsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/donation/create-session': {
+      id: '/api/donation/create-session'
+      path: '/api/donation/create-session'
+      fullPath: '/api/donation/create-session'
+      preLoaderRoute: typeof ApiDonationCreateSessionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/email/send-transactional': {
       id: '/api/email/send-transactional'
       path: '/api/email/send-transactional'
@@ -2765,6 +2866,13 @@ declare module '@tanstack/react-router' {
       path: '/api/email/test-templates'
       fullPath: '/api/email/test-templates'
       preLoaderRoute: typeof ApiEmailTestTemplatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/events/checkout': {
+      id: '/api/events/checkout'
+      path: '/api/events/checkout'
+      fullPath: '/api/events/checkout'
+      preLoaderRoute: typeof ApiEventsCheckoutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/google/status': {
@@ -2793,6 +2901,20 @@ declare module '@tanstack/react-router' {
       path: '/api/infomaniak/sync'
       fullPath: '/api/infomaniak/sync'
       preLoaderRoute: typeof ApiInfomaniakSyncRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/internship/apply': {
+      id: '/api/internship/apply'
+      path: '/api/internship/apply'
+      fullPath: '/api/internship/apply'
+      preLoaderRoute: typeof ApiInternshipApplyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/invitation/order-session': {
+      id: '/api/invitation/order-session'
+      path: '/api/invitation/order-session'
+      fullPath: '/api/invitation/order-session'
+      preLoaderRoute: typeof ApiInvitationOrderSessionRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/payments/create-session': {
@@ -3284,6 +3406,7 @@ const rootRouteChildren: RootRouteChildren = {
   BoekingBevestigingRoute: BoekingBevestigingRoute,
   CertificaatIdRoute: CertificaatIdRoute,
   InformatieOnderwerpRoute: InformatieOnderwerpRoute,
+  InschrijvingAnnulerenRoute: InschrijvingAnnulerenRoute,
   ProductSlugRoute: ProductSlugRoute,
   QrAnimalIdRoute: QrAnimalIdRoute,
   VerifieerCodeRoute: VerifieerCodeRoute,
@@ -3310,15 +3433,20 @@ const rootRouteChildren: RootRouteChildren = {
   ApiAuthMastodonRoute: ApiAuthMastodonRoute,
   ApiAuthProvidersRoute: ApiAuthProvidersRoute,
   ApiAuthRoutRoute: ApiAuthRoutRouteWithChildren,
+  ApiBirthdayWaitlistRoute: ApiBirthdayWaitlistRoute,
   ApiCheckoutCreateSessionRoute: ApiCheckoutCreateSessionRoute,
   ApiDevHealthRoute: ApiDevHealthRoute,
   ApiDevRunMigrationsRoute: ApiDevRunMigrationsRoute,
+  ApiDonationCreateSessionRoute: ApiDonationCreateSessionRoute,
   ApiEmailSendTransactionalRoute: ApiEmailSendTransactionalRoute,
   ApiEmailTestTemplatesRoute: ApiEmailTestTemplatesRoute,
+  ApiEventsCheckoutRoute: ApiEventsCheckoutRoute,
   ApiGoogleStatusRoute: ApiGoogleStatusRoute,
   ApiGoogleSyncRoute: ApiGoogleSyncRoute,
   ApiInfomaniakStatusRoute: ApiInfomaniakStatusRoute,
   ApiInfomaniakSyncRoute: ApiInfomaniakSyncRoute,
+  ApiInternshipApplyRoute: ApiInternshipApplyRoute,
+  ApiInvitationOrderSessionRoute: ApiInvitationOrderSessionRoute,
   ApiPaymentsCreateSessionRoute: ApiPaymentsCreateSessionRoute,
   ApiPaymentsOrderSessionRoute: ApiPaymentsOrderSessionRoute,
   ApiPublicHealthRoute: ApiPublicHealthRoute,

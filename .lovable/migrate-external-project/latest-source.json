@@ -1,0 +1,18 @@
+{
+  "repository": "https://github.com/maximilienbrussels/developer-helper-hub",
+  "branch": "main",
+  "commit": "1f2521e2b3ba9107a186e876fae2331942bf542f",
+  "snapshot_sha256": "c6c1fe9535f93192efc2aee03539f575946afd3272c59204799632dc36cc49b2",
+  "imported_files": 1221,
+  "asset_pointers": 102,
+  "source_content_mismatches": [],
+  "source_wrapper_verified": true,
+  "retained_target_settings": [
+    "project metadata",
+    "dependency lockfile and pinned framework versions",
+    "safe package manager settings",
+    "TypeScript test configuration",
+    "managed Cloud integration",
+    "generated route tree"
+  ]
+}

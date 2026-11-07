@@ -1,0 +1,83 @@
+{
+  "source": "https://github.com/maximilienbrussels/developer-helper-hub",
+  "scope": "Replace outdated repository source; not a live-service migration",
+  "capabilities": [
+    {
+      "capability": "code",
+      "source": "latest repository main",
+      "outcome": "replace-with-latest",
+      "status": "source_import_verified",
+      "next_action": "No source files missing; live service verification remains separate"
+    },
+    {
+      "capability": "schema",
+      "source": "latest repository main",
+      "outcome": "preserve-source",
+      "status": "pending",
+      "next_action": "Cloud migration is outside this source-version replacement"
+    },
+    {
+      "capability": "records",
+      "source": "latest repository main",
+      "outcome": "migrate",
+      "status": "pending",
+      "next_action": "Existing data export unavailable"
+    },
+    {
+      "capability": "auth identities",
+      "source": "latest repository main",
+      "outcome": "migrate",
+      "status": "pending",
+      "next_action": "Existing user export unavailable; retain current middleware during version replacement"
+    },
+    {
+      "capability": "authorization",
+      "source": "latest repository main",
+      "outcome": "preserve-source",
+      "status": "source_import_verified",
+      "next_action": "No source files missing; live service verification remains separate"
+    },
+    {
+      "capability": "uploaded file bytes",
+      "source": "latest repository main",
+      "outcome": "transfer",
+      "status": "transferred",
+      "next_action": "All 102 pointers rehomed; 12 use bundled variants already supplied by the source repository"
+    },
+    {
+      "capability": "external providers",
+      "source": "latest repository main",
+      "outcome": "preserve",
+      "status": "pending",
+      "next_action": "Provider credentials unavailable for live verification"
+    },
+    {
+      "capability": "public endpoints/callbacks/webhooks/schedules",
+      "source": "latest repository main",
+      "outcome": "preserve-source",
+      "status": "source_import_verified",
+      "next_action": "No source files missing; live service verification remains separate"
+    },
+    {
+      "capability": "secrets",
+      "source": "latest repository main",
+      "outcome": "preserve-securely",
+      "status": "pending",
+      "next_action": "No credentials in source import"
+    },
+    {
+      "capability": "cutover",
+      "source": "latest repository main",
+      "outcome": "no-cutover",
+      "status": "pending",
+      "next_action": "Not publishing or altering external callers"
+    },
+    {
+      "capability": "verification",
+      "source": "latest repository main",
+      "outcome": "test",
+      "status": "partial",
+      "next_action": "Build OK; desktop/phone German and Arabic selection plus five new routes checked; 102 tests passed, four original source assertions failed"
+    }
+  ]
+}
