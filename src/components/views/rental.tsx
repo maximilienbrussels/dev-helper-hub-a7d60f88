@@ -59,10 +59,10 @@ export function RentalPage() {
             <img src={OLD_PHOTOS.zaalKoerPicknick} alt={t("gallery.rental.alt")} loading="lazy" decoding="async" className="h-72 w-full object-cover md:h-full" />
           </figure>
           <figure className="relative overflow-hidden rounded-3xl">
-            <img src={OLD_PHOTOS.privatisatieKoer} alt={t("gallery.rental.alt")} loading="lazy" decoding="async" className="h-56 w-full object-cover" />
+            <img src={OLD_PHOTOS.privatisatieKoer} alt={t("gallery.rental.alt")} loading="lazy" decoding="async" className="h-56 w-full object-cover md:h-full" />
           </figure>
           <figure className="relative overflow-hidden rounded-3xl">
-            <img src={OLD_PHOTOS.teambuilding} alt={t("gallery.rental.alt")} loading="lazy" decoding="async" className="h-56 w-full object-cover" />
+            <img src={OLD_PHOTOS.teambuilding} alt={t("gallery.rental.alt")} loading="lazy" decoding="async" className="h-56 w-full object-cover md:h-full" />
           </figure>
         </section>
 
