@@ -28,3 +28,9 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Imported application
+- Preserve the imported multilingual public, admin, and field surfaces; the repository is imported as source, not as a GitHub-page screenshot.
+- Keep TanStack route files and use `src/components/views` for shared imported page bodies to avoid conflicting routing systems.
+- Preserve the source's custom session-token middleware; Cloud provisioning alone does not migrate the legacy database or account system.
+- Keep the source TypeScript compatibility settings while retaining strict checking, so source import does not require unrelated rewrites.
