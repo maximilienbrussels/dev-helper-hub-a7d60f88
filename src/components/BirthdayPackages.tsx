@@ -1,3 +1,4 @@
+import { ILLUSTRATIONS } from "@/lib/old-site-illustrations";
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import {
@@ -232,6 +233,14 @@ export function BirthdayPackages() {
         {c.title}
       </h2>
       <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-foreground/90">{c.lede}</p>
+      <img
+        src={ILLUSTRATIONS.verjaardag}
+        alt=""
+        aria-hidden
+        loading="lazy"
+        decoding="async"
+        className="mt-8 w-full max-w-3xl"
+      />
 
       <div className="mt-8 grid gap-5 md:grid-cols-3">
         {BIRTHDAY_PACKAGES.map((p) => {

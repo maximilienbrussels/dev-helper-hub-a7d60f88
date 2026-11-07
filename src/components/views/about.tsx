@@ -11,6 +11,7 @@ import { useT } from "@/lib/i18n";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { PublicGallery } from "@/components/PublicGallery";
 import { farmGalleryUrls } from "@/lib/farm-gallery";
+import { NETWORK_LOGOS } from "@/lib/old-site-illustrations";
 import { MILESTONES, TEAM, BOARD, type Person } from "@/lib/about-content";
 import { listTeamAvatars, type TeamAvatarMap } from "@/lib/team-avatars.functions";
 
@@ -39,6 +40,8 @@ const UI = {
     en: "Collage of farm photos showing animals and vegetable garden",
   },
 } as const;
+
+const NETWORK_TITLE = { nl: "Onze netwerken en erkenningen", fr: "Nos réseaux et reconnaissances", en: "Our networks and recognitions" } as const;
 
 export function AboutPage() {
   const { t, lang, tx: translate } = useT();
@@ -161,6 +164,31 @@ export function AboutPage() {
             altBase={tx(UI.impressionAlt)}
             className="mt-6"
           />
+        </section>
+
+        {/* Netwerken & erkenningen */}
+        <section aria-labelledby="netwerken-titel" className="mt-20">
+          <h2 id="netwerken-titel" className="font-serif text-2xl italic text-[color:var(--ink-forest)] md:text-3xl">
+            {NETWORK_TITLE[lang === "fr" || lang === "nl" ? lang : "en"]}
+          </h2>
+          <ul className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5">
+            {NETWORK_LOGOS.map((n) => {
+              const name = n.name[lang === "fr" || lang === "nl" ? lang : "en"];
+              return (
+                <li key={n.id}>
+                  <a
+                    href={n.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex h-28 flex-col items-center justify-center gap-2 rounded-2xl border border-border/60 bg-card p-4 transition-colors hover:border-[color:var(--color-terracotta)]/50"
+                  >
+                    <img src={n.src} alt={name} loading="lazy" className="max-h-14 w-auto max-w-full object-contain" />
+                    <span className="text-center text-[10px] uppercase leading-tight tracking-[0.12em] text-muted-foreground">{name}</span>
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
         </section>
 
         {/* Team & bestuur */}

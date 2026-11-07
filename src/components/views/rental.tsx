@@ -1,3 +1,4 @@
+import { ILLUSTRATIONS, OLD_PHOTOS } from "@/lib/old-site-illustrations";
 import { PagePhotoBand } from "@/components/PagePhotoBand";
 import { PublicGallery } from "@/components/PublicGallery";
 import { FarmImage } from "@/components/FarmImage";
@@ -42,7 +43,28 @@ export function RentalPage() {
         <h1 className="font-serif mt-4 text-4xl leading-[1.02] tracking-tight text-[color:var(--ink-forest)] md:text-6xl">
           {heroTitle || t("rent.title")}
         </h1>
-        <p className="mt-6 max-w-2xl text-lg text-muted-foreground md:text-xl">{heroText || t("rent.lede")}</p>
+        <div className="mt-6 grid items-center gap-8 md:grid-cols-[1fr_auto]">
+          <p className="max-w-2xl text-lg text-muted-foreground md:text-xl">{heroText || t("rent.lede")}</p>
+          <img
+            src={ILLUSTRATIONS.verhuurSleutel}
+            alt=""
+            aria-hidden
+            decoding="async"
+            className="mx-auto w-40 -rotate-6 md:w-52"
+          />
+        </div>
+
+        <section aria-label={t("gallery.rental.title")} className="mt-12 grid gap-3 md:grid-cols-3 md:grid-rows-2">
+          <figure className="relative overflow-hidden rounded-3xl md:col-span-2 md:row-span-2">
+            <img src={OLD_PHOTOS.zaalKoerPicknick} alt={t("gallery.rental.alt")} loading="lazy" decoding="async" className="h-72 w-full object-cover md:h-full" />
+          </figure>
+          <figure className="relative overflow-hidden rounded-3xl">
+            <img src={OLD_PHOTOS.privatisatieKoer} alt={t("gallery.rental.alt")} loading="lazy" decoding="async" className="h-56 w-full object-cover md:h-full" />
+          </figure>
+          <figure className="relative overflow-hidden rounded-3xl">
+            <img src={OLD_PHOTOS.teambuilding} alt={t("gallery.rental.alt")} loading="lazy" decoding="async" className="h-56 w-full object-cover md:h-full" />
+          </figure>
+        </section>
 
         <section className="mt-14 grid gap-4 md:grid-cols-3">
           {AUDIENCES.map((a) => (

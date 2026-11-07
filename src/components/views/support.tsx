@@ -1,3 +1,4 @@
+import { ILLUSTRATIONS } from "@/lib/old-site-illustrations";
 import { PagePhotoBand } from "@/components/PagePhotoBand";
 import { NavHeader } from "@/components/NavHeader";
 import { MastodonShareButton } from "@/components/social/MastodonShareButton";
@@ -93,7 +94,7 @@ export function SupportPage() {
             aria-hidden="true"
             className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[color:var(--color-terracotta)]/10 blur-2xl"
           />
-          <div className="relative max-w-3xl">
+          <div className="relative max-w-3xl md:max-w-[36rem] lg:max-w-[40rem]">
             <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[color:var(--color-terracotta)]">
               {t("support.title")}
             </p>
@@ -102,6 +103,13 @@ export function SupportPage() {
             </h1>
             <div className="mt-8 h-px w-24 bg-[color:var(--color-terracotta)]/50" />
           </div>
+          <img
+            src={ILLUSTRATIONS.giftenHanden}
+            alt=""
+            aria-hidden
+            decoding="async"
+            className="pointer-events-none relative mx-auto mt-10 w-64 max-w-full md:absolute md:bottom-10 md:right-10 md:mt-0 md:w-64 lg:w-80"
+          />
         </header>
 
         <GiftPanels />
@@ -114,6 +122,14 @@ export function SupportPage() {
             {c0.sponsorTitle}
           </h2>
           <p className="mt-3 text-sm leading-relaxed text-foreground/90">{c0.sponsorBody}</p>
+          <img
+            src={ILLUSTRATIONS.dierenRij}
+            alt=""
+            aria-hidden
+            loading="lazy"
+            decoding="async"
+            className="mt-6 w-full max-w-2xl"
+          />
           <LocalLink
             to={subPathFor("support", lang, "sponsor")}
             className="mt-5 inline-flex items-center gap-2 rounded-full border border-[color:var(--color-terracotta)] px-5 py-2.5 text-sm font-semibold text-[color:var(--color-terracotta)] hover:bg-[color:var(--color-terracotta)]/10"

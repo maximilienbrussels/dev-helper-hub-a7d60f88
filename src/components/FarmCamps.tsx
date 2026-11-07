@@ -1,4 +1,5 @@
 import { deepTx } from "@/lib/i18n-extra";
+import { campArt } from "@/lib/old-site-illustrations";
 import { useMemo, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import {
@@ -245,8 +246,18 @@ export function FarmCamps() {
           {camps.map((camp) => (
             <article
               key={camp.slug}
-              className="flex flex-col rounded-3xl border border-border/60 bg-[color:var(--surface-page)]/50 p-6"
+              className="group flex flex-col overflow-hidden rounded-3xl border border-border/60 bg-[color:var(--surface-page)]/50 p-6"
             >
+              <div className="-mx-6 -mt-6 mb-5 flex h-52 items-end justify-center bg-gradient-to-b from-[color:var(--surface-page)] to-background/40 px-6 pt-4">
+                <img
+                  src={campArt(camp.season, FARM_CAMPS.filter((x) => x.season === camp.season).indexOf(camp))}
+                  alt=""
+                  aria-hidden
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-auto object-contain transition-transform duration-700 ease-out group-hover:scale-[1.04] motion-reduce:transition-none"
+                />
+              </div>
               <div className="flex items-center justify-between gap-3">
                 <span className="rounded-full border border-border px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/90">
                   {c.seasons[camp.season]}
