@@ -30,6 +30,7 @@ use the editor.
 <!-- LOVABLE:END -->
 
 ## Imported application
+- Use `maximilienbrussels/developer-helper-hub` as the authoritative imported source; audit complete snapshots so older repository content is not retained accidentally.
 - Preserve the imported multilingual public, admin, and field surfaces; the repository is imported as source, not as a GitHub-page screenshot.
 - Keep TanStack route files and use `src/components/views` for shared imported page bodies to avoid conflicting routing systems.
 - Preserve the source's custom session-token middleware; Cloud provisioning alone does not migrate the legacy database or account system.
