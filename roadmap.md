@@ -14,4 +14,4 @@
 - [x] Verify desktop/phone first screen, menus, scrolling, and Academy navigation; build succeeds and 46 tests pass.
 - [x] Record four pre-existing source test failures (three supplemental-language readiness checks and one pickup-date parser check); preserve exact source behavior as requested.
 - [x] Reconnect live Neon database — app credential check and schema discovery succeeded using My Neon.
-- [ ] Reconnect accounts, payments, email, and remote storage — blocked by unavailable source-service connections; existing custom account system preserved.
+- [ ] Reconnect accounts, payments, email, and remote storage — blocked by unavailable source-service connections; existing custom account system preserved.- [x] Old-site audit: imported hand-drawn seasonal camp, birthday, rental-key, donation and animal illustrations (white backgrounds removed), 12 photos and 5 network logos; placed on camps, birthday, rental, support and about pages. Official old farm map was already in use.

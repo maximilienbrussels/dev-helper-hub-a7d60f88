@@ -169,11 +169,11 @@ export function AboutPage() {
         {/* Netwerken & erkenningen */}
         <section aria-labelledby="netwerken-titel" className="mt-20">
           <h2 id="netwerken-titel" className="font-serif text-2xl italic text-[color:var(--ink-forest)] md:text-3xl">
-            {NETWORK_TITLE[lang === "fr" || lang === "en" ? lang : "nl"]}
+            {NETWORK_TITLE[lang === "fr" || lang === "nl" ? lang : "en"]}
           </h2>
           <ul className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5">
             {NETWORK_LOGOS.map((n) => {
-              const name = n.name[lang === "fr" || lang === "en" ? lang : "nl"];
+              const name = n.name[lang === "fr" || lang === "nl" ? lang : "en"];
               return (
                 <li key={n.id}>
                   <a
