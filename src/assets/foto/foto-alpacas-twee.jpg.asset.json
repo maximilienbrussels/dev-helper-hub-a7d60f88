@@ -1,11 +1,11 @@
 {
   "version": 1,
-  "asset_id": "35f5132a-9377-4e1b-9bfa-e073b65b37dc",
-  "project_id": "a6382fd3-5cca-4763-a231-86cf33e66cf2",
-  "url": "/imported-assets/foto-alpacas-twee.jpg",
+  "asset_id": "e78a34aa-3af1-49b3-80b2-1d574f48fc12",
+  "project_id": "7bf84350-82f3-4956-a767-31b9ac0ddaef",
+  "url": "/__l5e/assets-v1/e78a34aa-3af1-49b3-80b2-1d574f48fc12/foto-alpacas-twee.jpg",
+  "r2_key": "a/v1/7bf84350-82f3-4956-a767-31b9ac0ddaef/e78a34aa-3af1-49b3-80b2-1d574f48fc12/foto-alpacas-twee.jpg",
   "original_filename": "foto-alpacas-twee.jpg",
   "size": 378836,
   "content_type": "image/jpeg",
-  "created_at": "2026-09-03T22:19:24Z",
-  "storage": "scaleway-s3"
+  "created_at": "2026-11-07T16:37:33Z"
 }

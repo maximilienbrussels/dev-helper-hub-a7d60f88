@@ -1,8 +1,11 @@
 {
   "version": 1,
-  "storage": "scaleway-s3",
-  "url": "/imported-assets/sfeer-kinderen-zaden.jpg",
+  "asset_id": "8c247018-38a2-477e-8b5e-5fd2128358d1",
+  "project_id": "7bf84350-82f3-4956-a767-31b9ac0ddaef",
+  "url": "/__l5e/assets-v1/8c247018-38a2-477e-8b5e-5fd2128358d1/sfeer-kinderen-zaden.jpg",
+  "r2_key": "a/v1/7bf84350-82f3-4956-a767-31b9ac0ddaef/8c247018-38a2-477e-8b5e-5fd2128358d1/sfeer-kinderen-zaden.jpg",
   "original_filename": "sfeer-kinderen-zaden.jpg",
   "size": 673971,
-  "content_type": "image/jpeg"
+  "content_type": "image/jpeg",
+  "created_at": "2026-11-07T16:37:33Z"
 }

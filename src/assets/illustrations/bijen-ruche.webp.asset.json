@@ -1,11 +1,11 @@
 {
   "version": 1,
-  "asset_id": "85643f20-dbe6-4cd5-996c-9844857f0e18",
-  "project_id": "a6382fd3-5cca-4763-a231-86cf33e66cf2",
-  "url": "/imported-assets/bijen-ruche.webp",
+  "asset_id": "8dcfd034-5e11-4dcf-9e99-5937369d0b48",
+  "project_id": "7bf84350-82f3-4956-a767-31b9ac0ddaef",
+  "url": "/__l5e/assets-v1/8dcfd034-5e11-4dcf-9e99-5937369d0b48/bijen-ruche.webp",
+  "r2_key": "a/v1/7bf84350-82f3-4956-a767-31b9ac0ddaef/8dcfd034-5e11-4dcf-9e99-5937369d0b48/bijen-ruche.webp",
   "original_filename": "bijen-ruche.webp",
   "size": 5082,
   "content_type": "image/webp",
-  "created_at": "2026-09-03T22:10:37Z",
-  "storage": "scaleway-s3"
+  "created_at": "2026-11-07T16:37:47Z"
 }

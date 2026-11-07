@@ -1,11 +1,12 @@
 [
   {
     "source": "src/assets/euria-logo.jpg.asset.json",
-    "status": "download-failed"
+    "status": "bundled-size-mismatch"
   },
   {
     "source": "src/assets/plan-ferme.png.asset.json",
-    "status": "bundled-file"
+    "status": "transferred-from-bundled-bytes",
+    "bytes": 2004940
   },
   {
     "source": "src/assets/plattegrond-ferme-maximilien.png.asset.json",
@@ -14,203 +15,242 @@
   },
   {
     "source": "src/assets/product-compost.jpg.asset.json",
-    "status": "bundled-file"
+    "status": "transferred-from-bundled-bytes",
+    "bytes": 154563
   },
   {
     "source": "src/assets/product-eieren.jpg.asset.json",
-    "status": "bundled-file"
+    "status": "transferred-from-bundled-bytes",
+    "bytes": 101657
   },
   {
     "source": "src/assets/product-emmer.jpg.asset.json",
-    "status": "bundled-file"
+    "status": "transferred-from-bundled-bytes",
+    "bytes": 74470
   },
   {
     "source": "src/assets/product-honing.jpg.asset.json",
-    "status": "bundled-file"
+    "status": "transferred-from-bundled-bytes",
+    "bytes": 102026
   },
   {
     "source": "src/assets/product-hooi.jpg.asset.json",
-    "status": "bundled-file"
+    "status": "transferred-from-bundled-bytes",
+    "bytes": 137129
   },
   {
     "source": "src/assets/product-kippenvoer.jpg.asset.json",
-    "status": "bundled-file"
+    "status": "transferred-from-bundled-bytes",
+    "bytes": 237593
   },
   {
     "source": "src/assets/sfeer-kinderen-kaarten.jpg.asset.json",
-    "status": "bundled-file"
+    "status": "transferred-from-bundled-bytes",
+    "bytes": 280132
   },
   {
     "source": "src/assets/sfeer-kinderen-zaden.jpg.asset.json",
-    "status": "bundled-file"
+    "status": "transferred-from-bundled-bytes",
+    "bytes": 673971
   },
   {
     "source": "src/assets/uitnodiging-boerderijfeest.pdf.asset.json",
-    "status": "download-failed"
+    "status": "bundled-size-mismatch"
   },
   {
     "source": "src/assets/foto/foto-alpaca-wit.jpg.asset.json",
-    "status": "download-failed"
+    "status": "transferred-from-bundled-bytes",
+    "bytes": 335094
   },
   {
     "source": "src/assets/foto/foto-alpacas-rust.jpg.asset.json",
-    "status": "download-failed"
+    "status": "transferred-from-bundled-bytes",
+    "bytes": 155079
   },
   {
     "source": "src/assets/foto/foto-alpacas-twee.jpg.asset.json",
-    "status": "download-failed"
+    "status": "transferred-from-bundled-bytes",
+    "bytes": 378836
   },
   {
     "source": "src/assets/foto/foto-alpacas-weide.jpg.asset.json",
-    "status": "download-failed"
+    "status": "transferred-from-bundled-bytes",
+    "bytes": 378836
   },
   {
     "source": "src/assets/foto/foto-beeld-fontein.jpg.asset.json",
-    "status": "download-failed"
+    "status": "transferred-from-bundled-bytes",
+    "bytes": 508254
   },
   {
     "source": "src/assets/foto/foto-boomgaard-peren.jpg.asset.json",
-    "status": "download-failed"
+    "status": "bundled-size-mismatch"
   },
   {
     "source": "src/assets/foto/foto-boomgaard-perenboom.jpg.asset.json",
-    "status": "download-failed"
+    "status": "bundled-size-mismatch"
   },
   {
     "source": "src/assets/foto/foto-eenden-vijver.jpg.asset.json",
-    "status": "download-failed"
+    "status": "bundled-size-mismatch"
   },
   {
     "source": "src/assets/foto/foto-erf-pad.jpg.asset.json",
-    "status": "download-failed"
+    "status": "transferred-from-bundled-bytes",
+    "bytes": 183483
   },
   {
     "source": "src/assets/foto/foto-ezel-aaien.jpg.asset.json",
-    "status": "download-failed"
+    "status": "bundled-size-mismatch"
   },
   {
     "source": "src/assets/foto/foto-ezel.jpg.asset.json",
-    "status": "download-failed"
+    "status": "transferred-from-bundled-bytes",
+    "bytes": 257703
   },
   {
     "source": "src/assets/foto/foto-geit-madeliefjes.jpg.asset.json",
-    "status": "download-failed"
+    "status": "transferred-from-bundled-bytes",
+    "bytes": 271527
   },
   {
     "source": "src/assets/foto/foto-geit.jpg.asset.json",
-    "status": "download-failed"
+    "status": "transferred-from-bundled-bytes",
+    "bytes": 319010
   },
   {
     "source": "src/assets/foto/foto-geiten-groep.jpg.asset.json",
-    "status": "download-failed"
+    "status": "transferred-from-bundled-bytes",
+    "bytes": 529756
   },
   {
     "source": "src/assets/foto/foto-kinderen-gele-koe.jpg.asset.json",
-    "status": "download-failed"
+    "status": "bundled-size-mismatch"
   },
   {
     "source": "src/assets/foto/foto-kippen-ren.jpg.asset.json",
-    "status": "download-failed"
+    "status": "bundled-size-mismatch"
   },
   {
     "source": "src/assets/foto/foto-konijn-stal.jpg.asset.json",
-    "status": "download-failed"
+    "status": "bundled-size-mismatch"
   },
   {
     "source": "src/assets/foto/foto-moestuin-bakken.jpg.asset.json",
-    "status": "download-failed"
+    "status": "transferred-from-bundled-bytes",
+    "bytes": 194423
   },
   {
     "source": "src/assets/foto/foto-moestuin-courgette.jpg.asset.json",
-    "status": "download-failed"
+    "status": "bundled-size-mismatch"
   },
   {
     "source": "src/assets/foto/foto-moestuin-courgetteplant.jpg.asset.json",
-    "status": "download-failed"
+    "status": "bundled-size-mismatch"
   },
   {
     "source": "src/assets/foto/foto-moestuin-zonnebloem.jpg.asset.json",
-    "status": "download-failed"
+    "status": "bundled-size-mismatch"
   },
   {
     "source": "src/assets/foto/foto-pauw-pronkend.jpg.asset.json",
-    "status": "download-failed"
+    "status": "transferred-from-bundled-bytes",
+    "bytes": 427601
   },
   {
     "source": "src/assets/foto/foto-pauw.jpg.asset.json",
-    "status": "download-failed"
+    "status": "transferred-from-bundled-bytes",
+    "bytes": 311338
   },
   {
     "source": "src/assets/foto/foto-pony-boom.jpg.asset.json",
-    "status": "download-failed"
+    "status": "transferred-from-bundled-bytes",
+    "bytes": 199681
   },
   {
     "source": "src/assets/foto/foto-pony-herfst.jpg.asset.json",
-    "status": "download-failed"
+    "status": "transferred-from-bundled-bytes",
+    "bytes": 246514
   },
   {
     "source": "src/assets/foto/foto-pony.jpg.asset.json",
-    "status": "download-failed"
+    "status": "transferred-from-bundled-bytes",
+    "bytes": 246514
   },
   {
     "source": "src/assets/foto/foto-schapen.jpg.asset.json",
-    "status": "download-failed"
+    "status": "transferred-from-bundled-bytes",
+    "bytes": 480793
   },
   {
     "source": "src/assets/foto/foto-trojaans-paard-pony.jpg.asset.json",
-    "status": "download-failed"
+    "status": "transferred-from-bundled-bytes",
+    "bytes": 357705
   },
   {
     "source": "src/assets/foto/foto-trojaans-paard.jpg.asset.json",
-    "status": "download-failed"
+    "status": "transferred-from-bundled-bytes",
+    "bytes": 482671
   },
   {
     "source": "src/assets/foto/foto-weide-stal.jpg.asset.json",
-    "status": "download-failed"
+    "status": "transferred-from-bundled-bytes",
+    "bytes": 540403
   },
   {
     "source": "src/assets/foto/hero-schapen-park.webp.asset.json",
-    "status": "download-failed"
+    "status": "transferred-from-bundled-bytes",
+    "bytes": 780450
   },
   {
     "source": "src/assets/foto/hero-sheep-park.webp.asset.json",
-    "status": "download-failed"
+    "status": "transferred-from-bundled-bytes",
+    "bytes": 780450
   },
   {
     "source": "src/assets/illustrations/bijen-ruche.webp.asset.json",
-    "status": "download-failed"
+    "status": "transferred-from-bundled-bytes",
+    "bytes": 5082
   },
   {
     "source": "src/assets/illustrations/boomgaard-fruit.webp.asset.json",
-    "status": "download-failed"
+    "status": "transferred-from-bundled-bytes",
+    "bytes": 6008
   },
   {
     "source": "src/assets/illustrations/chalet-dagdeel.webp.asset.json",
-    "status": "download-failed"
+    "status": "transferred-from-bundled-bytes",
+    "bytes": 11888
   },
   {
     "source": "src/assets/illustrations/chalet-volledige-dag.webp.asset.json",
-    "status": "download-failed"
+    "status": "transferred-from-bundled-bytes",
+    "bytes": 11888
   },
   {
     "source": "src/assets/illustrations/compost.webp.asset.json",
-    "status": "download-failed"
+    "status": "transferred-from-bundled-bytes",
+    "bytes": 4654
   },
   {
     "source": "src/assets/illustrations/dag-op-de-boerderij.webp.asset.json",
-    "status": "download-failed"
+    "status": "transferred-from-bundled-bytes",
+    "bytes": 6384
   },
   {
     "source": "src/assets/illustrations/dieren-5-zintuigen.webp.asset.json",
-    "status": "download-failed"
+    "status": "transferred-from-bundled-bytes",
+    "bytes": 5236
   },
   {
     "source": "src/assets/illustrations/fotocollage.jpg.asset.json",
-    "status": "download-failed"
+    "status": "transferred-from-bundled-bytes",
+    "bytes": 390450
   },
   {
     "source": "src/assets/illustrations/moestuin-schatten.webp.asset.json",
-    "status": "download-failed"
+    "status": "transferred-from-bundled-bytes",
+    "bytes": 6030
   },
   {
     "source": "src/assets/oud/activiteitenverslag-2025.pdf.asset.json",

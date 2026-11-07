@@ -1,11 +1,11 @@
 {
   "version": 1,
-  "asset_id": "ed4b3c44-40ae-4a30-8eed-ad184a6291fc",
-  "project_id": "a6382fd3-5cca-4763-a231-86cf33e66cf2",
-  "url": "/imported-assets/foto-alpacas-weide.jpg",
+  "asset_id": "feba94d7-c88c-49d8-973f-105174482af0",
+  "project_id": "7bf84350-82f3-4956-a767-31b9ac0ddaef",
+  "url": "/__l5e/assets-v1/feba94d7-c88c-49d8-973f-105174482af0/foto-alpacas-weide.jpg",
+  "r2_key": "a/v1/7bf84350-82f3-4956-a767-31b9ac0ddaef/feba94d7-c88c-49d8-973f-105174482af0/foto-alpacas-weide.jpg",
   "original_filename": "foto-alpacas-weide.jpg",
   "size": 378836,
   "content_type": "image/jpeg",
-  "created_at": "2026-09-03T22:19:28Z",
-  "storage": "scaleway-s3"
+  "created_at": "2026-11-07T16:37:33Z"
 }
