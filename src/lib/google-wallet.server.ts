@@ -3,6 +3,9 @@
  * RS256 JWT-ondertekening via Web Crypto (werkt in de Cloudflare Worker runtime).
  */
 
+import memberLogo from "@/assets/wallet-member-logo.asset.json";
+import memberHero from "@/assets/wallet-member-hero.asset.json";
+
 export type WalletPassType = "ticket" | "pickup" | "certificate";
 export type WalletLocale = "nl" | "fr" | "en";
 
@@ -226,7 +229,14 @@ export async function generateGoogleWalletPassUrl(input: {
 /* Mijn Hooi — digitale ledenpas                                       */
 /* ------------------------------------------------------------------ */
 
-export const MEMBER_CLASS_SUFFIX = "maximilien_hooi_card";
+export const MEMBER_CLASS_SUFFIX = "maximilien_ticket_v1";
+export const MEMBER_BACKGROUND = "#793E32";
+const ASSET_ORIGIN = "https://id-preview--7bf84350-82f3-4956-a767-31b9ac0ddaef.lovable.app";
+const memberImage = (url: string, locale: WalletLocale) => ({
+  sourceUri: { uri: new URL(url, ASSET_ORIGIN).href },
+  contentDescription: { defaultValue: { language: locale, value: "Maximilien" } },
+});
+export type SmartTapConfig = { redemptionIssuers: string[]; redemptionValue: string };
 
 const MEMBER_LABELS: Record<
   WalletLocale,
@@ -273,33 +283,18 @@ export type WalletMemberInput = {
 };
 
 /** Bouwt het generic-pass object voor de Mijn Hooi ledenkaart. */
-export function buildMemberPassObject(input: WalletMemberInput, issuerId: string) {
+export function buildMemberPassObject(input: WalletMemberInput, issuerId: string, smartTap?: SmartTapConfig) {
   const l = MEMBER_LABELS[input.locale] ?? MEMBER_LABELS.nl;
 
   return {
     id: `${issuerId}.hooi_${sanitizeId(input.memberId)}`,
     classId: `${issuerId}.${MEMBER_CLASS_SUFFIX}`,
     state: "ACTIVE",
-    hexBackgroundColor: WALLET_CONFIG.backgroundColor,
-    logo: {
-      sourceUri: { uri: WALLET_CONFIG.logoUri },
-      contentDescription: {
-        defaultValue: { language: input.locale, value: WALLET_CONFIG.locationName },
-      },
-    },
-    cardTitle: {
-      defaultValue: { language: input.locale, value: l.title },
-    },
-    header: {
-      defaultValue: { language: input.locale, value: WALLET_CONFIG.locationName },
-    },
-    subheader: {
-      defaultValue: { language: input.locale, value: l.member },
-    },
-    accountNameLabel: l.member,
     accountName: input.memberName,
-    accountIdLabel: l.number,
     accountId: input.memberId,
+    loyaltyPoints: { label: l.balance, balance: { int: input.hooiBalance } },
+    ...(smartTap?.redemptionIssuers.length && smartTap.redemptionValue
+      ? { smartTapRedemptionValue: smartTap.redemptionValue } : {}),
     barcode: {
       type: "QR_CODE",
       value: `fermemaximilien:customer:${input.memberId}`,
@@ -315,7 +310,7 @@ export function buildMemberPassObject(input: WalletMemberInput, issuerId: string
     locations: [
       { latitude: WALLET_CONFIG.location.latitude, longitude: WALLET_CONFIG.location.longitude },
     ],
-    ...(heroImage(input.locale) ?? {}),
+    heroImage: memberImage(memberHero.url, input.locale),
     // Getoond in de pas; Google kan deze ook als melding tonen wanneer je in de buurt bent.
     messages: [
       {
@@ -359,13 +354,24 @@ function heroImage(locale: WalletLocale) {
  * Klasse met een verzorgde lay-out: saldo en status naast elkaar op de kaart,
  * gedetailleerde info onderaan. Google maakt de klasse aan bij de eerste save.
  */
-export function buildMemberClass(issuerId: string, _locale: WalletLocale) {
+export function buildMemberClass(issuerId: string, locale: WalletLocale, smartTap?: SmartTapConfig) {
+  const labels = MEMBER_LABELS[locale];
   const ref = (id: string) => ({
     firstValue: { fields: [{ fieldPath: `object.textModulesData['${id}']` }] },
   });
   return {
     id: `${issuerId}.${MEMBER_CLASS_SUFFIX}`,
-    enableSmartTap: false,
+    issuerName: "Maximilien",
+    programName: "Mijn Hooi",
+    programLogo: memberImage(memberLogo.url, locale),
+    heroImage: memberImage(memberHero.url, locale),
+    hexBackgroundColor: MEMBER_BACKGROUND,
+    accountNameLabel: labels.member,
+    accountIdLabel: labels.number,
+    reviewStatus: "UNDER_REVIEW",
+    enableSmartTap: Boolean(smartTap?.redemptionIssuers.length && smartTap.redemptionValue),
+    ...(smartTap?.redemptionIssuers.length && smartTap.redemptionValue
+      ? { redemptionIssuers: smartTap.redemptionIssuers } : {}),
     multipleDevicesAndHoldersAllowedStatus: "ONE_USER_ALL_DEVICES",
     classTemplateInfo: {
       cardTemplateOverride: {
@@ -392,8 +398,8 @@ export async function createMemberSaveUrl(
     iat: Math.floor(Date.now() / 1000),
     origins: [...WALLET_CONFIG.origins],
     payload: {
-      genericClasses: [buildMemberClass(creds.issuerId, input.locale)],
-      genericObjects: [buildMemberPassObject(input, creds.issuerId)],
+      loyaltyClasses: [buildMemberClass(creds.issuerId, input.locale)],
+      loyaltyObjects: [buildMemberPassObject(input, creds.issuerId)],
     },
   };
 

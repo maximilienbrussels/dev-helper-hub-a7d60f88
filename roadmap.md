@@ -1,13 +1,14 @@
 # Repository import
 - [x] Link the requested Neon database connection.
-- [ ] Correct Google Wallet loyalty class/object generation and premium branded artwork.
-- [ ] Verify/update the live Google Wallet class — requires authorized Google Wallet access.
+- [x] Correct member generation to Loyalty resources and requested class; premium illustrated artwork and original padded logo prepared; four tests pass, assets return 200, unsigned issuance returns 401.
+- [ ] Verify/update the live Google Wallet class — saved service-account signing rejected by Google OAuth (invalid_grant); replace with an active matching service-account credential before retrying. Real authenticated issuance remains unverified.
 - [ ] Enable and physically verify NFC Smart Tap — requires Google approval, collector configuration and a supported terminal.
-- [ ] Advanced uploaded Wallet briefs: multi-class synchronization, dynamic graphics and native/offline NFC — assess provider support before implementation.
+- [ ] Advanced uploaded Wallet briefs: multi-class synchronization, dynamic graphics and native/offline NFC — blocked by valid Wallet credentials, approved collector/terminal setup and native-platform delivery; unsupported protocol/biometric claims were not implemented.
 - [x] Replace outdated source with complete `maximilienbrussels/developer-helper-hub` main snapshot: 1,221 files and 102 rehomed asset pointers.
 - [x] Compare every eligible imported file against the new snapshot: zero source-content mismatches after documented path adaptations; desktop/phone languages and five new routes checked; 102 tests passed.
 - [x] Download and inspect authorized repository source.
 - [x] Import application source and original local media, preserving project-managed files.
 - [x] Verify desktop/phone first screen, menus, scrolling, and Academy navigation; build succeeds and 46 tests pass.
 - [x] Record four pre-existing source test failures (three supplemental-language readiness checks and one pickup-date parser check); preserve exact source behavior as requested.
-- [ ] Reconnect live database, accounts, payments, email, and remote storage — blocked by unavailable source-service connections and data export.
+- [x] Reconnect live Neon database — app credential check and schema discovery succeeded using My Neon.
+- [ ] Reconnect accounts, payments, email, and remote storage — blocked by unavailable source-service connections; existing custom account system preserved.
