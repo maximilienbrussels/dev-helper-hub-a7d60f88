@@ -37,3 +37,4 @@ use the editor.
 - Keep the source TypeScript compatibility settings while retaining strict checking, so source import does not require unrelated rewrites.
 - Issue member Wallet passes as Loyalty resources, keeping ticket Generic resources separate; enable Smart Tap only with configured redemption issuers and never emulate a certified terminal in browser code.
 - Keep EventTicket issuance separate from legacy Generic issuance; use Wallet locale dictionaries and translatedValues, preserve approved class review status, and require full administrator access for bounded object-specific addMessage operations.
+- Audio guide clips are pre-recorded once and stored as project assets (src/assets/audiogids), never generated per visitor — keeps cost fixed and works offline-fast.
