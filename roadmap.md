@@ -18,5 +18,7 @@
 - [x] Fase 0: all 80 old-site pages re-crawled; all 21 documents (2025 reports, NL/EN animal sheets, map) confirmed already self-hosted.
 - [x] Fase 1: seasonal homepage section (auto season, old drawings, NL/FR/EN); 5 season tests pass.
 - [x] Fase 3 step: birthday booking shows the guest entrance for the chosen date; 4 tests pass. Old rental/birthday deposit + cancellation rules confirmed already present.
+- [x] Fase 2 step: NL/FR/EN audio guide (ElevenLabs, 30 pre-recorded clips) with play button on every animal in the farm map; 3 tests pass, playback verified.
+- [ ] Confirm holiday-camp hours (9–16, childcare 8–17:30) — not found on old site, needs owner confirmation.
 - [ ] Fases 2-6 of the approved plan (audio guide, rental quote calculator, numbered sponsorship certificate, events/education) — not started this turn.
 - [ ] Verify paid checkout for monthly donations and printed invitations end-to-end — needs live payment test.
