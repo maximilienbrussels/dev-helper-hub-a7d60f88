@@ -11,6 +11,7 @@ import { computeOpenStatus, getAnimals, getHours, getOrganisation } from "@/lib/
 import { ResidentPhoto } from "@/components/ResidentPhoto";
 import { useAlbumPhotos } from "@/lib/use-album-photos";
 import { FarmFeed } from "@/components/FarmFeed";
+import { SeasonalSpotlight } from "@/components/SeasonalSpotlight";
 import type { Lang } from "@/lib/i18n";
 // Vaste, lokale hero-foto: nooit via externe opslag of de mediabibliotheek.
 const heroSheepPark = "/hero-schapen-park.webp";
@@ -40,6 +41,7 @@ export function Index() {
       <NavHeader />
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <Hero hours={hours} />
+        <SeasonalSpotlight />
         <EditorialGrid animals={animals ?? []} vision="" />
         <FarmFeed />
       </div>
