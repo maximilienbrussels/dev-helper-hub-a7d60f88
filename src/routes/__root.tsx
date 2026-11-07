@@ -75,7 +75,7 @@ const JSON_LD = {
       "@type": "LocalBusiness",
       "@id": "https://fermemaximilien.brussels/#organisation",
       name: "La Ferme du parc Maximilien",
-      telephone: "+3222015609",
+      telephone: "+3223315391",
       email: "info@fermeduparcmaximilien.be",
       address: {
         "@type": "PostalAddress",
@@ -218,7 +218,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Work+Sans:wght@300;400;500;600;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Delius&family=Instrument+Serif:ital@0;1&family=Work+Sans:wght@300;400;500;600;700&display=swap",
       },
     ],
 
