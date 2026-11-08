@@ -38,6 +38,8 @@ export type AnimalDTO = {
   description: string | null;
   image_url: string | null;
   qr_hash: string;
+  /** Datum waarop het dier op de boerderij aankwam (YYYY-MM-DD). */
+  arrived_on?: string | null;
 };
 
 export type ProductImageDTO = {
@@ -131,10 +133,23 @@ export const getHours = createServerFn({ method: "GET" }).handler(async (): Prom
   }
 });
 
+let animalColumnsReady: Promise<void> | null = null;
+/** Zelfmigrerend: kolom voor de aankomstdatum van een dier. */
+export function ensureAnimalColumns(): Promise<void> {
+  animalColumnsReady ??= Promise.resolve(db()`alter table animals add column if not exists arrived_on date`)
+    .then(() => undefined)
+    .catch((err) => {
+      animalColumnsReady = null;
+      console.error("animals.arrived_on migratie mislukt:", err);
+    });
+  return animalColumnsReady;
+}
+
 export const getAnimals = createServerFn({ method: "GET" }).handler(
   async (): Promise<AnimalDTO[]> => {
     try {
-      const rows = (await db()`select id, name, species, description, image_url, qr_hash
+      await ensureAnimalColumns();
+      const rows = (await db()`select id, name, species, description, image_url, qr_hash, arrived_on
              from animals where organisation_id = ${ORG_ID} order by id`) as AnimalDTO[];
       return rows.map((a) => ({ ...a, image_url: normalizePublicImageUrl(a.image_url) }));
     } catch (err) {

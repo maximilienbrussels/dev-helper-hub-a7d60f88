@@ -1,4 +1,5 @@
-import { createFileRoute, notFound, Link } from "@tanstack/react-router";
+import { createFileRoute, notFound, redirect, Link } from "@tanstack/react-router";
+import { animalSlug, pathFor } from "@/lib/routes-i18n";
 import { useEffect } from "react";
 import { useSuspenseQuery, queryOptions } from "@tanstack/react-query";
 import { useMaximAnimal } from "@/lib/maxim-chat";
@@ -18,7 +19,8 @@ export const Route = createFileRoute("/qr/$animalId")({
     });
     const animal = animals.find((a) => a.id === parseInt(params.animalId, 10));
     if (!animal) throw notFound();
-    return { animalId: animal.id };
+    // QR-stickers leiden naar het volledige dierenpaspoort (zelfde foto, info en chat).
+    throw redirect({ href: `${pathFor("animals", "nl", animalSlug(animal, "nl"))}?source=qr` });
   },
   head: ({ loaderData }) => ({
     meta: [
@@ -50,7 +52,7 @@ function AnimalPage() {
     return () => document.body.classList.remove("outdoor-mode");
   }, []);
 
-  const img = imageForSpecies(animal.species);
+  const img = animal.image_url || imageForSpecies(animal.species);
 
   return (
     <div className="min-h-screen bg-background">

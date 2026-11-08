@@ -48,7 +48,7 @@ export function ResidentsPage() {
   }
 
   const updateMutation = useMutation({
-    mutationFn: (input: { id: number; name: string; species: string; description: string }) =>
+    mutationFn: (input: { id: number; name: string; species: string; description: string; arrivedOn: string | null }) =>
       update({ data: input }),
     onSuccess: (rows) => {
       applied(rows);
@@ -134,7 +134,7 @@ function AnimalCard({
   albums: ReturnType<typeof useAlbumPhotos>;
   canManage: boolean;
   saving: boolean;
-  onSave: (values: { name: string; species: string; description: string }) => void;
+  onSave: (values: { name: string; species: string; description: string; arrivedOn: string | null }) => void;
   onPickPhoto: () => void;
   onClearPhoto: () => void;
 }) {
@@ -142,11 +142,13 @@ function AnimalCard({
     name: animal.name,
     species: animal.species,
     description: animal.description ?? "",
+    arrivedOn: animal.arrived_on?.slice(0, 10) ?? "",
   });
   const dirty =
     form.name !== animal.name ||
     form.species !== animal.species ||
-    form.description !== (animal.description ?? "");
+    form.description !== (animal.description ?? "") ||
+    form.arrivedOn !== (animal.arrived_on?.slice(0, 10) ?? "");
 
   return (
     <li className="rounded-xl border border-border bg-card p-4">
@@ -172,6 +174,16 @@ function AnimalCard({
             />
           </div>
         </div>
+      </div>
+
+      <div className="mt-3">
+        <Label className="mb-1 block text-xs">Bij ons sinds</Label>
+        <Input
+          type="date"
+          value={form.arrivedOn}
+          disabled={!canManage}
+          onChange={(e) => setForm({ ...form, arrivedOn: e.target.value })}
+        />
       </div>
 
       <div className="mt-3">
@@ -210,7 +222,7 @@ function AnimalCard({
           size="sm"
           className="ml-auto"
           disabled={!canManage || !dirty || saving}
-          onClick={() => onSave(form)}
+          onClick={() => onSave({ ...form, arrivedOn: form.arrivedOn || null })}
         >
           {saving ? <Loader2 className="mr-2 size-4 animate-spin" /> : null}
           Bewaren
