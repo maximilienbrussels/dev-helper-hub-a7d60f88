@@ -1,11 +1,9 @@
 {
   "version": 1,
-  "asset_id": "827833c4-1a24-4836-8ba7-5263af7e5c9f",
-  "project_id": "7bf84350-82f3-4956-a767-31b9ac0ddaef",
-  "url": "/__l5e/assets-v1/827833c4-1a24-4836-8ba7-5263af7e5c9f/hero-sheep-park.webp",
-  "r2_key": "a/v1/7bf84350-82f3-4956-a767-31b9ac0ddaef/827833c4-1a24-4836-8ba7-5263af7e5c9f/hero-sheep-park.webp",
+  "url": "https://maximilien-media.s3.fr-par.scw.cloud/app-assets/foto/hero-sheep-park.webp",
+  "storage": "scaleway",
+  "key": "app-assets/foto/hero-sheep-park.webp",
   "original_filename": "hero-sheep-park.webp",
   "size": 780450,
-  "content_type": "image/webp",
-  "created_at": "2026-11-07T16:37:47Z"
+  "content_type": "image/webp"
 }

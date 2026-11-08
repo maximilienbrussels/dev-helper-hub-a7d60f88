@@ -1,11 +1,9 @@
 {
   "version": 1,
-  "asset_id": "b17f84fe-8a71-499c-aeba-a7d6c0196a95",
-  "project_id": "7bf84350-82f3-4956-a767-31b9ac0ddaef",
-  "url": "/__l5e/assets-v1/b17f84fe-8a71-499c-aeba-a7d6c0196a95/foto-kinderen-gele-koe.jpg",
-  "r2_key": "a/v1/7bf84350-82f3-4956-a767-31b9ac0ddaef/b17f84fe-8a71-499c-aeba-a7d6c0196a95/foto-kinderen-gele-koe.jpg",
+  "url": "https://maximilien-media.s3.fr-par.scw.cloud/app-assets/foto/foto-kinderen-gele-koe.jpg",
+  "storage": "scaleway",
+  "key": "app-assets/foto/foto-kinderen-gele-koe.jpg",
   "original_filename": "foto-kinderen-gele-koe.jpg",
   "size": 14509,
-  "content_type": "image/jpeg",
-  "created_at": "2026-11-07T16:38:15Z"
+  "content_type": "image/jpeg"
 }

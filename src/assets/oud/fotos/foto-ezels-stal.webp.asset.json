@@ -1,11 +1,9 @@
 {
   "version": 1,
-  "asset_id": "f3ee5924-ad66-4cf4-add7-c58c59c35d83",
-  "project_id": "7bf84350-82f3-4956-a767-31b9ac0ddaef",
-  "url": "/__l5e/assets-v1/f3ee5924-ad66-4cf4-add7-c58c59c35d83/foto-ezels-stal.webp",
-  "r2_key": "a/v1/7bf84350-82f3-4956-a767-31b9ac0ddaef/f3ee5924-ad66-4cf4-add7-c58c59c35d83/foto-ezels-stal.webp",
+  "url": "https://maximilien-media.s3.fr-par.scw.cloud/app-assets/oud/fotos/foto-ezels-stal.webp",
+  "storage": "scaleway",
+  "key": "app-assets/oud/fotos/foto-ezels-stal.webp",
   "original_filename": "foto-ezels-stal.webp",
   "size": 182018,
-  "content_type": "image/webp",
-  "created_at": "2026-11-07T17:27:59Z"
+  "content_type": "image/webp"
 }

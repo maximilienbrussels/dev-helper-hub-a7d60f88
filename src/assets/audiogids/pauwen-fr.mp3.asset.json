@@ -1,11 +1,9 @@
 {
   "version": 1,
-  "asset_id": "abb0ec5d-a97b-4f02-b1b3-a0d23f69dac3",
-  "project_id": "7bf84350-82f3-4956-a767-31b9ac0ddaef",
-  "url": "/__l5e/assets-v1/abb0ec5d-a97b-4f02-b1b3-a0d23f69dac3/audiogids-pauwen-fr.mp3",
-  "r2_key": "a/v1/7bf84350-82f3-4956-a767-31b9ac0ddaef/abb0ec5d-a97b-4f02-b1b3-a0d23f69dac3/audiogids-pauwen-fr.mp3",
+  "url": "https://maximilien-media.s3.fr-par.scw.cloud/app-assets/audiogids/pauwen-fr.mp3",
+  "storage": "scaleway",
+  "key": "app-assets/audiogids/pauwen-fr.mp3",
   "original_filename": "audiogids-pauwen-fr.mp3",
   "size": 139223,
-  "content_type": "audio/mpeg",
-  "created_at": "2026-11-07T17:53:59Z"
+  "content_type": "audio/mpeg"
 }

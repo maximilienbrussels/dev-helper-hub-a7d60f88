@@ -1,11 +1,9 @@
 {
   "version": 1,
-  "asset_id": "b71d93f1-194b-44f8-a645-a71a72c83e40",
-  "project_id": "7bf84350-82f3-4956-a767-31b9ac0ddaef",
-  "url": "/__l5e/assets-v1/b71d93f1-194b-44f8-a645-a71a72c83e40/foto-geit.jpg",
-  "r2_key": "a/v1/7bf84350-82f3-4956-a767-31b9ac0ddaef/b71d93f1-194b-44f8-a645-a71a72c83e40/foto-geit.jpg",
+  "url": "https://maximilien-media.s3.fr-par.scw.cloud/app-assets/foto/foto-geit.jpg",
+  "storage": "scaleway",
+  "key": "app-assets/foto/foto-geit.jpg",
   "original_filename": "foto-geit.jpg",
   "size": 319010,
-  "content_type": "image/jpeg",
-  "created_at": "2026-11-07T16:37:40Z"
+  "content_type": "image/jpeg"
 }

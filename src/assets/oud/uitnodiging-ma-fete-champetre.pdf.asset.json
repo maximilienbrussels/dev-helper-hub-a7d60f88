@@ -1,11 +1,9 @@
 {
   "version": 1,
-  "asset_id": "c403862d-38d8-4aba-be4b-846f70aa5552",
-  "project_id": "7bf84350-82f3-4956-a767-31b9ac0ddaef",
-  "url": "/__l5e/assets-v1/c403862d-38d8-4aba-be4b-846f70aa5552/uitnodiging-ma-fete-champetre.pdf",
-  "r2_key": "a/v1/7bf84350-82f3-4956-a767-31b9ac0ddaef/c403862d-38d8-4aba-be4b-846f70aa5552/uitnodiging-ma-fete-champetre.pdf",
+  "url": "https://maximilien-media.s3.fr-par.scw.cloud/app-assets/oud/uitnodiging-ma-fete-champetre.pdf",
+  "storage": "scaleway",
+  "key": "app-assets/oud/uitnodiging-ma-fete-champetre.pdf",
   "original_filename": "uitnodiging-ma-fete-champetre.pdf",
   "size": 1417684,
-  "content_type": "application/pdf",
-  "created_at": "2026-11-07T16:36:08Z"
+  "content_type": "application/pdf"
 }
