@@ -262,7 +262,7 @@ export function AnimalPassportPage({ slug }: { slug: string }) {
                 {zone ? c.zoneStatus(zoneName(zone, lang)) : c.status}
               </span>
               {qrMode ? (
-                <span className="inline-flex items-center rounded-full bg-amber-400 px-3 py-1.5 text-sm font-bold text-amber-950">
+                <span className="inline-flex items-center rounded-full bg-secondary px-3 py-1.5 text-sm font-bold text-secondary-foreground">
                   {c.qrBadge}
                 </span>
               ) : null}
@@ -280,13 +280,13 @@ export function AnimalPassportPage({ slug }: { slug: string }) {
         </header>
 
         {qrMode ? (
-          <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-amber-300 bg-amber-50 p-4 dark:border-amber-700 dark:bg-amber-950/40">
-            <p className="text-sm font-medium text-amber-950 dark:text-amber-100">{c.qrBadge}</p>
+          <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-border bg-secondary p-4">
+            <p className="text-sm font-medium text-secondary-foreground">{c.qrBadge}</p>
             <input ref={fileRef} type="file" accept="image/*" capture="environment" className="hidden" onChange={onPhoto} />
             <button
               type="button"
               onClick={() => fileRef.current?.click()}
-              className="inline-flex min-h-[44px] items-center rounded-full bg-amber-500 px-5 text-sm font-bold text-amber-950 hover:bg-amber-400"
+              className="inline-flex min-h-[44px] items-center rounded-full bg-primary px-5 text-sm font-bold text-primary-foreground hover:opacity-90"
             >
               {c.qrPhoto}
             </button>
@@ -337,13 +337,13 @@ export function AnimalPassportPage({ slug }: { slug: string }) {
                 <p className="text-sm text-muted-foreground">—</p>
               )}
             </PassportCard>
-            <div className="rounded-2xl border-2 border-amber-400 bg-amber-50 p-4 shadow-sm dark:border-amber-600 dark:bg-amber-950/40">
-              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-amber-800 dark:text-amber-200">
+            <div className="rounded-2xl border-2 border-[color:var(--color-terracotta)] bg-card p-4 shadow-sm">
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[color:var(--color-terracotta)]">
                 🚨 {c.feeding} · {c.feedingLead}
               </p>
-              <p className="mt-2 text-base font-semibold leading-snug text-amber-950 dark:text-amber-50">{dietText}</p>
+              <p className="mt-2 text-base font-semibold leading-snug text-foreground">{dietText}</p>
               {zone && zoneDietRules(zone, lang) ? (
-                <p className="mt-2 text-sm text-amber-900/90 dark:text-amber-100/80">{passport.feeding}</p>
+                <p className="mt-2 text-sm text-muted-foreground">{passport.feeding}</p>
               ) : null}
             </div>
           </div>
@@ -410,7 +410,7 @@ export function AnimalPassportPage({ slug }: { slug: string }) {
         {/* ADOPTIE */}
         <section className="mt-12 rounded-3xl border border-border bg-card p-6 md:p-8">
           <h2 className="text-2xl font-bold font-serif text-foreground">{c.adopt(displayName)}</h2>
-          <p className="mt-2 max-w-2xl text-sm text-emerald-900/90 dark:text-primary-foreground/85">{c.adoptBody}</p>
+          <p className="mt-2 max-w-2xl text-sm text-muted-foreground">{c.adoptBody}</p>
           <LocalLink
             to={pathFor("support", lang, { nl: "adopteer", fr: "parrainer", en: "sponsor" }[lang])}
             className="mt-4 inline-flex min-h-[48px] items-center rounded-full bg-primary px-6 text-sm font-bold text-primary-foreground hover:opacity-90"
@@ -437,7 +437,7 @@ function PassportCard({ icon, label, children }: { icon: string; label: string; 
 /** Schematische mini-kaart: alle zones grijs, deze zone uitgelicht. */
 function MiniMap({ zone }: { zone: FarmZone }) {
   return (
-    <div className="relative mt-3 aspect-[16/10] w-full overflow-hidden rounded-xl border border-border bg-emerald-50 dark:bg-emerald-950/40">
+    <div className="relative mt-3 aspect-[16/10] w-full overflow-hidden rounded-xl border border-border bg-muted">
       {FARM_MAP_DATA.map((z) => (
         <span
           key={z.id}
