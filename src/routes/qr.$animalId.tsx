@@ -1,11 +1,8 @@
-import { createFileRoute, notFound, Link } from "@tanstack/react-router";
-import { useEffect } from "react";
-import { useSuspenseQuery, queryOptions } from "@tanstack/react-query";
-import { useMaximAnimal } from "@/lib/maxim-chat";
+import { createFileRoute, notFound, redirect, Link } from "@tanstack/react-router";
+import { animalSlug, pathFor } from "@/lib/routes-i18n";
+import { queryOptions } from "@tanstack/react-query";
 import { getAnimals } from "@/lib/data.functions";
-import { imageForSpecies } from "@/lib/animal-images";
-import { useT, formatT } from "@/lib/i18n";
-import { handleImageError } from "@/lib/image-fallback";
+import { useT } from "@/lib/i18n";
 
 const animalsQO = queryOptions({ queryKey: ["animals"], queryFn: () => getAnimals() });
 
@@ -18,7 +15,8 @@ export const Route = createFileRoute("/qr/$animalId")({
     });
     const animal = animals.find((a) => a.id === parseInt(params.animalId, 10));
     if (!animal) throw notFound();
-    return { animalId: animal.id };
+    // QR-stickers leiden naar het volledige dierenpaspoort (zelfde foto, info en chat).
+    throw redirect({ href: `${pathFor("animals", "nl", animalSlug(animal, "nl"))}?source=qr` });
   },
   head: ({ loaderData }) => ({
     meta: [
@@ -27,7 +25,8 @@ export const Route = createFileRoute("/qr/$animalId")({
       },
     ],
   }),
-  component: AnimalPage,
+  // De loader stuurt altijd door naar het dierenpaspoort.
+  component: () => null,
   notFoundComponent: () => <QrNotFound />,
   errorComponent: ({ error }) => (
     <div className="min-h-screen bg-background flex items-center justify-center px-4">
@@ -35,54 +34,6 @@ export const Route = createFileRoute("/qr/$animalId")({
     </div>
   ),
 });
-
-function AnimalPage() {
-  const { animalId } = Route.useLoaderData();
-  const { data: animals } = useSuspenseQuery(animalsQO);
-  const animal = animals.find((a) => a.id === animalId)!;
-  const { t } = useT();
-
-  // De globale chat neemt de rol van dit dier op en opent automatisch.
-  useMaximAnimal({ id: animal.id, name: animal.name }, true);
-
-  useEffect(() => {
-    document.body.classList.add("outdoor-mode");
-    return () => document.body.classList.remove("outdoor-mode");
-  }, []);
-
-  const img = imageForSpecies(animal.species);
-
-  return (
-    <div className="min-h-screen bg-background">
-      <header className="border-b border-border px-4 py-3">
-        <Link to="/" className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-          ← Ferme Maximilien
-        </Link>
-      </header>
-      <main className="mx-auto max-w-2xl px-4 py-6 space-y-6">
-        {img && (
-          <div className="border border-border overflow-hidden">
-            <img loading="lazy" onError={handleImageError}
-              src={img}
-              alt={`${animal.name} — ${animal.species}`}
-              width={900}
-              height={900}
-              className="aspect-square h-full w-full object-cover object-[50%_35%]"
-            />
-          </div>
-        )}
-        <div>
-          <p className="text-xs uppercase tracking-[0.3em] text-primary">{animal.species}</p>
-          <h1 className="mt-2 text-5xl font-bold tracking-tight">{animal.name}</h1>
-          <p className="mt-4 text-lg leading-relaxed">{animal.description}</p>
-        </div>
-        <div className="border border-dashed border-border p-4 text-sm text-muted-foreground">
-          {formatT(t("qr.aiOpens"), { name: animal.name })}
-        </div>
-      </main>
-    </div>
-  );
-}
 
 function QrNotFound() {
   const { t } = useT();

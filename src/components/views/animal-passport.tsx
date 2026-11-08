@@ -11,6 +11,9 @@ import { animalSlug, pathFor, speciesIn, type Lang } from "@/lib/routes-i18n";
 import { imageForSpecies } from "@/lib/animal-images";
 import { galleryFor, passportFor, speciesKey } from "@/lib/animal-passport";
 import { handleImageError } from "@/lib/image-fallback";
+import { residentPhoto } from "@/lib/resident-photo";
+import { albumForSpecies } from "@/lib/photo-albums";
+import { useAlbumPhotos } from "@/lib/use-album-photos";
 import { useMaximChatControl } from "@/lib/maxim-chat";
 import {
   FARM_MAP_DATA,
@@ -55,6 +58,8 @@ const COPY = {
       `${z?.soundEmoji ?? ""} Hallo! Ik ben ${n}. ${z ? `Welkom bij zone ${z.id}!` : "Welkom op de boerderij!"}`,
     notFound: "Dit dier vonden we niet.",
     mapTitle: "Waar vind je mij?",
+    sinceLabel: "Bij ons sinds",
+    sinceUnknown: "Al jaren een vaste bewoner",
   },
   fr: {
     back: "Retour à tous les animaux",
@@ -86,6 +91,8 @@ const COPY = {
       `${z?.soundEmoji ?? ""} Bonjour ! Je suis ${n}. ${z ? `Bienvenue à la zone ${z.id} !` : "Bienvenue à la ferme !"}`,
     notFound: "Animal introuvable.",
     mapTitle: "Où me trouver ?",
+    sinceLabel: "Chez nous depuis",
+    sinceUnknown: "Résident fidèle depuis des années",
   },
   en: {
     back: "Back to all animals",
@@ -117,6 +124,8 @@ const COPY = {
       `${z?.soundEmoji ?? ""} Hello! I'm ${n}. ${z ? `Welcome to zone ${z.id}!` : "Welcome to the farm!"}`,
     notFound: "We couldn't find this animal.",
     mapTitle: "Where to find me?",
+    sinceLabel: "With us since",
+    sinceUnknown: "A long-time resident",
   },
 } as const;
 
@@ -167,8 +176,12 @@ export function AnimalPassportPage({ slug }: { slug: string }) {
   const displayName = animal?.name ?? (zone ? zoneName(zone, lang) : slug);
   const species = animal?.species ?? zone?.species ?? "";
   const passport = deepTx(tx, passportFor(species || zone?.nameNl || "", lang));
-  const gallery = galleryFor(speciesKey(species || zone?.nameNl || ""));
-  const hero = animal?.image_url || imageForSpecies(species) || gallery[0];
+  const managed = useAlbumPhotos();
+  const ownAlbum = albumForSpecies(species).map((p) => p.src);
+  const gallery = Array.from(new Set([...ownAlbum, ...galleryFor(speciesKey(species || zone?.nameNl || ""))]));
+  // Zelfde volgorde als overal op de site: eigen profielfoto → albums → soortfoto.
+  const hero = (animal ? residentPhoto(animal, managed) : null) || imageForSpecies(species) || gallery[0];
+  const since = animal?.arrived_on ? sinceLabel(animal.arrived_on, lang) : null;
   const greeting = c.greet(displayName, zone);
 
   // Chat in de rol van dit dier zetten; bij persona/QR meteen openen.
@@ -237,43 +250,43 @@ export function AnimalPassportPage({ slug }: { slug: string }) {
             fetchPriority="high"
             className="absolute inset-0 h-full w-full object-cover object-[50%_40%]"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/30 to-transparent" />
           <div className="absolute inset-x-0 bottom-0 flex flex-col gap-3 p-6 md:p-10">
-            <span className="mb-2 w-fit rounded-full bg-emerald-500/90 px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">
+            <span className="mb-2 w-fit rounded-full bg-[color:var(--color-terracotta)] px-3 py-1 text-xs font-bold uppercase tracking-wide text-primary-foreground">
               {zone?.icon ?? "🐾"} {speciesIn(species, lang) || zoneName(zone!, lang)}
             </span>
-            <h1 className="text-4xl font-extrabold text-white drop-shadow-md md:text-6xl">{displayName}</h1>
+            <h1 className="text-4xl font-extrabold text-primary-foreground drop-shadow-md md:text-6xl">{displayName}</h1>
             <div className="flex flex-wrap items-center gap-2">
-              <span className="inline-flex items-center gap-2 rounded-full bg-black/40 px-3 py-1.5 text-sm font-semibold text-white backdrop-blur-md">
-                <span className="size-2 animate-pulse rounded-full bg-emerald-400" aria-hidden />
+              <span className="inline-flex items-center gap-2 rounded-full bg-foreground/40 px-3 py-1.5 text-sm font-semibold text-primary-foreground backdrop-blur-md">
+                <span className="size-2 animate-pulse rounded-full bg-primary-foreground" aria-hidden />
                 {zone ? c.zoneStatus(zoneName(zone, lang)) : c.status}
               </span>
               {qrMode ? (
-                <span className="inline-flex items-center rounded-full bg-amber-400 px-3 py-1.5 text-sm font-bold text-amber-950">
+                <span className="inline-flex items-center rounded-full bg-secondary px-3 py-1.5 text-sm font-bold text-secondary-foreground">
                   {c.qrBadge}
                 </span>
               ) : null}
               <button
                 type="button"
                 onClick={() => speak(`${zone?.soundEmoji ?? ""}. ${greeting}`, lang)}
-                className="inline-flex min-h-[40px] items-center gap-2 rounded-full border border-white/40 bg-white/10 px-4 text-sm font-semibold text-white backdrop-blur-md transition-colors hover:bg-white/20"
+                className="inline-flex min-h-[40px] items-center gap-2 rounded-full border border-primary-foreground/40 bg-primary-foreground/10 px-4 text-sm font-semibold text-primary-foreground backdrop-blur-md transition-colors hover:bg-primary-foreground/20"
               >
                 <Volume2 className="size-4" aria-hidden />
                 {c.listen}
-                {zone?.soundEmoji ? <span className="text-white/90">· {zone.soundEmoji}</span> : null}
+                {zone?.soundEmoji ? <span className="text-primary-foreground/90">· {zone.soundEmoji}</span> : null}
               </button>
             </div>
           </div>
         </header>
 
         {qrMode ? (
-          <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-amber-300 bg-amber-50 p-4 dark:border-amber-700 dark:bg-amber-950/40">
-            <p className="text-sm font-medium text-amber-950 dark:text-amber-100">{c.qrBadge}</p>
+          <div className="mt-4 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-border bg-secondary p-4">
+            <p className="text-sm font-medium text-secondary-foreground">{c.qrBadge}</p>
             <input ref={fileRef} type="file" accept="image/*" capture="environment" className="hidden" onChange={onPhoto} />
             <button
               type="button"
               onClick={() => fileRef.current?.click()}
-              className="inline-flex min-h-[44px] items-center rounded-full bg-amber-500 px-5 text-sm font-bold text-amber-950 hover:bg-amber-400"
+              className="inline-flex min-h-[44px] items-center rounded-full bg-primary px-5 text-sm font-bold text-primary-foreground hover:opacity-90"
             >
               {c.qrPhoto}
             </button>
@@ -292,7 +305,7 @@ export function AnimalPassportPage({ slug }: { slug: string }) {
               {names.length ? (
                 <ul className="flex flex-wrap gap-2">
                   {names.map((n) => (
-                    <li key={n} className="rounded-full bg-emerald-50 px-3 py-1 text-sm font-semibold text-emerald-900 dark:bg-emerald-900/40 dark:text-emerald-100">
+                    <li key={n} className="rounded-full bg-secondary px-3 py-1 text-sm font-semibold text-secondary-foreground">
                       {n}
                     </li>
                   ))}
@@ -304,6 +317,12 @@ export function AnimalPassportPage({ slug }: { slug: string }) {
                 <span className="font-semibold text-foreground">{c.character}: </span>
                 {passport.character}
               </p>
+            </PassportCard>
+            <PassportCard icon="🏡" label={c.sinceLabel}>
+              <p className="text-lg font-semibold">{since ?? c.sinceUnknown}</p>
+              {animal?.description ? (
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{animal.description}</p>
+              ) : null}
             </PassportCard>
             <PassportCard icon="📍" label={c.location}>
               {zone ? (
@@ -318,29 +337,29 @@ export function AnimalPassportPage({ slug }: { slug: string }) {
                 <p className="text-sm text-muted-foreground">—</p>
               )}
             </PassportCard>
-            <div className="rounded-2xl border-2 border-amber-400 bg-amber-50 p-4 shadow-sm dark:border-amber-600 dark:bg-amber-950/40">
-              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-amber-800 dark:text-amber-200">
+            <div className="rounded-2xl border-2 border-[color:var(--color-terracotta)] bg-card p-4 shadow-sm">
+              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[color:var(--color-terracotta)]">
                 🚨 {c.feeding} · {c.feedingLead}
               </p>
-              <p className="mt-2 text-base font-semibold leading-snug text-amber-950 dark:text-amber-50">{dietText}</p>
+              <p className="mt-2 text-base font-semibold leading-snug text-foreground">{dietText}</p>
               {zone && zoneDietRules(zone, lang) ? (
-                <p className="mt-2 text-sm text-amber-900/90 dark:text-amber-100/80">{passport.feeding}</p>
+                <p className="mt-2 text-sm text-muted-foreground">{passport.feeding}</p>
               ) : null}
             </div>
           </div>
         </section>
 
         {/* CHAT */}
-        <section className="mt-10 rounded-2xl bg-gradient-to-r from-emerald-800 to-teal-900 p-6 text-white shadow-md md:p-8">
+        <section className="mt-10 rounded-2xl bg-primary p-6 text-primary-foreground shadow-md md:p-8">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div>
               <h2 className="text-xl font-bold md:text-2xl">{c.chatTitle(displayName)}</h2>
-              <p className="mt-2 max-w-xl text-sm text-emerald-100/90">{c.chatBody(displayName)}</p>
+              <p className="mt-2 max-w-xl text-sm text-primary-foreground/85">{c.chatBody(displayName)}</p>
             </div>
             <button
               type="button"
               onClick={() => control?.requestOpen()}
-              className="inline-flex min-h-[48px] shrink-0 items-center justify-center rounded-full bg-white px-6 text-sm font-bold text-emerald-900 shadow transition-transform hover:scale-[1.02]"
+              className="inline-flex min-h-[48px] shrink-0 items-center justify-center rounded-full bg-background px-6 text-sm font-bold text-foreground shadow transition-transform hover:scale-[1.02]"
             >
               {c.chatBtn(displayName)}
             </button>
@@ -353,7 +372,7 @@ export function AnimalPassportPage({ slug }: { slug: string }) {
           <p className="text-sm text-muted-foreground">{c.factsLead}</p>
           <div className="mt-4 grid gap-3">
             {passport.facts.slice(0, 3).map((f) => (
-              <details key={f.q} className="group rounded-2xl border border-emerald-100 bg-card p-4 shadow-sm open:border-emerald-300 dark:border-emerald-900">
+              <details key={f.q} className="group rounded-2xl border border-border bg-card p-4 shadow-sm open:border-primary ">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-3 font-semibold">
                   <span>🧠 {f.q}</span>
                   <ChevronDown className="size-4 shrink-0 transition-transform group-open:rotate-180" aria-hidden />
@@ -368,7 +387,7 @@ export function AnimalPassportPage({ slug }: { slug: string }) {
         <section className="mt-10">
           <h2 className="font-serif text-3xl">{c.gallery}</h2>
           <div className="mt-4 grid grid-cols-3 gap-3">
-            {gallery.slice(0, 3).map((src, i) => (
+            {gallery.slice(0, 6).map((src, i) => (
               <img
                 key={src + i}
                 src={src}
@@ -389,12 +408,12 @@ export function AnimalPassportPage({ slug }: { slug: string }) {
         ) : null}
 
         {/* ADOPTIE */}
-        <section className="mt-12 rounded-3xl border border-emerald-200 bg-emerald-50 p-6 dark:border-emerald-800 dark:bg-emerald-950/40 md:p-8">
-          <h2 className="text-2xl font-bold text-emerald-950 dark:text-emerald-50">{c.adopt(displayName)}</h2>
-          <p className="mt-2 max-w-2xl text-sm text-emerald-900/90 dark:text-emerald-100/90">{c.adoptBody}</p>
+        <section className="mt-12 rounded-3xl border border-border bg-card p-6 md:p-8">
+          <h2 className="text-2xl font-bold font-serif text-foreground">{c.adopt(displayName)}</h2>
+          <p className="mt-2 max-w-2xl text-sm text-muted-foreground">{c.adoptBody}</p>
           <LocalLink
             to={pathFor("support", lang, { nl: "adopteer", fr: "parrainer", en: "sponsor" }[lang])}
-            className="mt-4 inline-flex min-h-[48px] items-center rounded-full bg-emerald-700 px-6 text-sm font-bold text-white hover:bg-emerald-800"
+            className="mt-4 inline-flex min-h-[48px] items-center rounded-full bg-primary px-6 text-sm font-bold text-primary-foreground hover:opacity-90"
           >
             {c.adoptBtn}
           </LocalLink>
@@ -406,7 +425,7 @@ export function AnimalPassportPage({ slug }: { slug: string }) {
 
 function PassportCard({ icon, label, children }: { icon: string; label: string; children: React.ReactNode }) {
   return (
-    <div className="rounded-2xl border border-emerald-100 bg-card p-4 shadow-sm dark:border-emerald-900">
+    <div className="rounded-2xl border border-border bg-card p-4 shadow-sm ">
       <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
         {icon} {label}
       </p>
@@ -418,14 +437,14 @@ function PassportCard({ icon, label, children }: { icon: string; label: string; 
 /** Schematische mini-kaart: alle zones grijs, deze zone uitgelicht. */
 function MiniMap({ zone }: { zone: FarmZone }) {
   return (
-    <div className="relative mt-3 aspect-[16/10] w-full overflow-hidden rounded-xl border border-border bg-emerald-50 dark:bg-emerald-950/40">
+    <div className="relative mt-3 aspect-[16/10] w-full overflow-hidden rounded-xl border border-border bg-muted">
       {FARM_MAP_DATA.map((z) => (
         <span
           key={z.id}
           className={
             "absolute -translate-x-1/2 -translate-y-1/2 rounded-full " +
             (z.id === zone.id
-              ? "z-10 grid size-7 place-items-center bg-[color:var(--color-terracotta)] text-[11px] font-bold text-white ring-4 ring-[color:var(--color-terracotta)]/30"
+              ? "z-10 grid size-7 place-items-center bg-[color:var(--color-terracotta)] text-[11px] font-bold text-primary-foreground ring-4 ring-[color:var(--color-terracotta)]/30"
               : "size-2 bg-emerald-300 dark:bg-emerald-700")
           }
           style={{ left: `${z.mapCoords.x}%`, top: `${z.mapCoords.y}%` }}
@@ -439,4 +458,18 @@ function MiniMap({ zone }: { zone: FarmZone }) {
       </span>
     </div>
   );
+}
+
+const SINCE_LOCALE: Record<Lang, string> = { nl: "nl-BE", fr: "fr-BE", en: "en-GB" };
+
+/** "maart 2021 · 4 jaar" — hoe lang het dier al op de boerderij woont. */
+export function sinceLabel(date: string, lang: Lang, now = new Date()): string | null {
+  const d = new Date(`${date.slice(0, 10)}T00:00:00`);
+  if (Number.isNaN(d.getTime())) return null;
+  const month = d.toLocaleDateString(SINCE_LOCALE[lang], { month: "long", year: "numeric" });
+  let years = now.getFullYear() - d.getFullYear();
+  if (now.getMonth() < d.getMonth() || (now.getMonth() === d.getMonth() && now.getDate() < d.getDate())) years--;
+  if (years < 1) return month;
+  const unit = { nl: years === 1 ? "jaar" : "jaar", fr: years === 1 ? "an" : "ans", en: years === 1 ? "year" : "years" }[lang];
+  return `${month} · ${years} ${unit}`;
 }

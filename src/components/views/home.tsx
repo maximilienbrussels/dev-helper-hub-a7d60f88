@@ -148,7 +148,7 @@ function EditorialGrid({
           <div className="flex items-baseline justify-between">
             <h2 className="font-serif text-3xl italic md:text-4xl">{t("home.residents")}</h2>
             <LocalLink
-              to={pathFor("academy", lang)}
+              to={pathFor("animals", lang)}
               className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[color:var(--color-terracotta)] hover:underline"
             >
               {t("home.discoverAll")}
