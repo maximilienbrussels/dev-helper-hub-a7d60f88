@@ -1,11 +1,9 @@
 {
   "version": 1,
-  "asset_id": "d1ef88e8-6dbc-4661-8713-edd85cb13584",
-  "project_id": "7bf84350-82f3-4956-a767-31b9ac0ddaef",
-  "url": "/__l5e/assets-v1/d1ef88e8-6dbc-4661-8713-edd85cb13584/foto-trojaans-paard-pony.jpg",
-  "r2_key": "a/v1/7bf84350-82f3-4956-a767-31b9ac0ddaef/d1ef88e8-6dbc-4661-8713-edd85cb13584/foto-trojaans-paard-pony.jpg",
+  "url": "https://maximilien-media.s3.fr-par.scw.cloud/app-assets/foto/foto-trojaans-paard-pony.jpg",
+  "storage": "scaleway",
+  "key": "app-assets/foto/foto-trojaans-paard-pony.jpg",
   "original_filename": "foto-trojaans-paard-pony.jpg",
   "size": 357705,
-  "content_type": "image/jpeg",
-  "created_at": "2026-11-07T16:37:47Z"
+  "content_type": "image/jpeg"
 }

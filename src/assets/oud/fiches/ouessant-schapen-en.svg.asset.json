@@ -1,11 +1,9 @@
 {
   "version": 1,
-  "asset_id": "d5693f10-0d0e-4f9e-90c8-bba568d09a1a",
-  "project_id": "7bf84350-82f3-4956-a767-31b9ac0ddaef",
-  "url": "/__l5e/assets-v1/d5693f10-0d0e-4f9e-90c8-bba568d09a1a/ouessant-schapen-en.svg",
-  "r2_key": "a/v1/7bf84350-82f3-4956-a767-31b9ac0ddaef/d5693f10-0d0e-4f9e-90c8-bba568d09a1a/ouessant-schapen-en.svg",
+  "url": "https://maximilien-media.s3.fr-par.scw.cloud/app-assets/oud/fiches/ouessant-schapen-en.svg",
+  "storage": "scaleway",
+  "key": "app-assets/oud/fiches/ouessant-schapen-en.svg",
   "original_filename": "ouessant-schapen-en.svg",
   "size": 2374666,
-  "content_type": "image/svg+xml",
-  "created_at": "2026-11-07T16:36:30Z"
+  "content_type": "image/svg+xml"
 }

@@ -1,11 +1,9 @@
 {
   "version": 1,
-  "asset_id": "32fa6189-ea9d-44c5-9431-0a482898aa7e",
-  "project_id": "7bf84350-82f3-4956-a767-31b9ac0ddaef",
-  "url": "/__l5e/assets-v1/32fa6189-ea9d-44c5-9431-0a482898aa7e/dieren-5-zintuigen.webp",
-  "r2_key": "a/v1/7bf84350-82f3-4956-a767-31b9ac0ddaef/32fa6189-ea9d-44c5-9431-0a482898aa7e/dieren-5-zintuigen.webp",
+  "url": "https://maximilien-media.s3.fr-par.scw.cloud/app-assets/illustrations/dieren-5-zintuigen.webp",
+  "storage": "scaleway",
+  "key": "app-assets/illustrations/dieren-5-zintuigen.webp",
   "original_filename": "dieren-5-zintuigen.webp",
   "size": 5236,
-  "content_type": "image/webp",
-  "created_at": "2026-11-07T16:37:53Z"
+  "content_type": "image/webp"
 }

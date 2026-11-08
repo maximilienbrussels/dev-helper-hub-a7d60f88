@@ -1,11 +1,9 @@
 {
   "version": 1,
-  "asset_id": "9669b7d1-f0d2-4a43-8448-e27b3f55bbe3",
-  "project_id": "7bf84350-82f3-4956-a767-31b9ac0ddaef",
-  "url": "/__l5e/assets-v1/9669b7d1-f0d2-4a43-8448-e27b3f55bbe3/foto-geit-madeliefjes.jpg",
-  "r2_key": "a/v1/7bf84350-82f3-4956-a767-31b9ac0ddaef/9669b7d1-f0d2-4a43-8448-e27b3f55bbe3/foto-geit-madeliefjes.jpg",
+  "url": "https://maximilien-media.s3.fr-par.scw.cloud/app-assets/foto/foto-geit-madeliefjes.jpg",
+  "storage": "scaleway",
+  "key": "app-assets/foto/foto-geit-madeliefjes.jpg",
   "original_filename": "foto-geit-madeliefjes.jpg",
   "size": 271527,
-  "content_type": "image/jpeg",
-  "created_at": "2026-11-07T16:37:40Z"
+  "content_type": "image/jpeg"
 }
