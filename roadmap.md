@@ -22,3 +22,5 @@
 - [ ] Confirm holiday-camp hours (9–16, childcare 8–17:30) — not found on old site, needs owner confirmation.
 - [ ] Fases 2-6 of the approved plan (audio guide, rental quote calculator, numbered sponsorship certificate, events/education) — not started this turn.
 - [ ] Verify paid checkout for monthly donations and printed invitations end-to-end — needs live payment test.
+
+- [ ] Alle afbeeldingen (Boudewijn, AI-chat) zichtbaar bij Vercel-deploy
