@@ -19,7 +19,7 @@ export type InvitationFields = {
 };
 
 export const INVITATION_LIMITS = {
-  guest: 40, child: 30, age: 3, rsvpName: 40, rsvpPhone: 24, note: 120,
+  guest: 2000, child: 30, age: 3, rsvpName: 40, rsvpPhone: 24, note: 120,
 } as const;
 
 /** Prijzen voor gedrukte kaarten (in cent). */
