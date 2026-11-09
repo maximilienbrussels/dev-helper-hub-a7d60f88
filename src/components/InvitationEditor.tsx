@@ -212,7 +212,10 @@ export function InvitationEditor() {
 
         <div className="min-w-0">
           <p className={lab}>{u.front}</p>
-          <div ref={frontRef} className="mt-1.5 overflow-hidden rounded-lg shadow-md ring-1 ring-border"><CardFront f={f} /></div>
+          <div ref={frontRef} className="mt-1.5 overflow-hidden rounded-lg shadow-md ring-1 ring-border"><CardFront f={f} guest={guests[0]} /></div>
+          <div ref={guestsRef} aria-hidden="true" style={{ position: "fixed", left: "-10000px", top: 0, width: "1033px", pointerEvents: "none" }}>
+            {guests.length > 1 && guests.map((g, i) => <div key={i} data-card><CardFront f={f} guest={g} /></div>)}
+          </div>
           <p className={`${lab} mt-4`}>{u.back}</p>
           <div ref={backRef} className="mt-1.5 overflow-hidden rounded-lg shadow-md ring-1 ring-border"><CardBack f={f} /></div>
           <div className="mt-5 flex flex-wrap gap-3">
