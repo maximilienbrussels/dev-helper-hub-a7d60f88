@@ -6,7 +6,7 @@ import { queryOptions, useQuery } from "@tanstack/react-query";
 import { useHiddenSocialIds } from "@/lib/social-hidden";
 
 export const MASTODON_INSTANCE = "https://mastodon.social";
-export const MASTODON_HANDLE = "maximilien.brussels";
+export const MASTODON_HANDLE = "maximilien";
 export const MASTODON_ACCT = `@${MASTODON_HANDLE}@${MASTODON_INSTANCE.replace("https://", "")}`;
 export const MASTODON_PROFILE_URL = `${MASTODON_INSTANCE}/@${MASTODON_HANDLE}`;
 

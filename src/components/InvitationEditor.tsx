@@ -10,19 +10,19 @@ import {
 const UI: Record<Lang, Record<string, string>> = {
   nl: {
     kicker: "Uitnodigingskaart", title: "Maak je uitnodiging hier online", lede: "Vul de gegevens in, bekijk meteen het resultaat en kies daarna: zelf afdrukken, opslaan als PDF of gedrukte kaarten bestellen.",
-    cardLang: "Taal van de kaart", guest: "Naam van het vriendje", guestHint: "Leeg laten om met de hand in te vullen", child: "Naam van de jarige", age: "Leeftijd", date: "Datum van het feest", from: "Van", to: "Tot", rsvpName: "Antwoorden aan", rsvpPhone: "Telefoon", rsvpBy: "Antwoord vóór (optioneel)", note: "Extra regel (optioneel)", notePh: "bv. Laarzen aan, we gaan naar de dieren!",
+    cardLang: "Taal van de kaart", guest: "Namen van de vriendjes", guestHint: "Eén naam per regel, bv.\nLina\nNoah\nYasmine", guestMulti: "Elke naam krijgt een eigen kaart in de PDF. Leeg laten = met de hand invullen", child: "Naam van de jarige", age: "Leeftijd", date: "Datum van het feest", from: "Van", to: "Tot", rsvpName: "Antwoorden aan", rsvpPhone: "Telefoon", rsvpBy: "Antwoord vóór (optioneel)", note: "Extra regel (optioneel)", notePh: "bv. Laarzen aan, we gaan naar de dieren!",
     front: "Voorkant", back: "Achterkant", print: "Afdrukken", save: "Opslaan als PDF", busy: "Even geduld…", sheet: "PDF met 3 kaarten per A4: pagina 1 voorkant, pagina 2 achterkant (dubbelzijdig afdrukken, omslaan langs de lange kant).",
     orderTitle: "Gedrukte kaarten bestellen", orderLede: "Wij drukken je kaarten op stevig papier. Ophalen op de boerderij of per post in België.", qty: "Aantal kaarten", pickup: "Ophalen op de boerderij", post: "Per post", email: "Je e-mailadres", order: "Bestellen en betalen", total: "Totaal", perCard: "per kaart", needChild: "Vul eerst de naam van de jarige en de datum in.", failed: "Bestellen lukte niet. Probeer later opnieuw of mail ons.", ordered: "Bedankt! Je bestelling is betaald. We laten je weten wanneer de kaarten klaar zijn.", reset: "Opnieuw beginnen", original: "Liever het originele blanco ontwerp? Download het hier",
   },
   fr: {
     kicker: "Carton d'invitation", title: "Crée ton invitation en ligne", lede: "Complète les informations, vois le résultat tout de suite, puis choisis : imprimer toi-même, enregistrer en PDF ou commander des cartons imprimés.",
-    cardLang: "Langue du carton", guest: "Prénom de l'invité·e", guestHint: "Laisser vide pour l'écrire à la main", child: "Prénom de l'enfant", age: "Âge", date: "Date de la fête", from: "De", to: "À", rsvpName: "Réponse à", rsvpPhone: "Téléphone", rsvpBy: "Réponse avant le (facultatif)", note: "Ligne en plus (facultatif)", notePh: "ex. Viens en bottes, on va voir les animaux !",
+    cardLang: "Langue du carton", guest: "Prénoms des invité·es", guestHint: "Un prénom par ligne, ex.\nLina\nNoah\nYasmine", guestMulti: "Chaque prénom reçoit son propre carton dans le PDF. Vide = à écrire à la main", child: "Prénom de l'enfant", age: "Âge", date: "Date de la fête", from: "De", to: "À", rsvpName: "Réponse à", rsvpPhone: "Téléphone", rsvpBy: "Réponse avant le (facultatif)", note: "Ligne en plus (facultatif)", notePh: "ex. Viens en bottes, on va voir les animaux !",
     front: "Recto", back: "Verso", print: "Imprimer", save: "Enregistrer en PDF", busy: "Un instant…", sheet: "PDF avec 3 cartons par A4 : page 1 recto, page 2 verso (impression recto-verso, bord long).",
     orderTitle: "Commander des cartons imprimés", orderLede: "Nous imprimons tes cartons sur papier épais. À retirer à la ferme ou par la poste en Belgique.", qty: "Nombre de cartons", pickup: "Retrait à la ferme", post: "Par la poste", email: "Ton adresse e-mail", order: "Commander et payer", total: "Total", perCard: "par carton", needChild: "Indique d'abord le prénom de l'enfant et la date.", failed: "La commande a échoué. Réessaie plus tard ou écris-nous.", ordered: "Merci ! Ta commande est payée. Nous te prévenons quand les cartons sont prêts.", reset: "Recommencer", original: "Tu préfères le modèle vierge original ? Télécharge-le ici",
   },
   en: {
     kicker: "Invitation card", title: "Make your invitation online", lede: "Fill in the details, see the result right away, then choose: print it yourself, save as PDF or order printed cards.",
-    cardLang: "Card language", guest: "Friend's name", guestHint: "Leave empty to write by hand", child: "Birthday child's name", age: "Age", date: "Party date", from: "From", to: "To", rsvpName: "Reply to", rsvpPhone: "Phone", rsvpBy: "Reply by (optional)", note: "Extra line (optional)", notePh: "e.g. Wear boots, we're visiting the animals!",
+    cardLang: "Card language", guest: "Friends' names", guestHint: "One name per line, e.g.\nLina\nNoah\nYasmine", guestMulti: "Each name gets its own card in the PDF. Leave empty to write by hand", child: "Birthday child's name", age: "Age", date: "Party date", from: "From", to: "To", rsvpName: "Reply to", rsvpPhone: "Phone", rsvpBy: "Reply by (optional)", note: "Extra line (optional)", notePh: "e.g. Wear boots, we're visiting the animals!",
     front: "Front", back: "Back", print: "Print", save: "Save as PDF", busy: "One moment…", sheet: "PDF with 3 cards per A4: page 1 front, page 2 back (print double-sided, flip on long edge).",
     orderTitle: "Order printed cards", orderLede: "We print your cards on sturdy paper. Collect at the farm or get them by post in Belgium.", qty: "Number of cards", pickup: "Collect at the farm", post: "By post", email: "Your e-mail", order: "Order and pay", total: "Total", perCard: "per card", needChild: "First fill in the child's name and the date.", failed: "Ordering failed. Please try again later or e-mail us.", ordered: "Thank you! Your order is paid. We'll let you know when the cards are ready.", reset: "Start over", original: "Prefer the original blank design? Download it here",
   },
@@ -30,20 +30,25 @@ const UI: Record<Lang, Record<string, string>> = {
 
 const STORE = "maximilien.invitation.v1";
 const EMPTY = (l: InvitationLang): InvitationFields => ({ cardLang: l, guest: "", child: "", age: "", date: "", from: "14:00", to: "17:00", rsvpName: "", rsvpPhone: "", rsvpBy: "", note: "" });
+export function splitGuests(raw: string): string[] {
+  const list = raw.split(/[\n,;]+/).map((x) => x.trim()).filter(Boolean);
+  return list.length ? list : [""];
+}
 const HAND = "'Delius', 'Comic Neue', 'Work Sans', sans-serif";
 const eur = (c: number) => `€ ${(c / 100).toFixed(2).replace(".", ",")}`;
 
 /** Eén kaart op ware verhouding (21 × 9,9 cm). Alle maten in cqw zodat de kaart overal gelijk schaalt. */
-function CardFront({ f }: { f: InvitationFields }) {
+function CardFront({ f, guest }: { f: InvitationFields; guest?: string }) {
+  const g = guest ?? f.guest;
   const t = CARD_TEXT[f.cardLang];
   return (
     <div className="relative w-full overflow-hidden bg-white" style={{ aspectRatio: "2067 / 974", containerType: "inline-size", fontFamily: HAND, color: "#1d1d1b" }}>
-      <img src={OLD_ASSETS.uitnodigingVoorkant} alt="" crossOrigin="anonymous" className="absolute inset-0 h-full w-full" />
+      <img src="/uitnodiging/voorkant.webp" alt="" className="absolute inset-0 h-full w-full" />
       <div className="absolute" style={{ left: "61%", top: "27%", width: "30%" }}>
         <p style={{ fontSize: "5.2cqw", lineHeight: 1, letterSpacing: "0.08em" }}>{t.title}</p>
         <p style={{ fontSize: "3.1cqw", lineHeight: 1.1, letterSpacing: "0.12em" }}>{t.subtitle}</p>
         <p style={{ fontSize: "2.05cqw", lineHeight: 1.4, marginTop: "1.6cqw", letterSpacing: "0.04em" }}>
-          {t.hey} <span style={{ borderBottom: f.guest ? "none" : "0.12cqw dotted #1d1d1b", display: "inline-block", minWidth: "14cqw", fontWeight: 600 }}>{f.guest}</span>,{" "}
+          {t.hey} <span style={{ borderBottom: g ? "none" : "0.12cqw dotted #1d1d1b", display: "inline-block", minWidth: "14cqw", fontWeight: 600 }}>{g}</span>,{" "}
           {t.body(f.age)}
         </p>
         <p style={{ fontSize: "2.1cqw", textAlign: "right", marginTop: "1.6cqw", fontWeight: 600 }}>
@@ -61,7 +66,7 @@ function CardBack({ f }: { f: InvitationFields }) {
   const line = { borderBottom: "0.12cqw dotted #1d1d1b", display: "inline-block", minWidth: "22cqw" } as const;
   return (
     <div className="relative w-full overflow-hidden bg-white" style={{ aspectRatio: "2067 / 974", containerType: "inline-size", fontFamily: HAND, color: "#1d1d1b" }}>
-      <img src={OLD_ASSETS.uitnodigingAchterkant} alt="" crossOrigin="anonymous" className="absolute inset-0 h-full w-full" />
+      <img src="/uitnodiging/achterkant.webp" alt="" className="absolute inset-0 h-full w-full" />
       <div className="absolute" style={{ left: "7%", top: "31%", width: "58%", fontSize: "2.2cqw", lineHeight: 1.5 }}>
         <p><b>{t.when}</b> {date ? <span style={{ fontWeight: 600 }}>{date}</span> : <span style={line}>&nbsp;</span>}</p>
         <p>{t.time(f.from, f.to)}</p>
@@ -90,6 +95,7 @@ export function InvitationEditor() {
   const [ordered, setOrdered] = useState(false);
   const frontRef = useRef<HTMLDivElement>(null);
   const backRef = useRef<HTMLDivElement>(null);
+  const guestsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     try {
@@ -109,16 +115,25 @@ export function InvitationEditor() {
     const [{ toPng }, { jsPDF }] = await Promise.all([import("html-to-image"), import("jspdf")]);
     await document.fonts?.ready;
     const opts = { pixelRatio: 3, cacheBust: true, backgroundColor: "#ffffff" };
-    const front = await toPng(frontRef.current!, opts);
+    const nodes = Array.from(guestsRef.current?.querySelectorAll<HTMLElement>("[data-card]") ?? []);
+    const fronts: string[] = [];
+    for (const node of nodes) fronts.push(await toPng(node, opts));
+    if (!fronts.length) fronts.push(await toPng(frontRef.current!, opts));
     const back = await toPng(backRef.current!, opts);
     const pdf = new jsPDF({ unit: "mm", format: "a4", orientation: "portrait" });
     const w = 210, h = 99;
-    for (const [n, img] of [[0, front], [1, back]] as const) {
-      if (n) pdf.addPage();
-      for (let i = 0; i < 3; i++) pdf.addImage(img, "PNG", 0, i * h, w, h, undefined, "FAST");
-      // Snijlijnen tussen de kaarten.
-      pdf.setDrawColor(200); pdf.setLineDashPattern([1, 1.5], 0);
-      pdf.line(0, h, w, h); pdf.line(0, 2 * h, w, 2 * h);
+    // Eén kaart per gast; bij één gast vullen we het blad met 3 identieke kaarten.
+    const list = fronts.length === 1 ? [fronts[0], fronts[0], fronts[0]] : fronts;
+    let first = true;
+    for (let s = 0; s < list.length; s += 3) {
+      const sheet = list.slice(s, s + 3);
+      for (const img of [null, back] as const) {
+        if (!first) pdf.addPage();
+        first = false;
+        sheet.forEach((front, i) => pdf.addImage(img ?? front, "PNG", 0, i * h, w, h, undefined, "FAST"));
+        pdf.setDrawColor(200); pdf.setLineDashPattern([1, 1.5], 0);
+        pdf.line(0, h, w, h); pdf.line(0, 2 * h, w, 2 * h);
+      }
     }
     return pdf;
   }
@@ -126,7 +141,10 @@ export function InvitationEditor() {
 
   async function save() {
     setBusy("pdf");
-    try { (await buildPdf()).save(fileName()); } finally { setBusy(null); }
+    setErr(null);
+    try { (await buildPdf()).save(fileName()); }
+    catch (e) { console.error("[uitnodiging] PDF mislukt", e); setErr(u.failed); }
+    finally { setBusy(null); }
   }
   async function print() {
     setBusy("print");
@@ -136,7 +154,7 @@ export function InvitationEditor() {
       const url = URL.createObjectURL(pdf.output("blob"));
       const win = window.open(url, "_blank");
       if (!win) pdf.save(fileName());
-    } finally { setBusy(null); }
+    } catch (e) { console.error("[uitnodiging] afdrukken mislukt", e); setErr(u.failed); } finally { setBusy(null); }
   }
   async function order(e: React.FormEvent) {
     e.preventDefault();
@@ -156,6 +174,7 @@ export function InvitationEditor() {
 
   const input = "mt-1.5 h-11 w-full rounded-xl border border-border bg-background px-3 text-sm outline-none focus:border-[color:var(--color-terracotta)]";
   const lab = "text-[11px] font-semibold uppercase tracking-[0.15em] text-muted-foreground";
+  const guests = splitGuests(f.guest);
   const total = invitationTotalCents(qty, delivery) ?? 0;
 
   return (
@@ -178,7 +197,7 @@ export function InvitationEditor() {
           </fieldset>
           <label><span className={lab}>{u.child}</span><input value={f.child} maxLength={M.child} onChange={(e) => set("child", e.target.value)} className={input} /></label>
           <label><span className={lab}>{u.age}</span><input value={f.age} inputMode="numeric" maxLength={M.age} onChange={(e) => set("age", e.target.value.replace(/\D/g, ""))} className={input} /></label>
-          <label className="sm:col-span-2"><span className={lab}>{u.guest}</span><input value={f.guest} maxLength={M.guest} placeholder={u.guestHint} onChange={(e) => set("guest", e.target.value)} className={input} /></label>
+          <label className="sm:col-span-2"><span className={lab}>{u.guest}</span><textarea value={f.guest} rows={4} maxLength={M.guest} placeholder={u.guestHint} onChange={(e) => set("guest", e.target.value)} className={`${input} h-auto py-2`} /><span className="mt-1 block text-xs text-muted-foreground">{u.guestMulti} ({guests.filter(Boolean).length})</span></label>
           <label className="sm:col-span-2"><span className={lab}>{u.date}</span><input type="date" value={f.date} onChange={(e) => set("date", e.target.value)} className={input} /></label>
           <label><span className={lab}>{u.from}</span><input type="time" value={f.from} onChange={(e) => set("from", e.target.value)} className={input} /></label>
           <label><span className={lab}>{u.to}</span><input type="time" value={f.to} onChange={(e) => set("to", e.target.value)} className={input} /></label>
@@ -193,7 +212,10 @@ export function InvitationEditor() {
 
         <div className="min-w-0">
           <p className={lab}>{u.front}</p>
-          <div ref={frontRef} className="mt-1.5 overflow-hidden rounded-lg shadow-md ring-1 ring-border"><CardFront f={f} /></div>
+          <div ref={frontRef} className="mt-1.5 overflow-hidden rounded-lg shadow-md ring-1 ring-border"><CardFront f={f} guest={guests[0]} /></div>
+          <div ref={guestsRef} aria-hidden="true" style={{ position: "fixed", left: "-10000px", top: 0, width: "1033px", pointerEvents: "none" }}>
+            {guests.length > 1 && guests.map((g, i) => <div key={i} data-card><CardFront f={f} guest={g} /></div>)}
+          </div>
           <p className={`${lab} mt-4`}>{u.back}</p>
           <div ref={backRef} className="mt-1.5 overflow-hidden rounded-lg shadow-md ring-1 ring-border"><CardBack f={f} /></div>
           <div className="mt-5 flex flex-wrap gap-3">

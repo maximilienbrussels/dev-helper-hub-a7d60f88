@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 
-export const BLUESKY_EXAMPLES = ["@maximilien.site", "user.bsky.social"];
+export const BLUESKY_EXAMPLES = ["@maximilien.brussels", "user.bsky.social"];
 
 const STORAGE_KEY = "maximilien:bluesky-handle";
 

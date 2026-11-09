@@ -167,7 +167,7 @@ export const DEFAULT_SOCIAL_LINKS: SocialLink[] = [
   { id: "youtube", name: "YouTube", url: "https://youtube.com/@maximilienbrussels", active: true, order: 5 },
   { id: "x", name: "X", url: "https://x.com/maximilienbrussels", active: false, order: 6 },
   { id: "bluesky", name: "Bluesky", url: "https://bsky.app/profile/maximilien.brussels", active: true, order: 7 },
-  { id: "mastodon", name: "Mastodon", url: "https://mastodon.social/@maximilienbrussels", active: true, order: 8 },
+  { id: "mastodon", name: "Mastodon", url: "https://mastodon.social/@maximilien", active: true, order: 8 },
   { id: "peertube", name: "PeerTube", url: "https://peertube.be/c/maximilienbrussels", active: true, order: 9 },
   { id: "pinterest", name: "Pinterest", url: "https://pinterest.com/maximilienbrussels", active: true, order: 10 },
   { id: "wsocial", name: "WSocial", url: "https://wsocial.com/maximilienbrussels", active: true, order: 11 },

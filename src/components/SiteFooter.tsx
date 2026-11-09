@@ -259,12 +259,12 @@ export function SiteFooter() {
           </p>
           <p>
             <a
-              href="https://mastodon-belgium.be/@Maximilien"
+              href="https://mastodon.social/@maximilien"
               rel="me noopener noreferrer"
               target="_blank"
               className="font-semibold text-foreground/90 hover:text-[color:var(--color-terracotta)]"
             >
-              @Maximilien@mastodon-belgium.be
+              @maximilien@mastodon.social
             </a>
           </p>
           <p>
