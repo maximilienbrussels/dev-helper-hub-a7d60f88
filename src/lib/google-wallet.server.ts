@@ -269,7 +269,7 @@ export async function generateGoogleWalletPassUrl(input: {
 
 export const MEMBER_CLASS_SUFFIX = "maximilien_ticket_v1";
 export const MEMBER_BACKGROUND = "#793E32";
-const ASSET_ORIGIN = "https://id-preview--7bf84350-82f3-4956-a767-31b9ac0ddaef.lovable.app";
+const ASSET_ORIGIN = "https://maximilien.brussels";
 const memberImage = (url: string, locale: WalletLocale) => ({
   sourceUri: { uri: new URL(url, ASSET_ORIGIN).href },
   contentDescription: { defaultValue: { language: locale, value: "Maximilien" } },
