@@ -51,7 +51,7 @@ const LOCALE_DESC: Record<Lang, string> = {
 };
 
 /** Openbare profielen van de boerderij (o.a. gedecentraliseerd via Mastodon). */
-export const SAME_AS = ["https://mastodon-belgium.be/@Maximilien"];
+export const SAME_AS = ["https://mastodon.social/@maximilien", "https://bsky.app/profile/maximilien.brussels"];
 
 /** LocalBusiness + EducationalOrganization voor de homepagina. */
 export function homeJsonLd(lang: Lang) {

@@ -130,7 +130,7 @@ export const SOCIAL_CHANNELS: { id: string; name: string; href: string }[] = [
   { id: "youtube", name: "YouTube", href: "https://youtube.com/@maximilienbrussels" },
   { id: "linkedin", name: "LinkedIn", href: "https://linkedin.com/company/maximilienbrussels" },
   { id: "bluesky", name: "Bluesky", href: "https://bsky.app/profile/maximilien.brussels" },
-  { id: "mastodon", name: "Mastodon", href: "https://mastodon.social/@maximilienbrussels" },
+  { id: "mastodon", name: "Mastodon", href: "https://mastodon.social/@maximilien" },
   { id: "peertube", name: "PeerTube", href: "https://peertube.be/c/maximilienbrussels" },
   { id: "pinterest", name: "Pinterest", href: "https://pinterest.com/maximilienbrussels" },
   { id: "wsocial", name: "WSocial", href: "https://wsocial.com/maximilienbrussels" },
