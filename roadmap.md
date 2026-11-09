@@ -23,4 +23,5 @@
 - [ ] Fases 2-6 of the approved plan (audio guide, rental quote calculator, numbered sponsorship certificate, events/education) — not started this turn.
 - [ ] Verify paid checkout for monthly donations and printed invitations end-to-end — needs live payment test.
 
-- [x] Alle afbeeldingen (Boudewijn, AI-chat) zichtbaar bij Vercel-deploy
+- [ ] Verify all animal images, QR/passport pages, invitation downloads and Wallet error handling in the running app; repair confirmed issues and add regression tests. Actual Vercel deployment remains unverified.
+- [ ] Diagnose the reported Add to Google Wallet failure using the uploaded screenshot and live provider signals; fix recoverable issues and verify issuance when the existing account session permits it.
