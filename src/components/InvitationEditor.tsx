@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Download, Loader2, Printer, ShoppingBag, Truck, Store, RotateCcw } from "lucide-react";
 import { useT, type Lang } from "@/lib/i18n";
 import { OLD_ASSETS } from "@/lib/old-site-assets";
+import { Button } from "@/components/ui/button";
 import {
   CARD_TEXT, DELIVERY_CENTS, INVITATION_LIMITS as M, PRINT_PACKS, PRINT_PRICE_PER_CARD_CENTS,
   formatCardDate, invitationTotalCents, type InvitationFields, type InvitationLang,
@@ -93,8 +94,6 @@ export function InvitationEditor() {
   const [email, setEmail] = useState("");
   const [err, setErr] = useState<string | null>(null);
   const [ordered, setOrdered] = useState(false);
-  const frontRef = useRef<HTMLDivElement>(null);
-  const backRef = useRef<HTMLDivElement>(null);
   const guestsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -116,17 +115,19 @@ export function InvitationEditor() {
     await document.fonts?.ready;
     const opts = { pixelRatio: 3, cacheBust: true, backgroundColor: "#ffffff" };
     const nodes = Array.from(guestsRef.current?.querySelectorAll<HTMLElement>("[data-card]") ?? []);
-    const fronts: string[] = [];
-    for (const node of nodes) fronts.push(await toPng(node, opts));
-    if (!fronts.length) fronts.push(await toPng(frontRef.current!, opts));
-    const back = await toPng(backRef.current!, opts);
+    const backNode = guestsRef.current?.querySelector<HTMLElement>("[data-back]");
+    if (!nodes.length || !backNode) throw new Error("Invitation export not ready");
+    const back = await toPng(backNode, opts);
     const pdf = new jsPDF({ unit: "mm", format: "a4", orientation: "portrait" });
     const w = 210, h = 99;
     // Eén kaart per gast; bij één gast vullen we het blad met 3 identieke kaarten.
-    const list = fronts.length === 1 ? [fronts[0], fronts[0], fronts[0]] : fronts;
+    const list = nodes.length === 1 ? [nodes[0], nodes[0], nodes[0]] : nodes;
     let first = true;
     for (let s = 0; s < list.length; s += 3) {
-      const sheet = list.slice(s, s + 3);
+      const sheet: string[] = [];
+      for (const node of list.slice(s, s + 3)) {
+        if (node) sheet.push(await toPng(node, opts));
+      }
       for (const img of [null, back] as const) {
         if (!first) pdf.addPage();
         first = false;
@@ -147,14 +148,17 @@ export function InvitationEditor() {
     finally { setBusy(null); }
   }
   async function print() {
+    const win = window.open("about:blank", "_blank");
     setBusy("print");
+    setErr(null);
     try {
       const pdf = await buildPdf();
       pdf.autoPrint();
       const url = URL.createObjectURL(pdf.output("blob"));
-      const win = window.open(url, "_blank");
-      if (!win) pdf.save(fileName());
-    } catch (e) { console.error("[uitnodiging] afdrukken mislukt", e); setErr(u.failed); } finally { setBusy(null); }
+      if (win) win.location.replace(url);
+      else pdf.save(fileName());
+      window.setTimeout(() => URL.revokeObjectURL(url), 300000);
+    } catch (e) { win?.close(); console.error("[uitnodiging] afdrukken mislukt", e); setErr(u.failed); } finally { setBusy(null); }
   }
   async function order(e: React.FormEvent) {
     e.preventDefault();
@@ -212,21 +216,23 @@ export function InvitationEditor() {
 
         <div className="min-w-0">
           <p className={lab}>{u.front}</p>
-          <div ref={frontRef} className="mt-1.5 overflow-hidden rounded-lg shadow-md ring-1 ring-border"><CardFront f={f} guest={guests[0]} /></div>
+          <div className="mt-1.5 overflow-hidden rounded-lg shadow-md ring-1 ring-border"><CardFront f={f} guest={guests[0]} /></div>
           <div ref={guestsRef} aria-hidden="true" style={{ position: "fixed", left: "-10000px", top: 0, width: "1033px", pointerEvents: "none" }}>
-            {guests.length > 1 && guests.map((g, i) => <div key={i} data-card><CardFront f={f} guest={g} /></div>)}
+            {guests.map((g, i) => <div key={i} data-card><CardFront f={f} guest={g} /></div>)}
+            <div data-back><CardBack f={f} /></div>
           </div>
           <p className={`${lab} mt-4`}>{u.back}</p>
-          <div ref={backRef} className="mt-1.5 overflow-hidden rounded-lg shadow-md ring-1 ring-border"><CardBack f={f} /></div>
+          <div className="mt-1.5 overflow-hidden rounded-lg shadow-md ring-1 ring-border"><CardBack f={f} /></div>
           <div className="mt-5 flex flex-wrap gap-3">
-            <button type="button" onClick={print} disabled={!!busy} className="inline-flex min-h-[48px] items-center gap-2 rounded-full bg-[color:var(--ink-forest)] px-5 text-[12px] font-semibold uppercase tracking-widest text-[color:var(--surface-page)] hover:opacity-90 disabled:opacity-60">
+            <Button type="button" onClick={print} disabled={!!busy} className="min-h-[48px] rounded-full px-5 text-xs">
               {busy === "print" ? <Loader2 className="h-4 w-4 animate-spin" /> : <Printer className="h-4 w-4" />} {busy === "print" ? u.busy : u.print}
-            </button>
-            <button type="button" onClick={save} disabled={!!busy} className="inline-flex min-h-[48px] items-center gap-2 rounded-full border border-[color:var(--ink-forest)] px-5 text-[12px] font-semibold uppercase tracking-widest text-[color:var(--ink-forest)] hover:bg-[color:var(--ink-forest)]/5 disabled:opacity-60">
+            </Button>
+            <Button variant="outline" type="button" onClick={save} disabled={!!busy} className="min-h-[48px] rounded-full px-5 text-xs">
               {busy === "pdf" ? <Loader2 className="h-4 w-4 animate-spin" /> : <Download className="h-4 w-4" />} {busy === "pdf" ? u.busy : u.save}
-            </button>
+            </Button>
           </div>
           <p className="mt-2 text-xs text-muted-foreground">{u.sheet}</p>
+          {err && <p role="alert" className="mt-2 text-sm text-destructive">{tx(err)}</p>}
           <a href={OLD_ASSETS.uitnodigingMaFeteChampetre} download="ma-fete-champetre-blanco.pdf" className="mt-1 inline-block text-xs text-[color:var(--color-terracotta)] underline-offset-2 hover:underline">{u.original}</a>
 
           <form onSubmit={order} className="mt-6 rounded-2xl border border-border bg-background/60 p-5">
