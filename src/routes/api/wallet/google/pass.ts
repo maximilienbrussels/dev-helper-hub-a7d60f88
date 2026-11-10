@@ -34,10 +34,11 @@ export const Route = createFileRoute("/api/wallet/google/pass")({
           return Response.json({ error: "unauthorized" }, { status: 401 });
         }
 
-        const { readWalletCredentials, createMemberSaveUrl } = await import(
+        const { readWalletCredentials, createMemberSaveUrl, WalletKeyError } = await import(
           "@/lib/google-wallet.server"
         );
 
+        try {
         const creds = readWalletCredentials();
         if (!creds) {
           return Response.json(
@@ -50,11 +51,14 @@ export const Route = createFileRoute("/api/wallet/google/pass")({
           );
         }
 
-        try {
           const saveUrl = await createMemberSaveUrl(input, creds);
-          return Response.json({ success: true, saveUrl });
+          return Response.json({ success: true, saveUrl }, { headers: { "Cache-Control": "no-store" } });
         } catch (err) {
-          console.error("google wallet member pass sign failed", err);
+          if (err instanceof WalletKeyError) {
+            console.error("[Wallet Error] Invalid cryptographic key structure");
+            return Response.json({ error: "wallet_not_configured", message: "Google Wallet is tijdelijk niet beschikbaar. De sleutelconfiguratie moet worden gecontroleerd." }, { status: 503, headers: { "Cache-Control": "no-store" } });
+          }
+          console.error("[Wallet Error] Pass generation failed");
           return Response.json(
             { error: "signing_failed", message: "Kon de pas niet ondertekenen." },
             { status: 500 },

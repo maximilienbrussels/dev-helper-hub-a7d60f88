@@ -19,8 +19,13 @@ export const issueEventWalletPass = createServerFn({ method: "POST" })
     const authorization = await requireRouteAdmin(getRequest());
     if ("response" in authorization) return { url: null, error: "unauthorized" };
     const { readWalletCredentials } = await import("@/lib/google-wallet.server");
+    try {
     const credentials = readWalletCredentials();
     if (!credentials) return { url: null, error: "wallet_not_configured" };
     const { createEventSaveUrl } = await import("@/lib/wallet-event.server");
     return { url: await createEventSaveUrl({ ...data, eventTitle: data.eventTranslations[data.locale], passType: "ticket" }, credentials), error: null };
+    } catch {
+      console.error("[Wallet Error] Event pass generation failed");
+      return { url: null, error: "wallet_not_configured" };
+    }
   });

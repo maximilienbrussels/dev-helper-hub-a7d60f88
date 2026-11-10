@@ -22,6 +22,11 @@ export const googleWalletPassUrl = createServerFn({ method: "POST" })
   .validator((data: unknown) => schema.parse(data))
   .handler(async ({ data }) => {
     const { generateGoogleWalletPassUrl } = await import("@/lib/google-wallet.server");
-    const url = await generateGoogleWalletPassUrl(data);
-    return { url, configured: url !== null };
+    try {
+      const url = await generateGoogleWalletPassUrl(data);
+      return { url, configured: url !== null };
+    } catch {
+      console.error("[Wallet Error] Pass generation failed");
+      return { url: null, configured: false };
+    }
   });
