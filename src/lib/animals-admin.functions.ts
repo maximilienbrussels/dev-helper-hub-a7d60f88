@@ -8,6 +8,7 @@ import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { requireAuth } from "@/lib/auth-middleware";
 import { requirePermission } from "@/lib/portal-permissions";
+import { validateResidentImageUrl } from "@/lib/resident-image-url";
 
 export type AdminAnimal = {
   id: number;
@@ -82,10 +83,7 @@ export const setAnimalImage = createServerFn({ method: "POST" })
     await requirePermission(context, "manage_media");
     const { db } = await import("@/lib/neon.server");
     const { normalizePublicImageUrl } = await import("@/lib/s3.server");
-    const raw = data.imageUrl && data.imageUrl.length ? data.imageUrl : null;
-    if (raw && !/^(https:\/\/|\/api\/public\/media\/)/.test(raw) && raw.includes("://")) {
-      throw new Error("Deze foto-link is ongeldig. Kies een foto uit de mediabibliotheek.");
-    }
+    const raw = validateResidentImageUrl(data.imageUrl);
     const url = normalizePublicImageUrl(raw);
     await db()`update animals set image_url = ${url} where id = ${data.id}`;
     return readAll();

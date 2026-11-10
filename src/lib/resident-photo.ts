@@ -21,7 +21,7 @@ function lastPhoto(map: AlbumPhotoMap, key: string | null): string | null {
   if (!key) return null;
   const list = map[key];
   if (!list || list.length === 0) return null;
-  return list[list.length - 1]!.url;
+  return list.at(-1)?.url ?? null;
 }
 
 /** De beste beschikbare foto-URL voor dit dier, of null. */
@@ -32,6 +32,17 @@ export function residentPhoto(animal: ResidentLike, map: AlbumPhotoMap = {}): st
   const theme = lastPhoto(map, albumKeyForSpecies(animal.species));
   if (theme) return theme;
   const staticAlbum = albumForSpecies(animal.species);
-  if (staticAlbum.length) return staticAlbum[staticAlbum.length - 1]!.src;
+  if (staticAlbum.length) return staticAlbum.at(-1)?.src ?? null;
   return imageForSpecies(animal.species);
+}
+
+/** Personal photos precede species photos; never drop administrator uploads. */
+export function residentGallery(animal: ResidentLike, map: AlbumPhotoMap = {}): string[] {
+  const themeKey = albumKeyForSpecies(animal.species);
+  return Array.from(new Set([
+    ...(animal.image_url ? [animal.image_url] : []),
+    ...(map[animalAlbumKey(animal.id)] ?? []).map((photo) => photo.url),
+    ...(themeKey ? map[themeKey] ?? [] : []).map((photo) => photo.url),
+    ...albumForSpecies(animal.species).map((photo) => photo.src),
+  ].filter(Boolean)));
 }

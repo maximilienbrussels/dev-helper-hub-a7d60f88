@@ -13,7 +13,7 @@ export const WALLET_CONFIG = {
   issuerId: "3388000000023193763",
   classSuffix: "maximilien_ticket_v1",
   backgroundColor: "#1D3528",
-  logoUri: "https://maximilien.dlp.li/logo.png",
+  logoUri: memberLogo.url,
   location: { latitude: 50.85885, longitude: 4.350356 },
   locationName: "Maximilien",
   homepage: "https://maximilien.brussels",
@@ -91,15 +91,20 @@ export class WalletKeyError extends Error {
 export function sanitizePrivateKey(raw: string | undefined): string {
   if (!raw) return "";
   let key = raw.trim();
-  if (key.startsWith("{")) {
-    try {
-      const parsed = JSON.parse(key) as { private_key?: string };
-      if (parsed.private_key) key = parsed.private_key;
-    } catch {
-      /* geen JSON: als PEM behandelen */
-    }
+  if ((key.startsWith('"') && key.endsWith('"')) || (key.startsWith("'") && key.endsWith("'"))) {
+    key = key.slice(1, -1).trim();
   }
-  key = key.replace(/^['"]|['"]$/g, "").replace(/\\r/g, "").replace(/\\n/g, "\n").replace(/\r\n?/g, "\n");
+  if (key.startsWith("{")) {
+    let parsed: unknown;
+    try {
+      parsed = JSON.parse(key);
+    } catch {
+      throw new WalletKeyError();
+    }
+    if (!parsed || typeof parsed !== "object" || !("private_key" in parsed) || typeof parsed.private_key !== "string" || !parsed.private_key.trim()) throw new WalletKeyError();
+    key = parsed.private_key;
+  }
+  key = key.replace(/\\r/g, "").replace(/\\n/g, "\n").replace(/\r\n?/g, "\n");
   return key.trim();
 }
 
@@ -184,25 +189,16 @@ function pemToArrayBuffer(pem: string) {
 
 /** Ondertekent een JWT-payload met RS256. */
 export async function signRs256(payload: Record<string, unknown>, privateKeyPem: string) {
-  let key: CryptoKey;
   try {
-    key = await crypto.subtle.importKey(
+    const key = await crypto.subtle.importKey(
       "pkcs8",
       pemToArrayBuffer(sanitizePrivateKey(privateKeyPem)),
       { name: "RSASSA-PKCS1-v1_5", hash: "SHA-256" },
       false,
       ["sign"],
     );
-  } catch (err) {
-    console.error("[Wallet Error] Invalid cryptographic key structure", err instanceof Error ? err.message : err);
-    throw err instanceof WalletKeyError ? err : new WalletKeyError();
-  }
-
   const header = base64Url(JSON.stringify({ alg: "RS256", typ: "JWT" }));
-  const body = base64Url(
-    // btoa kan geen niet-ASCII aan; encodeer eerst naar UTF-8 bytes.
-    String.fromCharCode(...new TextEncoder().encode(JSON.stringify(payload))),
-  );
+  const body = base64Url(new TextEncoder().encode(JSON.stringify(payload)));
   const signingInput = `${header}.${body}`;
   const signature = new Uint8Array(
     await crypto.subtle.sign(
@@ -212,6 +208,10 @@ export async function signRs256(payload: Record<string, unknown>, privateKeyPem:
     ),
   );
   return `${signingInput}.${base64Url(signature)}`;
+  } catch {
+    console.error("[Wallet Error] Invalid cryptographic key structure");
+    throw new WalletKeyError();
+  }
 }
 
 /** Bouwt de volledige "save to wallet" URL. */
@@ -222,7 +222,10 @@ export async function createSaveUrl(input: WalletPassInput, creds: WalletCredent
     typ: "savetowallet",
     iat: Math.floor(Date.now() / 1000),
     origins: [...WALLET_CONFIG.origins],
-    payload: { genericObjects: [buildPassObject(input, creds.issuerId)] },
+    payload: {
+      genericClasses: [{ id: `${creds.issuerId}.${WALLET_CONFIG.classSuffix}` }],
+      genericObjects: [buildPassObject(input, creds.issuerId)],
+    },
   };
 
   const token = await signRs256(claims, creds.privateKey);
@@ -436,7 +439,8 @@ export async function createMemberSaveUrl(
     iat: Math.floor(Date.now() / 1000),
     origins: [...WALLET_CONFIG.origins],
     payload: {
-      loyaltyClasses: [buildMemberClass(creds.issuerId, input.locale)],
+      // The existing Loyalty class is managed in Google's issuer console.
+      // Issuing an object must never resubmit or reset its approval status.
       loyaltyObjects: [buildMemberPassObject(input, creds.issuerId)],
     },
   };

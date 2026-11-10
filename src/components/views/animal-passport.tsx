@@ -11,7 +11,7 @@ import { animalSlug, pathFor, speciesIn, type Lang } from "@/lib/routes-i18n";
 import { imageForSpecies } from "@/lib/animal-images";
 import { galleryFor, passportFor, speciesKey } from "@/lib/animal-passport";
 import { handleImageError } from "@/lib/image-fallback";
-import { residentPhoto } from "@/lib/resident-photo";
+import { residentGallery, residentPhoto } from "@/lib/resident-photo";
 import { albumForSpecies } from "@/lib/photo-albums";
 import { useAlbumPhotos } from "@/lib/use-album-photos";
 import { useMaximChatControl } from "@/lib/maxim-chat";
@@ -59,7 +59,7 @@ const COPY = {
     notFound: "Dit dier vonden we niet.",
     mapTitle: "Waar vind je mij?",
     sinceLabel: "Bij ons sinds",
-    sinceUnknown: "Al jaren een vaste bewoner",
+    sinceUnknown: "Aankomstdatum nog niet bekend",
   },
   fr: {
     back: "Retour à tous les animaux",
@@ -92,7 +92,7 @@ const COPY = {
     notFound: "Animal introuvable.",
     mapTitle: "Où me trouver ?",
     sinceLabel: "Chez nous depuis",
-    sinceUnknown: "Résident fidèle depuis des années",
+    sinceUnknown: "Date d’arrivée encore inconnue",
   },
   en: {
     back: "Back to all animals",
@@ -125,7 +125,7 @@ const COPY = {
     notFound: "We couldn't find this animal.",
     mapTitle: "Where to find me?",
     sinceLabel: "With us since",
-    sinceUnknown: "A long-time resident",
+    sinceUnknown: "Arrival date not yet known",
   },
 } as const;
 
@@ -178,7 +178,7 @@ export function AnimalPassportPage({ slug }: { slug: string }) {
   const passport = deepTx(tx, passportFor(species || zone?.nameNl || "", lang));
   const managed = useAlbumPhotos();
   const ownAlbum = albumForSpecies(species).map((p) => p.src);
-  const gallery = Array.from(new Set([...ownAlbum, ...galleryFor(speciesKey(species || zone?.nameNl || ""))]));
+  const gallery = Array.from(new Set([...(animal ? residentGallery(animal, managed) : ownAlbum), ...galleryFor(speciesKey(species || zone?.nameNl || ""))]));
   // Zelfde volgorde als overal op de site: eigen profielfoto → albums → soortfoto.
   const hero = (animal ? residentPhoto(animal, managed) : null) || imageForSpecies(species) || gallery[0];
   const since = animal?.arrived_on ? sinceLabel(animal.arrived_on, lang) : null;
@@ -213,14 +213,14 @@ export function AnimalPassportPage({ slug }: { slug: string }) {
 
   if (!animal && !zone) {
     return (
-      <div className="min-h-screen bg-background">
+      <div className="bg-background">
         <NavHeader />
-        <main className="mx-auto w-full max-w-3xl px-5 py-16 text-center">
+        <div className="mx-auto w-full max-w-3xl px-5 py-16 text-center">
           <h1 className="font-serif text-3xl text-foreground">{c.notFound}</h1>
           <LocalLink to={pathFor("animals", lang)} className="mt-4 inline-block text-sm text-primary underline">
             {c.back}
           </LocalLink>
-        </main>
+        </div>
       </div>
     );
   }
@@ -233,9 +233,9 @@ export function AnimalPassportPage({ slug }: { slug: string }) {
   const dietText = tx((zone && zoneDietRules(zone, lang)) || passport.feeding);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="bg-background text-foreground">
       <NavHeader />
-      <main className="mx-auto w-full max-w-5xl px-4 pb-16 md:px-8">
+      <div className="mx-auto w-full max-w-5xl px-4 pb-16 md:px-8">
         <LocalLink to={pathFor("animals", lang)} className="mt-4 inline-block text-sm text-muted-foreground underline">
           ← {c.back}
         </LocalLink>
@@ -253,7 +253,7 @@ export function AnimalPassportPage({ slug }: { slug: string }) {
           <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/30 to-transparent" />
           <div className="absolute inset-x-0 bottom-0 flex flex-col gap-3 p-6 md:p-10">
             <span className="mb-2 w-fit rounded-full bg-[color:var(--color-terracotta)] px-3 py-1 text-xs font-bold uppercase tracking-wide text-primary-foreground">
-              {zone?.icon ?? "🐾"} {speciesIn(species, lang) || zoneName(zone!, lang)}
+              {zone?.icon ?? "🐾"} {speciesIn(species, lang) || (zone ? zoneName(zone, lang) : displayName)}
             </span>
             <h1 className="text-4xl font-extrabold text-primary-foreground drop-shadow-md md:text-6xl">{displayName}</h1>
             <div className="flex flex-wrap items-center gap-2">
@@ -418,7 +418,7 @@ export function AnimalPassportPage({ slug }: { slug: string }) {
             {c.adoptBtn}
           </LocalLink>
         </section>
-      </main>
+      </div>
     </div>
   );
 }

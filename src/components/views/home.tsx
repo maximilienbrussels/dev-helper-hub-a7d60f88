@@ -5,7 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import { NavHeader } from "@/components/NavHeader";
 import { HeroStatusBadge } from "@/components/HeroStatusBadge";
 import { LocalLink } from "@/components/LocalLink";
-import { pathFor } from "@/lib/routes-i18n";
+import { animalSlug, pathFor } from "@/lib/routes-i18n";
 import { useT, formatT } from "@/lib/i18n";
 import { computeOpenStatus, getAnimals, getHours, getOrganisation } from "@/lib/data.functions";
 import { ResidentPhoto } from "@/components/ResidentPhoto";
@@ -157,10 +157,9 @@ function EditorialGrid({
           <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6">
             {preview.map((a) => {
               return (
-                <Link
+                <LocalLink
                   key={a.id}
-                  to="/qr/$animalId"
-                  params={{ animalId: String(a.id) }}
+                  to={pathFor("animals", lang, animalSlug(a, lang))}
                   className="group block"
                 >
                   <div className="aspect-square overflow-hidden rounded-2xl bg-secondary">
@@ -174,7 +173,7 @@ function EditorialGrid({
                   <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
                     {a.species}
                   </p>
-                </Link>
+                </LocalLink>
               );
             })}
           </div>
