@@ -7,7 +7,9 @@ describe("supplemental locale release safety", () => {
     (code) => {
       const locale = EXTRA_LANGS.find((entry) => entry.code === code);
       expect(locale).toBeDefined();
-      expect(locale?.ready).toBe(false);
+      // Released early only when explicitly labelled partial in the menu.
+      if (locale?.ready) expect(locale.partial).toBe(true);
+      else expect(locale?.ready).toBe(false);
     },
   );
   it("preserves identifiers, numbers and callable interpolators while mapping nested data", () => {
