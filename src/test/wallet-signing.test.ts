@@ -30,8 +30,8 @@ describe("defensive Wallet signing", () => {
     expect(payload).not.toHaveProperty("loyaltyClasses");
     const ticket = await createSaveUrl({ ticketId: "ticket-123", participantName: "Élodie", eventTitle: "Tour", eventDate: "2026-11-09", passType: "ticket", locale: "fr" }, creds);
     const generic = (await jwtVerify(ticket.split("/save/")[1] ?? "", publicKey)).payload.payload;
-    expect(generic).toHaveProperty("genericClasses");
-    expect(generic).toHaveProperty("genericObjects");
+    expect(generic).not.toHaveProperty("genericClasses");
+    expect((generic as { eventTicketObjects: { classId: string }[] }).eventTicketObjects[0]?.classId).toBe("3388000000023193763.maximilien_event_v1");
     expect(generic).not.toHaveProperty("loyaltyObjects");
   });
 });

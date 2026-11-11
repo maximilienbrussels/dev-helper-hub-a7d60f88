@@ -115,53 +115,6 @@ function sanitizeId(ticketId: string) {
   return ticketId.toLowerCase().replace(/[^a-z0-9_-]/g, "_");
 }
 
-/** Bouwt het generic-pass object volgens de Google Wallet specificatie. */
-export function buildPassObject(input: WalletPassInput, issuerId: string) {
-  const l = LABELS[input.locale] ?? LABELS.nl;
-
-  return {
-    id: `${issuerId}.${sanitizeId(input.ticketId)}`,
-    classId: `${issuerId}.${WALLET_CONFIG.classSuffix}`,
-    state: "ACTIVE",
-    hexBackgroundColor: WALLET_CONFIG.backgroundColor,
-    logo: {
-      sourceUri: { uri: WALLET_CONFIG.logoUri },
-      contentDescription: {
-        defaultValue: { language: input.locale, value: WALLET_CONFIG.locationName },
-      },
-    },
-    cardTitle: {
-      defaultValue: { language: input.locale, value: WALLET_CONFIG.locationName },
-    },
-    header: {
-      defaultValue: { language: input.locale, value: input.eventTitle },
-    },
-    subheader: {
-      defaultValue: { language: input.locale, value: l.account },
-    },
-    accountNameLabel: l.account,
-    accountName: input.participantName,
-    accountIdLabel: l.ticket,
-    accountId: input.ticketId,
-    barcode: {
-      type: "QR_CODE",
-      value:
-        input.verifyUrl ?? `${WALLET_CONFIG.verifyBase}?id=${encodeURIComponent(input.ticketId)}`,
-      alternateText: input.ticketId,
-    },
-    textModulesData: [
-      { id: "event", header: "Evenement", body: input.eventTitle },
-      { id: "date", header: "Datum / Date", body: input.eventDate },
-      { id: "type", header: "Type", body: input.passType },
-    ],
-    linksModuleData: {
-      uris: [{ uri: WALLET_CONFIG.homepage, description: l.site, id: "website" }],
-    },
-    locations: [
-      { latitude: WALLET_CONFIG.location.latitude, longitude: WALLET_CONFIG.location.longitude },
-    ],
-  };
-}
 
 function base64Url(bytes: Uint8Array | string) {
   const raw =
