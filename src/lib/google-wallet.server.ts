@@ -11,7 +11,7 @@ export type WalletLocale = "nl" | "fr" | "en";
 
 export const WALLET_CONFIG = {
   issuerId: "3388000000023193763",
-  classSuffix: "maximilien_ticket_v1",
+  classSuffix: "maximilien_generic_v1",
   backgroundColor: "#1D3528",
   logoUri: memberLogo.url,
   location: { latitude: 50.85885, longitude: 4.350356 },
