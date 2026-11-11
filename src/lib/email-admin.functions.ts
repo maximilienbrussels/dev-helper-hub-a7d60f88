@@ -243,6 +243,35 @@ function sampleData(template: TestTemplateKind): Record<string, unknown> {
 }
 
 /**
+ * Testmails mogen enkel naar het eigen adres of naar een actief teamaccount,
+ * zodat het portaal nooit als verzendkanaal naar willekeurige adressen dient.
+ */
+async function assertTeamRecipient(
+  context: Parameters<typeof requirePermission>[0],
+  to: string,
+) {
+  const mail = to.trim().toLowerCase();
+  const { resolveUserEmail } = await import("@/lib/permission-core.server");
+  const own = await resolveUserEmail({ userId: context.userId, claims: context.claims });
+  if (own && own === mail) return;
+  const { db } = await import("@/lib/neon.server");
+  const sql = db();
+  const rows = (await sql`
+    select 1 as ok from profiles p
+     where lower(coalesce(p.email, '')) = ${mail}
+       and p.active is not false
+       and exists (select 1 from user_roles ur where ur.user_id = p.id)
+    union all
+    select 1 as ok from portal_admins pa
+     where lower(pa.email) = ${mail} and pa.active
+    limit 1
+  `) as unknown[];
+  if (rows.length === 0) {
+    throw new Error("Testmails kunnen enkel naar je eigen adres of een teamlid verstuurd worden.");
+  }
+}
+
+/**
  * Verstuurt élk gevraagd sjabloon in élke gevraagde taal naar één adres, zodat
  * beheerders de volledige mailweergave (NL/FR/EN) kunnen controleren zonder
  * een echte bestelling of boeking aan te maken.
@@ -260,6 +289,7 @@ export const sendEmailTemplateTests = createServerFn({ method: "POST" })
   )
   .handler(async ({ data, context }): Promise<{ results: EmailTestResult[] }> => {
     await assertAdmin(context);
+    await assertTeamRecipient(context, data.to);
     const { sendTemplateMail } = await import("./email-engine.server");
     const results: EmailTestResult[] = [];
     for (const template of data.templates) {
