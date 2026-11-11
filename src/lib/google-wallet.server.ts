@@ -381,7 +381,6 @@ export async function createMemberSaveUrl(
     aud: "google",
     typ: "savetowallet",
     iat: Math.floor(Date.now() / 1000),
-    origins: [...WALLET_CONFIG.origins],
     payload: {
       // The existing Loyalty class is managed in Google's issuer console.
       // Issuing an object must never resubmit or reset its approval status.
