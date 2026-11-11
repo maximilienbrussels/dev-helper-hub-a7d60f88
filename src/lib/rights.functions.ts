@@ -45,6 +45,17 @@ export type PortalUser = {
 
 const ROLE_KEY = /^[a-z][a-z0-9_]{2,30}$/;
 
+/** Alle schrijfwijzen die volledige toegang geven; enkel een eigenaar mag ze beheren. */
+const PRIVILEGED_ROLES = new Set<string>([
+  ...FULL_ACCESS_ROLES,
+  "eigenaar",
+  "superadmin",
+  "super-admin",
+]);
+function isPrivilegedRole(role: string): boolean {
+  return PRIVILEGED_ROLES.has(role.trim().toLowerCase());
+}
+
 /* ------------------------------------------------------------------ helpers */
 
 type Ctx = { userId: string; claims: unknown };
@@ -371,9 +382,10 @@ export const setUserRoles = createServerFn({ method: "POST" })
       select role::text as role from user_roles where user_id = ${data.userId}::uuid
     `) as Array<{ role: string }>;
     const had = current.map((r) => r.role);
-    const ownerChange = had.includes("owner") !== data.roles.includes("owner");
-    if (ownerChange && !mine.isOwner) {
-      throw new Error("Enkel een eigenaar kan de eigenaarsrol beheren.");
+    // Enkel een eigenaar mag eigenaars-/super-adminrollen geven, afnemen of
+    // accounts met zo'n rol aanpassen.
+    if (!mine.isOwner && (had.some(isPrivilegedRole) || data.roles.some(isPrivilegedRole))) {
+      throw new Error("Enkel een eigenaar kan eigenaars- of super-adminrollen beheren.");
     }
 
     // Nooit de laatste eigenaar verwijderen.
@@ -441,8 +453,8 @@ export const addPortalUser = createServerFn({ method: "POST" })
   )
   .handler(async ({ data, context }) => {
     const mine = await assertRight(context, "manage_team");
-    if (data.roles.includes("owner") && !mine.isOwner) {
-      throw new Error("Enkel een eigenaar kan de eigenaarsrol geven.");
+    if (data.roles.some(isPrivilegedRole) && !mine.isOwner) {
+      throw new Error("Enkel een eigenaar kan eigenaars- of super-adminrollen geven.");
     }
 
     const db = await sql();

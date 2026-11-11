@@ -101,9 +101,7 @@ async function sendViaBrevo(
   }
 
   // Verificatie in het serverlogboek: exacte afzender die naar Brevo gaat.
-  console.info(
-    `[email] brevo-afzender: ${payload.sender.name} <${payload.sender.email}> via ${route.label}`,
-  );
+  console.info(`[email] brevo-verzending via ${route.label}`);
 
   const res = await fetch(url, {
     method: "POST",
@@ -116,7 +114,7 @@ async function sendViaBrevo(
   const text = await res.text().catch(() => "");
   if (!res.ok) {
     console.error(
-      `[email] brevo-response status=${res.status} route=${route.label} sender=${payload.sender.email} body=${text.slice(0, 300)}`,
+      `[email] brevo-response status=${res.status} route=${route.label} body=${text.slice(0, 300)}`,
     );
     throw new Error(`Brevo ${res.status} via ${route.label}: ${text.slice(0, 300)}`);
   }

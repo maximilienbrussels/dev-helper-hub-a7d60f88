@@ -109,6 +109,23 @@ async function isEmailVerified(userId: string, email: string | null): Promise<bo
   }
 }
 
+/**
+ * Is dit account actief? Een ontbrekend profiel telt als actief (standaard),
+ * maar bij een databasefout wordt er geweigerd (fail-closed).
+ */
+async function isAccountActive(userId: string): Promise<boolean> {
+  if (!userId) return false;
+  try {
+    const rows = (await (await sql())`
+      select active from profiles where id = ${userId}::uuid limit 1
+    `) as Array<{ active: boolean | null }>;
+    const row = rows[0];
+    return !row || row.active !== false;
+  } catch {
+    return false;
+  }
+}
+
 /** Volledig beeld van de toegang van deze sessie (voor diagnose én controle). */
 export async function resolveAccessRaw(context: PermissionContext): Promise<AccessSnapshot> {
   try {
@@ -132,6 +149,20 @@ export async function resolveAccessRaw(context: PermissionContext): Promise<Acce
     } catch {
       /* toegang blijft gelden op basis van het e-mailadres */
     }
+  }
+
+  // Gedeactiveerde accounts verliezen meteen elk beheerrecht, ook met een
+  // nog geldige sessie. Vaste eigenaars kunnen niet gedeactiveerd worden.
+  if (!isFixedOwner && !(await isAccountActive(context.userId))) {
+    return {
+      email,
+      userId: context.userId,
+      roles: [],
+      isFixedOwner: false,
+      isPortalAdmin: false,
+      fullAccess: false,
+      emailVerified,
+    };
   }
 
   const roles = await loadRoles(context.userId);

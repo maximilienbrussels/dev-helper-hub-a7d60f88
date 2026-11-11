@@ -20,7 +20,12 @@ const STATUS: Record<AdminRegistration["status"], string> = {
 };
 
 function csv(rows: AdminRegistration[], title: string) {
-  const q = (v: string | number) => `"${String(v).replace(/"/g, '""')}"`;
+  // Neutraliseer spreadsheetformules (=, +, -, @, tab, CR) uit bezoekersinvoer.
+  const q = (v: string | number) => {
+    let str = String(v ?? "");
+    if (typeof v === "string" && /^[=+\-@\t\r]/.test(str)) str = `'${str}`;
+    return `"${str.replace(/"/g, '""')}"`;
+  };
   const lines = [["Naam", "E-mail", "Telefoon", "Personen", "Status", "Bedrag", "Opmerking", "Ingeschreven"].map(q).join(";"),
     ...rows.map((r) => [r.name, r.email, r.phone, r.seats, STATUS[r.status], (r.amountCents / 100).toFixed(2), r.note, r.createdAt.slice(0, 16)].map(q).join(";"))];
   const blob = new Blob(["\ufeff" + lines.join("\n")], { type: "text/csv;charset=utf-8" });
