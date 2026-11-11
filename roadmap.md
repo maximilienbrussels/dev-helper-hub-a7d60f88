@@ -25,3 +25,9 @@
 
 - [ ] Verify all animal images, QR/passport pages, invitation downloads and Wallet error handling in the running app; repair confirmed issues and add regression tests. Actual Vercel deployment remains unverified.
 - [ ] Diagnose the reported Add to Google Wallet failure using the uploaded screenshot and live provider signals; fix recoverable issues and verify issuance when the existing account session permits it.
+
+## Next (old-site improvements)
+- [ ] Printable educational fact sheet per animal
+- [ ] Visitor guide: public transport, accessibility, farm etiquette
+- [ ] Live sponsorship name-plate / certificate preview
+- [ ] Google Wallet live: blocked on fresh service-account key + Developer role in Wallet Console

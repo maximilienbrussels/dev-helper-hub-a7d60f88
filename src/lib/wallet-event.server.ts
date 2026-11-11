@@ -25,7 +25,6 @@ export function eventClassLocalization(eventName: WalletTranslations = walletCop
 export async function createEventSaveUrl(input: WalletPassInput & { eventTranslations?: WalletTranslations }, credentials: WalletCredentials) {
   const jwt = await signRs256({
     iss: credentials.clientEmail, aud: "google", typ: "savetowallet", iat: Math.floor(Date.now() / 1000),
-    origins: [...WALLET_CONFIG.origins],
     payload: { eventTicketObjects: [buildEventTicket(input, credentials.issuerId)] },
   }, credentials.privateKey);
   return `https://pay.google.com/gp/v/save/${jwt}`;
