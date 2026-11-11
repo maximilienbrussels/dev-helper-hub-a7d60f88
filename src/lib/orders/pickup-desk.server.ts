@@ -36,7 +36,7 @@ export function shortCodeOf(reference: string | null): string | null {
 /** Afhaalmoment als leesbare tekst; nooit een Date-object richting de UI. */
 export function formatPickupSlot(slot: unknown): string | null {
   if (slot === null || slot === undefined || slot === "") return null;
-  const d = slot instanceof Date ? slot : new Date(String(slot));
+  const d = slot instanceof Date ? slot : new Date(String(slot).trim().replace(" ", "T").replace(/([+-]\d{2})$/, "$1:00"));
   if (Number.isNaN(d.getTime())) return String(slot);
   return d.toLocaleString("nl-BE", {
     timeZone: "Europe/Brussels",
