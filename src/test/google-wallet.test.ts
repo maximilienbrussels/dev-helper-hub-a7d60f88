@@ -4,7 +4,7 @@ import { buildMemberClass, buildMemberPassObject, MEMBER_BACKGROUND } from "@/li
 const input = { memberId: "member-123", memberName: "Example", hooiBalance: 42, locale: "nl" as const };
 describe("Loyalty Wallet", () => {
   it("uses the requested loyalty class", () => {
-    expect(buildMemberPassObject(input, "3388000000023193763").classId).toBe("3388000000023193763.maximilien_ticket_v1");
+    expect(buildMemberPassObject(input, "3388000000023193763").classId).toBe("3388000000023193763.maximilien_loyalty_v1");
     expect(buildMemberPassObject(input, "3388000000023193763").loyaltyPoints.balance.int).toBe(42);
   });
   it("never claims NFC without collector provisioning", () => {

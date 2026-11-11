@@ -11,7 +11,6 @@ export type WalletLocale = "nl" | "fr" | "en";
 
 export const WALLET_CONFIG = {
   issuerId: "3388000000023193763",
-  classSuffix: "maximilien_generic_v1",
   backgroundColor: "#1D3528",
   logoUri: memberLogo.url,
   location: { latitude: 50.85885, longitude: 4.350356 },
@@ -68,7 +67,11 @@ export type WalletCredentials = {
 /** Leest de service-account gegevens uit de omgeving. Alleen binnen een handler aanroepen. */
 export function readWalletCredentials(): WalletCredentials | null {
   const issuerId = process.env["GOOGLE_WALLET_ISSUER_ID"] || WALLET_CONFIG.issuerId;
-  const clientEmail = process.env["GOOGLE_WALLET_CLIENT_EMAIL"] || "";
+  const clientEmail = (
+    process.env["GOOGLE_WALLET_CLIENT_EMAIL"] ||
+    process.env["GOOGLE_SERVICE_ACCOUNT_EMAIL"] ||
+    ""
+  ).trim();
   const privateKey = sanitizePrivateKey(
     process.env["GOOGLE_WALLET_KEY"] || process.env["GOOGLE_WALLET_PRIVATE_KEY"],
   );
@@ -214,22 +217,10 @@ export async function signRs256(payload: Record<string, unknown>, privateKeyPem:
   }
 }
 
-/** Bouwt de volledige "save to wallet" URL. */
+/** Bouwt de "save to wallet" URL voor tickets: altijd een EventTicket onder maximilien_event_v1. */
 export async function createSaveUrl(input: WalletPassInput, creds: WalletCredentials) {
-  const claims = {
-    iss: creds.clientEmail,
-    aud: "google",
-    typ: "savetowallet",
-    iat: Math.floor(Date.now() / 1000),
-    origins: [...WALLET_CONFIG.origins],
-    payload: {
-      genericClasses: [{ id: `${creds.issuerId}.${WALLET_CONFIG.classSuffix}` }],
-      genericObjects: [buildPassObject(input, creds.issuerId)],
-    },
-  };
-
-  const token = await signRs256(claims, creds.privateKey);
-  return `https://pay.google.com/gp/v/save/${token}`;
+  const { createEventSaveUrl } = await import("@/lib/wallet-event.server");
+  return createEventSaveUrl(input, creds);
 }
 
 /**
@@ -270,7 +261,7 @@ export async function generateGoogleWalletPassUrl(input: {
 /* Mijn Hooi — digitale ledenpas                                       */
 /* ------------------------------------------------------------------ */
 
-export const MEMBER_CLASS_SUFFIX = "maximilien_ticket_v1";
+export const MEMBER_CLASS_SUFFIX = "maximilien_loyalty_v1";
 export const MEMBER_BACKGROUND = "#793E32";
 const ASSET_ORIGIN = "https://maximilien.brussels";
 const memberImage = (url: string, locale: WalletLocale) => ({
