@@ -1,6 +1,8 @@
 /**
  * A4-certificaat "Peter/Meterschap" (Worker-safe, jsPDF zonder DOM/canvas).
  */
+import { SPONSOR_CERT_COPY as COPY } from "@/lib/sponsorship-cert-copy";
+
 export type SponsorCertData = {
   sponsorName: string;
   animalName: string;
@@ -10,7 +12,6 @@ export type SponsorCertData = {
   lang: "nl" | "fr" | "en";
 };
 
-import { SPONSOR_CERT_COPY as COPY } from "@/lib/sponsorship-cert-copy";
 
 export async function buildSponsorshipCertificatePdf(data: SponsorCertData): Promise<Uint8Array> {
   const { jsPDF } = await import("jspdf");
