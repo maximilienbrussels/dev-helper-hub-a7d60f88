@@ -59,6 +59,10 @@
   --color-on-wallet-pass: #f5efe3;
   /* Tekst op crème vlakken: altijd donker, in beide thema's */
   --color-on-cream: #22401e;
+  /* Peterschapscertificaat: goudbruine randen en tekst (zelfde tinten als de PDF) */
+  --color-cert-gold: #7a6f4a;
+  --color-cert-gold-soft: #a8985f;
+  --color-cert-ink: #3b3b2f;
   /* Eén vlak voor donkere sectiekaarten (dark mode: diep bosgroen) */
   --color-surface-forest: var(--surface-forest);
   /* Pagina-/sectievlak en 'forest' tekstkleur: thema-bewust (licht + donker) */
