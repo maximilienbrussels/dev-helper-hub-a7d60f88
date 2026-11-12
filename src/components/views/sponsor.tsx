@@ -18,6 +18,7 @@ import {
   type SponsorCategoryId,
 } from "@/lib/sponsor-tiers";
 import { OLD_ASSETS } from "@/lib/old-site-assets";
+import { SponsorPreview } from "@/components/SponsorPreview";
 
 const CATEGORY_ART: Record<SponsorCategoryId, string> = {
   alpaca: OLD_ASSETS.peterAlpaca,
@@ -390,6 +391,8 @@ function SponsorForm({
                 </span>
                 <input
                   required
+                  maxLength={80}
+                  autoComplete="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   className="mt-2 h-12 w-full rounded-xl border border-border bg-background px-4 text-sm outline-none"
@@ -409,6 +412,16 @@ function SponsorForm({
               </label>
             </div>
           </section>
+
+          {cat ? (
+            <SponsorPreview
+              lang={L}
+              tx={tx}
+              sponsorName={name}
+              animalName={targetName}
+              tierLabel={tier ? tx(tier.label[L]) : null}
+            />
+          ) : null}
 
           {unavailable ? (
             <p className="rounded-xl border border-border bg-card p-4 text-sm text-muted-foreground">

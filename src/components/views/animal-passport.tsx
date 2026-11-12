@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { ChevronDown, Volume2 } from "lucide-react";
+import { ChevronDown, Printer, Volume2 } from "lucide-react";
 
 import { NavHeader } from "@/components/NavHeader";
 import { LocalLink } from "@/components/LocalLink";
@@ -25,6 +25,8 @@ import {
   type FarmZone,
 } from "@/data/farmMapDataset";
 import { animalsQO } from "@/components/views/animals";
+import { AnimalFactSheet } from "@/components/print/AnimalFactSheet";
+import { printSheet } from "@/lib/print-sheet";
 import type { AnimalDTO } from "@/lib/data.functions";
 
 const COPY = {
@@ -60,6 +62,11 @@ const COPY = {
     mapTitle: "Waar vind je mij?",
     sinceLabel: "Bij ons sinds",
     sinceUnknown: "Aankomstdatum nog niet bekend",
+    sheetTitle: "Voor scholen & groepen",
+    sheetBody: (n: string) =>
+      `Download de lesfiche van ${n}: identiteitskaart, voedingsregels, weetjes, kijkopdrachten en een tekenkader op één A4-blad.`,
+    sheetBtn: "Lesfiche afdrukken of als PDF opslaan",
+    sheetHint: "Kies in het afdrukvenster ‘Opslaan als PDF’ om de fiche te bewaren.",
   },
   fr: {
     back: "Retour à tous les animaux",
@@ -93,6 +100,11 @@ const COPY = {
     mapTitle: "Où me trouver ?",
     sinceLabel: "Chez nous depuis",
     sinceUnknown: "Date d’arrivée encore inconnue",
+    sheetTitle: "Pour les écoles & les groupes",
+    sheetBody: (n: string) =>
+      `Téléchargez la fiche pédagogique de ${n} : carte d'identité, règles d'alimentation, anecdotes, missions d'observation et un cadre à dessin sur une seule page A4.`,
+    sheetBtn: "Imprimer ou enregistrer la fiche en PDF",
+    sheetHint: "Dans la fenêtre d'impression, choisissez « Enregistrer au format PDF » pour garder la fiche.",
   },
   en: {
     back: "Back to all animals",
@@ -126,6 +138,11 @@ const COPY = {
     mapTitle: "Where to find me?",
     sinceLabel: "With us since",
     sinceUnknown: "Arrival date not yet known",
+    sheetTitle: "For schools & groups",
+    sheetBody: (n: string) =>
+      `Download ${n}'s fact sheet: ID card, feeding rules, fun facts, things to spot and a drawing frame on a single A4 page.`,
+    sheetBtn: "Print or save the fact sheet as PDF",
+    sheetHint: "In the print window, choose ‘Save as PDF’ to keep the sheet.",
   },
 } as const;
 
@@ -383,6 +400,23 @@ export function AnimalPassportPage({ slug }: { slug: string }) {
           </div>
         </section>
 
+        {/* LESFICHE */}
+        <section className="mt-10 grid gap-5 rounded-3xl border border-border bg-card p-6 shadow-sm md:grid-cols-[1fr_auto] md:items-center md:p-8">
+          <div>
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[color:var(--color-terracotta)]">📚 {c.sheetTitle}</p>
+            <p className="mt-2 max-w-2xl text-base leading-relaxed text-foreground">{c.sheetBody(displayName)}</p>
+            <p className="mt-2 text-sm text-muted-foreground">{c.sheetHint}</p>
+          </div>
+          <button
+            type="button"
+            onClick={printSheet}
+            className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full bg-primary px-6 text-sm font-bold text-primary-foreground hover:opacity-90"
+          >
+            <Printer className="size-4" aria-hidden />
+            {c.sheetBtn}
+          </button>
+        </section>
+
         {/* GALERIJ */}
         <section className="mt-10">
           <h2 className="font-serif text-3xl">{c.gallery}</h2>
@@ -419,6 +453,17 @@ export function AnimalPassportPage({ slug }: { slug: string }) {
           </LocalLink>
         </section>
       </div>
+      <AnimalFactSheet
+        lang={lang}
+        tx={tx}
+        name={displayName}
+        speciesLabel={tx(speciesIn(species, lang)) || passport.breed}
+        passport={passport}
+        zoneLabel={zone ? `${c.zone} ${zone.id} · ${zoneName(zone, lang)}` : null}
+        since={since}
+        photo={hero}
+        diet={dietText}
+      />
     </div>
   );
 }

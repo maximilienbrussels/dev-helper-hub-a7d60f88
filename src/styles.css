@@ -59,6 +59,10 @@
   --color-on-wallet-pass: #f5efe3;
   /* Tekst op crème vlakken: altijd donker, in beide thema's */
   --color-on-cream: #22401e;
+  /* Peterschapscertificaat: goudbruine randen en tekst (zelfde tinten als de PDF) */
+  --color-cert-gold: #7a6f4a;
+  --color-cert-gold-soft: #a8985f;
+  --color-cert-ink: #3b3b2f;
   /* Eén vlak voor donkere sectiekaarten (dark mode: diep bosgroen) */
   --color-surface-forest: var(--surface-forest);
   /* Pagina-/sectievlak en 'forest' tekstkleur: thema-bewust (licht + donker) */
@@ -938,4 +942,167 @@ body.quiz-focus header[data-site-header] {
     background: var(--primary);
     background-clip: padding-box;
   }
+}
+
+/* ===== Lesfiche per dier (A4 portret, enkel bij printen) ===== */
+.fact-sheet {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 10pt;
+  line-height: 1.4;
+  color: #1a2e1e;
+  background: #fff;
+}
+.fact-sheet h2 {
+  margin: 0 0 2mm;
+  font-size: 12pt;
+  color: #2d5a27;
+  letter-spacing: 0.02em;
+}
+.fact-sheet .fs-head {
+  display: grid;
+  grid-template-columns: 18mm 1fr auto;
+  gap: 5mm;
+  align-items: center;
+  padding-bottom: 4mm;
+  border-bottom: 1.2pt solid #c86d51;
+}
+.fact-sheet .fs-logo {
+  height: 18mm;
+  width: auto;
+}
+.fact-sheet .fs-kicker {
+  margin: 0;
+  font: 700 7.5pt/1.2 system-ui, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #c86d51;
+}
+.fact-sheet .fs-title {
+  margin: 1mm 0 0;
+  font-size: 26pt;
+  line-height: 1.05;
+}
+.fact-sheet .fs-sub {
+  margin: 1mm 0 0;
+  font-size: 11pt;
+  color: #4b5a4d;
+}
+.fact-sheet .fs-pupil {
+  display: flex;
+  flex-direction: column;
+  gap: 3mm;
+  font: 9pt system-ui, sans-serif;
+}
+.fact-sheet .fs-intro {
+  display: grid;
+  grid-template-columns: 62mm 1fr;
+  gap: 6mm;
+  margin-top: 5mm;
+}
+.fact-sheet .fs-photo {
+  width: 62mm;
+  height: 52mm;
+  object-fit: cover;
+  border-radius: 3mm;
+  background: #f1ede4;
+}
+.fact-sheet .fs-id dl {
+  display: grid;
+  grid-template-columns: 34mm 1fr;
+  gap: 1.2mm 3mm;
+  margin: 0;
+}
+.fact-sheet .fs-id dt {
+  font: 700 8pt system-ui, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #6b6b5a;
+}
+.fact-sheet .fs-id dd {
+  margin: 0;
+}
+.fact-sheet .fs-food {
+  margin-top: 5mm;
+  padding: 3mm 4mm;
+  border: 1.2pt solid #c86d51;
+  border-radius: 3mm;
+  background: #fbf1ec;
+}
+.fact-sheet .fs-food h2 {
+  color: #a4482d;
+}
+.fact-sheet .fs-food p {
+  margin: 0;
+  font-weight: 700;
+}
+.fact-sheet .fs-facts {
+  margin-top: 5mm;
+}
+.fact-sheet .fs-facts ol {
+  margin: 0;
+  padding-left: 5mm;
+}
+.fact-sheet .fs-facts li {
+  margin-bottom: 1.5mm;
+}
+.fact-sheet .fs-tasks {
+  margin-top: 5mm;
+  padding-top: 4mm;
+  border-top: 0.6pt dashed #a8985f;
+  break-inside: avoid;
+}
+.fact-sheet .fs-grid {
+  display: grid;
+  grid-template-columns: 1fr 70mm;
+  gap: 6mm;
+}
+.fact-sheet .fs-q {
+  margin: 3mm 0 1.5mm;
+  font-weight: 700;
+}
+.fact-sheet .fs-line {
+  height: 7mm;
+  margin: 0;
+  border-bottom: 0.6pt solid #a8a8a0;
+}
+.fact-sheet .fs-legs,
+.fact-sheet .fs-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2mm 5mm;
+  margin: 0;
+  font: 9.5pt system-ui, sans-serif;
+}
+.fact-sheet .fs-draw {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  min-height: 68mm;
+  padding: 2mm;
+  border: 1pt solid #2d5a27;
+  border-radius: 3mm;
+  font: 8pt system-ui, sans-serif;
+  color: #6b6b5a;
+}
+.fact-sheet .fs-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6mm;
+  margin-top: 5mm;
+  padding: 3mm 4mm;
+  border-radius: 3mm;
+  background: #f1ede4;
+  font: 8.5pt/1.4 system-ui, sans-serif;
+  break-inside: avoid;
+}
+.fact-sheet .fs-foot p {
+  margin: 0;
+}
+.fact-sheet .fs-brand {
+  margin: 3mm 0 0;
+  text-align: center;
+  font: 7.5pt system-ui, sans-serif;
+  color: #6b6b5a;
+  letter-spacing: 0.08em;
 }
