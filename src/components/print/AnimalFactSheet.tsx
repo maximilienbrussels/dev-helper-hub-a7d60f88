@@ -3,7 +3,7 @@ import { QRCodeSVG } from "qrcode.react";
 
 import { MLogo } from "@/components/MLogo";
 import type { Lang } from "@/lib/routes-i18n";
-import type { PassportCopy, SpeciesKey } from "@/lib/animal-passport";
+import type { PassportCopy } from "@/lib/animal-passport";
 
 /**
  * Printbare A4-lesfiche (portret) per dier, voor scholen en groepen.
@@ -116,7 +116,6 @@ export function AnimalFactSheet({
   tx,
   name,
   speciesLabel,
-  speciesKey,
   passport,
   zoneLabel,
   since,
@@ -127,7 +126,6 @@ export function AnimalFactSheet({
   tx: (s: string) => string;
   name: string;
   speciesLabel: string;
-  speciesKey: SpeciesKey;
   passport: PassportCopy;
   zoneLabel: string | null;
   since: string | null;
@@ -140,7 +138,6 @@ export function AnimalFactSheet({
   useEffect(() => {
     setUrl(`${window.location.origin}${window.location.pathname}`);
   }, []);
-  const isBird = speciesKey === "peacock";
 
   return (
     <div id="worksheet-print-area" aria-hidden="true">
@@ -216,7 +213,7 @@ export function AnimalFactSheet({
             <div className="fs-col">
               <p className="fs-q">1. {c.legs(name)}</p>
               <p className="fs-legs">
-                {(isBird ? [2, 4, 6] : [2, 4, 6]).map((n) => (
+                {[2, 4, 6].map((n) => (
                   <span key={n}>☐ {n}</span>
                 ))}
               </p>
