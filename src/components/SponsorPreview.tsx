@@ -113,11 +113,11 @@ export function SponsorPreview({
                   {tx(t.tier)}: {tierLabel}
                 </p>
               ) : null}
+              <p className="mt-[1.6cqw] text-[1.6cqw] italic text-[color:var(--color-cert-gold)]">{tx(t.thanks)}</p>
               <div className="mt-auto flex w-full items-end justify-between text-[1.45cqw] text-[color:var(--color-cert-gold)]">
                 <span>
                   {tx(t.date)}: {date}
                 </span>
-                <span className="italic">{tx(t.thanks)}</span>
                 <span>
                   {tx(t.code)}: {tx(ui.pending)}
                 </span>
